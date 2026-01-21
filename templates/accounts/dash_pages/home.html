@@ -1,0 +1,395 @@
+<div class="dash-main-card">
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+      <h3 class="text-white mb-0">Your dashboard</h3>
+      <div class="text-white-50 small">Your profile and quick actions</div>
+    </div>
+
+    <!-- HTMX-friendly: loads into dash main card but still works normally -->
+    <a class="btn btn-outline-light btn-sm"
+       href="{% url 'accounts:dash_profile_edit' %}"
+       hx-get="{% url 'accounts:dash_profile_edit' %}"
+       hx-target="#dashMainCard"
+       hx-swap="innerHTML"
+       hx-push-url="true">
+      Edit
+    </a>
+  </div>
+
+  <!-- Profile Overview -->
+  <div class="dash-profile-card mb-3">
+    <div class="d-flex gap-3 align-items-center">
+      <div class="dash-big-avatar">
+        {% if u.profile_picture %}
+          <img src="{{ u.profile_picture.url }}" alt="Profile picture">
+        {% endif %}
+      </div>
+
+      <div class="flex-grow-1">
+        <div class="text-white fw-bold" style="font-size:18px;">
+          {{ u.first_name }} {{ u.last_name }}
+        </div>
+
+        <div class="text-white-50 small">
+          Account: <span class="text-white">{{ u.account_type|default:"user"|title }}</span>
+        </div>
+
+        <div class="text-white-50 small mt-1">
+          {% if u.currency %}
+            Currency: <span class="text-white">{{ u.currency.code }} ({{ u.currency.sign }})</span>
+          {% else %}
+            Currency: <span class="text-white">Not set</span>
+          {% endif %}
+        </div>
+
+        <div class="text-white-50 small mt-1">
+          Balance:
+          <span class="text-white fw-semibold">
+            {% if u.currency %}{{ u.currency.sign }}{% endif %} {{ u.balance|default:"0" }}
+          </span>
+        </div>
+
+        <!-- Extra fields -->
+        <div class="text-white-50 small mt-2">
+          Email: <span class="text-white">{{ u.email }}</span>
+        </div>
+
+        {% if u.phone %}
+          <div class="text-white-50 small mt-1">
+            Phone: <span class="text-white">{{ u.phone }}</span>
+          </div>
+        {% endif %}
+
+        {% if u.nickname %}
+          <div class="text-white-50 small mt-1">
+            Nickname: <span class="text-white">{{ u.nickname }}</span>
+          </div>
+        {% endif %}
+
+        {% if u.date_of_birth %}
+          <div class="text-white-50 small mt-1">
+            Date of birth: <span class="text-white">{{ u.date_of_birth }}</span>
+          </div>
+        {% endif %}
+
+        {% if u.years_of_experience is not None %}
+          <div class="text-white-50 small mt-1">
+            Experience:
+            <span class="text-white">
+              {{ u.years_of_experience }} year{{ u.years_of_experience|pluralize }}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if is_pro %}
+      <hr style="border-color: rgba(255,255,255,0.08);">
+      <div class="text-white-50 small mb-1">Professions</div>
+
+      <div class="d-flex flex-wrap gap-2">
+        {% for p in u.professions.all %}
+          <span class="badge bg-light text-dark border">{{ p.name }}</span>
+        {% empty %}
+          <span class="text-white-50 small">No professions selected.</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if u.about_me %}
+      <hr style="border-color: rgba(255,255,255,0.08);">
+      <div class="text-white-50 small mb-1">About me</div>
+      <div class="text-white" style="white-space: pre-line;">{{ u.about_me }}</div>
+    {% endif %}
+
+    <hr style="border-color: rgba(255,255,255,0.08);">
+
+    <div class="row g-3">
+      <div class="col-12 col-md-6">
+        <div class="text-white-50 small mb-1">Communication languages</div>
+        {% if u.communication_languages.exists %}
+          <div class="d-flex flex-wrap gap-2">
+            {% for l in u.communication_languages.all %}
+              <span class="badge bg-light text-dark border">{{ l.name }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="text-white-50 small">None selected</div>
+        {% endif %}
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="text-white-50 small mb-1">Event languages</div>
+        {% if u.event_languages.exists %}
+          <div class="d-flex flex-wrap gap-2">
+            {% for l in u.event_languages.all %}
+              <span class="badge bg-light text-dark border">{{ l.name }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="text-white-50 small">None selected</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <hr style="border-color: rgba(255,255,255,0.08);">
+    <div class="text-white-50 small mb-1">Accepted event categories</div>
+    {% if u.accepted_event_categories.exists %}
+      <div class="d-flex flex-wrap gap-2">
+        {% for c in u.accepted_event_categories.all %}
+          <span class="badge bg-light text-dark border">{{ c }}</span>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-white-50 small">No accepted categories selected.</div>
+    {% endif %}
+
+    <hr style="border-color: rgba(255,255,255,0.08);">
+    <div class="text-white-50 small mb-2">Pricing</div>
+    {% if u.currency %}
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <div class="text-white-50 small">Cost per hour</div>
+          <div class="text-white fw-semibold">
+            {{ u.currency.sign }}{{ u.cost_per_hour|default:"—" }}
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="text-white-50 small">Cost per 5 hours</div>
+          <div class="text-white fw-semibold">
+            {{ u.currency.sign }}{{ u.cost_per_5_hours|default:"—" }}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="text-white-50 small">Pricing has not been set.</div>
+    {% endif %}
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="dash-main-grid mb-4">
+    <a class="dash-tile" href="{% url 'events:calendar' %}">
+      <div class="dash-tile-title">Calendar</div>
+      <div class="dash-tile-sub">Busy days, bookings, availability</div>
+    </a>
+
+    <a class="dash-tile" href="{% url 'events:offers_inbox' %}">
+      <div class="dash-tile-title">Offers</div>
+      <div class="dash-tile-sub">Chats and booking requests</div>
+    </a>
+
+    <a class="dash-tile" href="{% url 'events:list' %}">
+      <div class="dash-tile-title">Events</div>
+      <div class="dash-tile-sub">Browse posted events</div>
+    </a>
+
+<a class="dash-tile"
+   href="{% url 'accounts:favorites' %}"
+   hx-get="{% url 'accounts:favorites' %}"
+   hx-target="#dashMainCard"
+   hx-swap="innerHTML"
+   hx-push-url="true">
+  <div class="dash-tile-title">Favorites</div>
+  <div class="dash-tile-sub">Saved profiles and events</div>
+</a>
+
+  </div>
+
+  <!-- ==========================================================
+       FULL MEDIA SECTIONS (Professional photos / Normal / Audio / Video)
+       Uses either reverse relations on u OR querysets passed from view
+  =========================================================== -->
+
+  <!-- Professional photos -->
+  <div class="mb-4">
+    <h5 class="text-white mb-2">Professional photos</h5>
+
+    {% with items=u.professional_photos.all %}
+      {% if items %}
+        <div class="row g-3">
+          {% for photo in items %}
+            <div class="col-6 col-md-4 col-lg-3">
+              <img src="{{ photo.image.url }}" class="img-fluid rounded border" alt="Professional photo">
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        {% if professional_photos %}
+          <div class="row g-3">
+            {% for photo in professional_photos %}
+              <div class="col-6 col-md-4 col-lg-3">
+                <img src="{{ photo.image.url }}" class="img-fluid rounded border" alt="Professional photo">
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-light border d-flex align-items-center justify-content-between mb-0">
+            <span class="text-muted mb-0">No professional photos uploaded yet.</span>
+            <a
+               href="{% url 'accounts:dash_profile_edit' %}"
+               hx-get="{% url 'accounts:dash_profile_edit' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true"
+               class="btn btn-sm btn-primary">Add professional photo</a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <hr class="my-4">
+
+  <!-- Normal photos -->
+  <div class="mb-4">
+    <h5 class="text-white mb-2">Normal photos</h5>
+
+    {% with items=u.normal_photos.all %}
+      {% if items %}
+        <div class="row g-3">
+          {% for photo in items %}
+            <div class="col-6 col-md-4 col-lg-3">
+              <img src="{{ photo.image.url }}" class="img-fluid rounded border" alt="Photo">
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        {% if normal_photos %}
+          <div class="row g-3">
+            {% for photo in normal_photos %}
+              <div class="col-6 col-md-4 col-lg-3">
+                <img src="{{ photo.image.url }}" class="img-fluid rounded border" alt="Photo">
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-light border d-flex align-items-center justify-content-between mb-0">
+            <span class="text-muted mb-0">No normal photos uploaded yet.</span>
+            <a class="btn btn-sm btn-primary"
+               href="{% url 'accounts:dash_profile_edit' %}"
+               hx-get="{% url 'accounts:dash_profile_edit' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true">Add normal photo</a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <hr class="my-4">
+
+  <!-- Audio -->
+  <div class="mb-4">
+    <h5 class="text-white mb-2">Audio Acapella Covers</h5>
+
+    {% with items=u.audio_acapella_covers.all %}
+      {% if items %}
+        <div class="list-group">
+          {% for a in items %}
+            <div class="list-group-item">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="fw-semibold">{{ a.title|default:"Audio cover" }}</div>
+                <small class="text-muted">{{ a.uploaded_at }}</small>
+              </div>
+              <audio controls class="w-100 mt-2">
+                <source src="{{ a.audio_file.url }}">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        {% if audio_covers %}
+          <div class="list-group">
+            {% for a in audio_covers %}
+              <div class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="fw-semibold">{{ a.title|default:"Audio cover" }}</div>
+                  <small class="text-muted">{{ a.uploaded_at }}</small>
+                </div>
+                <audio controls class="w-100 mt-2">
+                  <source src="{{ a.audio_file.url }}">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-light border d-flex align-items-center justify-content-between mb-0">
+            <span class="text-muted mb-0">No audio covers uploaded yet.</span>
+            <a class="btn btn-sm btn-primary"
+               href="{% url 'accounts:dash_profile_edit' %}"
+               hx-get="{% url 'accounts:dash_profile_edit' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true">Add audio cover</a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <hr class="my-4">
+
+  <!-- Video -->
+  <div class="mb-0">
+    <h5 class="text-white mb-2">Video Acapella Covers</h5>
+
+    {% with items=u.video_acapella_covers.all %}
+      {% if items %}
+        <div class="row g-3">
+          {% for v in items %}
+            <div class="col-12 col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="fw-semibold">{{ v.title|default:"Video cover" }}</div>
+                    <small class="text-muted">{{ v.uploaded_at }}</small>
+                  </div>
+                  <video controls class="w-100 mt-2" style="max-height: 360px;">
+                    <source src="{{ v.video_file.url }}">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        {% if video_covers %}
+          <div class="row g-3">
+            {% for v in video_covers %}
+              <div class="col-12 col-md-6">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="fw-semibold">{{ v.title|default:"Video cover" }}</div>
+                      <small class="text-muted">{{ v.uploaded_at }}</small>
+                    </div>
+                    <video controls class="w-100 mt-2" style="max-height: 360px;">
+                      <source src="{{ v.video_file.url }}">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-light border d-flex align-items-center justify-content-between mb-0">
+            <span class="text-muted mb-0">No video covers uploaded yet.</span>
+            <a class="btn btn-sm btn-primary"
+               href="{% url 'accounts:dash_profile_edit' %}"
+               hx-get="{% url 'accounts:dash_profile_edit' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true">Add video cover</a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+</div>

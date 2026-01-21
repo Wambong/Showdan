@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Events | Showdan{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <div>
+    <h2 class="mb-0">{{ title }}</h2>
+    <div class="text-white-50 small">Browse available events and required professions.</div>
+  </div>
+    <button type="button"
+          class="btn btn-sm btn-outline-light"
+          data-bs-toggle="modal"
+          data-bs-target="#eventsFilterModal">
+    Filter
+  </button>
+  <a class="btn btn-sm btn-outline-light" href="{% url 'events:event_create' %}">
+    + Create event
+  </a>
+</div>
+
+<div class="d-flex gap-2 flex-wrap mb-3">
+  <a class="btn btn-sm {% if show == 'upcoming' %}btn-light{% else %}btn-outline-light{% endif %}"
+     href="{% url 'events:list' %}?show=upcoming">Upcoming</a>
+
+  <a class="btn btn-sm {% if show == 'all' %}btn-light{% else %}btn-outline-light{% endif %}"
+     href="{% url 'events:list' %}?show=all">All</a>
+
+  <a class="btn btn-sm {% if show == 'past' %}btn-light{% else %}btn-outline-light{% endif %}"
+     href="{% url 'events:list' %}?show=past">Past</a>
+</div>
+
+
+<!--   FILTER MODAL (Bootstrap)-->
+
+<div class="modal fade" id="eventsFilterModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content"
+         style="background: #0f1114; border:1px solid rgba(255,255,255,0.08); border-radius:16px; overflow:hidden;">
+
+      <div class="modal-header"
+           style="border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div>
+          <h5 class="modal-title text-white mb-0">Filter events</h5>
+          <div class="text-white-50 small">Search and narrow down results</div>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form method="get">
+        <div class="modal-body">
+          {# keep show tab when filtering #}
+          <input type="hidden" name="show" value="{{ show }}">
+
+          <div class="row g-3">
+
+            {# Search #}
+            <div class="col-12">
+              <div class="text-white-50 small mb-2">Search</div>
+              <input
+                type="text"
+                class="form-control"
+                name="q"
+                value="{{ f_q }}"
+                placeholder="Name, profession, city, country..."
+                style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;"
+              >
+            </div>
+
+            {# Near me #}
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="nearMe"
+                       name="near_me"
+                       value="1"
+                       {% if f_near_me %}checked{% endif %}>
+                <label class="form-check-label text-white-50" for="nearMe">
+                  Near me (uses my profile city/country)
+                </label>
+              </div>
+            </div>
+
+            {# Country / City / Location #}
+            <div class="col-12 col-md-4">
+              <div class="text-white-50 small mb-2">Country</div>
+              <input type="text"
+                     class="form-control"
+                     name="country"
+                     value="{{ f_country }}"
+                     placeholder="Country"
+                     style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="text-white-50 small mb-2">City</div>
+              <input type="text"
+                     class="form-control"
+                     name="city"
+                     value="{{ f_city }}"
+                     placeholder="City"
+                     style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="text-white-50 small mb-2">Location</div>
+              <input type="text"
+                     class="form-control"
+                     name="location"
+                     value="{{ f_location }}"
+                     placeholder="Venue / address text"
+                     style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+            </div>
+
+            {# Event category #}
+            <div class="col-12 col-md-6">
+              <div class="text-white-50 small mb-2">Event category</div>
+              <select name="category"
+                      class="form-select"
+                      style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+                <option value="" {% if not f_category %}selected{% endif %}>All categories</option>
+                {% for c in categories %}
+                  <option value="{{ c.id }}"
+                          {% if f_category|default:'' == c.id|stringformat:"s" %}selected{% endif %}>
+                    {{ c }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            {# Required profession #}
+            <div class="col-12 col-md-6">
+              <div class="text-white-50 small mb-2">Required profession</div>
+              <select name="profession"
+                      class="form-select"
+                      style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+                <option value="" {% if not f_profession %}selected{% endif %}>Any profession</option>
+              {% for opt in profession_options %}
+                <option value="{{ opt.0 }}"
+                        {% if f_profession|default:'' == opt.0|stringformat:"s" %}selected{% endif %}>
+                  {{ opt.1 }}
+                </option>
+              {% endfor %}
+
+              </select>
+            </div>
+
+            {# Budget #}
+            <div class="col-12">
+              <div class="text-white-50 small mb-2">Budget</div>
+
+              <div class="d-flex gap-2 mb-2">
+                <input type="number"
+                       class="form-control"
+                       name="min_budget"
+                       id="minBudget"
+                       value="{{ f_min_budget|default:bmin }}"
+                       min="{{ bmin }}" max="{{ bmax }}"
+                       placeholder="From"
+                       style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+
+                <input type="number"
+                       class="form-control"
+                       name="max_budget"
+                       id="maxBudget"
+                       value="{{ f_max_budget|default:bmax }}"
+                       min="{{ bmin }}" max="{{ bmax }}"
+                       placeholder="To"
+                       style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+              </div>
+
+              <div class="px-1">
+                <input type="range" class="form-range" id="minBudgetRange"
+                       min="{{ bmin }}" max="{{ bmax }}" value="{{ f_min_budget|default:bmin }}">
+                <input type="range" class="form-range mt-n2" id="maxBudgetRange"
+                       min="{{ bmin }}" max="{{ bmax }}" value="{{ f_max_budget|default:bmax }}">
+
+                <div class="d-flex justify-content-between text-white-50 small">
+                  <span>{{ bmin }}</span>
+                  <span>{{ bmax }}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer"
+             style="border-top:1px solid rgba(255,255,255,0.08);">
+          <a class="btn btn-outline-light"
+             href="{% url 'events:list' %}?show={{ show }}">
+            Reset
+          </a>
+
+          <button type="submit" class="btn btn-primary">
+            Apply
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% if events %}
+  <div class="row g-3">
+    {% for e in events %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="event-card">
+          <div class="event-card-top">
+              <div class="event-type">
+                {% if e.event_type %}
+                  {{ e.event_type.name }}
+                {% else %}
+                  Event
+                {% endif %}
+              </div>
+            <div class="event-date">
+              {{ e.start_datetime|date:"d M Y • H:i" }}
+              <span class="opacity-50">→</span>
+              {{ e.end_datetime|date:"d M Y • H:i" }}
+            </div>
+            {% if request.user.is_authenticated and request.user == e.created_by %}
+                {% if e.offers_received_count %}
+                  <div class="badge bg-info text-dark">
+                    Offers received ({{ e.offers_received_count }})
+                  </div>
+                {% else %}
+                  <div class="badge bg-secondary">
+                    Offers received (0)
+                  </div>
+                {% endif %}
+              {% endif %}
+
+          </div>
+
+          <div class="event-title">{{ e.name }}</div>
+
+          <div class="event-meta">
+            <span class="event-meta-dot">📍</span>
+            <span>{{ e.location|default:"Location not set" }}</span>
+          </div>
+
+            {% if e.event_budget or e.advance_payment %}
+              <div class="event-meta mt-2">
+                <span class="event-meta-dot">💰</span>
+                <span>
+                  {% if e.event_budget %}
+                    Budget:
+                    <strong class="text-white">
+                      {% if e.currency %}{{ e.currency.sign }}{% endif %}
+                      {{ e.event_budget }}
+                    </strong>
+                  {% endif %}
+
+                  {% if e.advance_payment %}
+                    <span class="opacity-50">•</span>
+                    Advance:
+                    <strong class="text-white">
+                      {% if e.currency %}{{ e.currency.sign }}{% endif %}
+                      {{ e.advance_payment }}
+                    </strong>
+                  {% endif %}
+                </span>
+              </div>
+            {% endif %}
+
+
+          <div class="event-section-label mt-2">Required professions</div>
+
+          <div class="event-chips">
+            {% for p in e.required_professions.all %}
+              <span class="event-chip">{{ p.name }}</span>
+            {% empty %}
+              <span class="text-white-50 small">No professions specified.</span>
+            {% endfor %}
+          </div>
+
+        <div class="event-actions mt-3 d-grid gap-2">
+          <a class="btn btn-sm btn-outline-light w-100" href="{% url 'events:detail' e.id %}">
+            View details
+          </a>
+
+        {% if request.user.is_authenticated and request.user.account_type == "professional" and request.user != e.created_by %}
+          {% if e.is_locked %}
+            <button class="btn btn-sm btn-secondary w-100" disabled>Event locked</button>
+          {% else %}
+            <a class="btn btn-sm btn-primary w-100" href="{% url 'events:offers_inbox' %}?event={{ e.id }}">Make offer</a>
+          {% endif %}
+        {% endif %}
+
+
+
+        </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="event-empty">
+    <div class="text-white-50">No events found.</div>
+  </div>
+{% endif %}
+{% endblock %}

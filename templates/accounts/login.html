@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% block title %}Login | Showdan{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <h2 class="mb-4">Login</h2>
+
+    <form method="post" class="card card-body shadow-sm">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+
+
+<a class="btn btn-light w-100" href="{% provider_login_url 'google' %}">
+  Continue with Google
+</a>
+
+  </div>
+</div>
+{% endblock %}

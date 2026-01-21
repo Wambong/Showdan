@@ -1,0 +1,136 @@
+<div>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+      <h3 class="text-white mb-0">Edit user</h3>
+      <div class="text-white-50 small">{{ target_user.email }} (ID: {{ target_user.id }})</div>
+    </div>
+
+    <a class="btn btn-outline-light btn-sm"
+       href="{% url 'accounts:dash_crud_users_list' %}"
+       hx-get="{% url 'accounts:dash_crud_users_list' %}"
+       hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+      Back to users
+    </a>
+  </div>
+
+  <form method="post" enctype="multipart/form-data"
+        class="p-3 rounded"
+        style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);"
+        action="{% url 'accounts:dash_crud_users_edit' target_user.id %}"
+        hx-post="{% url 'accounts:dash_crud_users_edit' target_user.id %}"
+        hx-target="#dashMainCard"
+        hx-swap="innerHTML"
+        hx-push-url="true">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="row g-3">
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white-50 small">Profile picture</label>
+        {{ form.profile_picture }}
+        {% if form.profile_picture.errors %}
+          <div class="text-danger small mt-1">{{ form.profile_picture.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white-50 small">Professional picture</label>
+        {{ form.professional_picture }}
+        {% if form.professional_picture.errors %}
+          <div class="text-danger small mt-1">{{ form.professional_picture.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label class="form-label text-white-50 small">First name</label>
+        {{ form.first_name }}
+        {% if form.first_name.errors %}<div class="text-danger small mt-1">{{ form.first_name.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label class="form-label text-white-50 small">Last name</label>
+        {{ form.last_name }}
+        {% if form.last_name.errors %}<div class="text-danger small mt-1">{{ form.last_name.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label class="form-label text-white-50 small">Nickname</label>
+        {{ form.nickname }}
+        {% if form.nickname.errors %}<div class="text-danger small mt-1">{{ form.nickname.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white-50 small">Email</label>
+        {{ form.email }}
+        {% if form.email.errors %}<div class="text-danger small mt-1">{{ form.email.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white-50 small">Phone</label>
+        {{ form.phone }}
+        {% if form.phone.errors %}<div class="text-danger small mt-1">{{ form.phone.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label class="form-label text-white-50 small">Account type</label>
+        {{ form.account_type }}
+        {% if form.account_type.errors %}<div class="text-danger small mt-1">{{ form.account_type.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label class="form-label text-white-50 small">Active</label>
+        <div class="form-check">
+          {{ form.is_active }}
+          <label class="form-check-label text-white-50 small" for="{{ form.is_active.id_for_label }}">Is active</label>
+        </div>
+        {% if form.is_active.errors %}<div class="text-danger small mt-1">{{ form.is_active.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label class="form-label text-white-50 small">Staff</label>
+        <div class="form-check">
+          {{ form.is_staff }}
+          <label class="form-check-label text-white-50 small" for="{{ form.is_staff.id_for_label }}">Is staff</label>
+        </div>
+        {% if form.is_staff.errors %}<div class="text-danger small mt-1">{{ form.is_staff.errors }}</div>{% endif %}
+      </div>
+      <div class="col-12 col-md-4">
+        <label class="form-label text-white-50 small">gender</label>
+        {{ form.gender }}
+        {% if form.gender.errors %}<div class="text-danger small mt-1">{{ form.gender.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-6">
+        <label class="form-label text-white-50 small">Currency</label>
+        {{ form.currency }}
+        {% if form.currency.errors %}<div class="text-danger small mt-1">{{ form.currency.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-3">
+        <label class="form-label text-white-50 small">Cost per hour</label>
+        {{ form.cost_per_hour }}
+        {% if form.cost_per_hour.errors %}<div class="text-danger small mt-1">{{ form.cost_per_hour.errors }}</div>{% endif %}
+      </div>
+
+      <div class="col-12 col-md-3">
+        <label class="form-label text-white-50 small">Cost per 5 hours</label>
+        {{ form.cost_per_5_hours }}
+        {% if form.cost_per_5_hours.errors %}<div class="text-danger small mt-1">{{ form.cost_per_5_hours.errors }}</div>{% endif %}
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-3">
+      <button type="submit" class="btn btn-primary">Save</button>
+
+      <a class="btn btn-outline-light"
+         href="{% url 'accounts:dash_crud_users_list' %}"
+         hx-get="{% url 'accounts:dash_crud_users_list' %}"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>

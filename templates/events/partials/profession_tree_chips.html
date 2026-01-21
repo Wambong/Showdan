@@ -1,0 +1,20 @@
+{% for child in node.children %}
+  <label class="profession-chip" data-profession="{{ child.id }}">
+    <input
+      type="checkbox"
+      name="required_professions"
+      value="{{ child.id }}"
+      class="profession-checkbox"
+      {% if child.id|stringformat:"s" in form.data.getlist:"required_professions" %}
+      {% endif %}
+    >
+    <span class="profession-chip-text">{{ child.name }}</span>
+    <span class="profession-chip-x">×</span>
+  </label>
+
+  {% if child.children %}
+    <div class="profession-children">
+      {% include "events/partials/profession_tree_chips.html" with node=child %}
+    </div>
+  {% endif %}
+{% endfor %}

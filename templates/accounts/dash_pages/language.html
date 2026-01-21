@@ -1,0 +1,81 @@
+<div>
+  <h3 class="text-white mb-1">Language</h3>
+  <div class="text-white-50 small mb-3">Update your communication and event languages</div>
+
+  <div class="p-3 rounded"
+       style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+
+    <!-- Current selections -->
+    <div class="mb-3">
+      <div class="text-white-50 small mb-1">Communication languages</div>
+      {% if u.communication_languages.exists %}
+        <div class="d-flex flex-wrap gap-2">
+          {% for l in u.communication_languages.all %}
+            <span class="badge bg-light text-dark border">{{ l.name }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="text-white-50 small">None selected</div>
+      {% endif %}
+    </div>
+
+    <div class="mb-3">
+      <div class="text-white-50 small mb-1">Event languages</div>
+      {% if u.event_languages.exists %}
+        <div class="d-flex flex-wrap gap-2">
+          {% for l in u.event_languages.all %}
+            <span class="badge bg-light text-dark border">{{ l.name }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="text-white-50 small">None selected</div>
+      {% endif %}
+    </div>
+
+    <hr style="border-color: rgba(255,255,255,0.08);">
+
+    <!-- Update form (languages only) -->
+    <form method="post"
+          action="{% url 'accounts:dash_language' %}"
+          hx-post="{% url 'accounts:dash_language' %}"
+          hx-target="#dashMainCard"
+          hx-swap="innerHTML">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label class="form-label text-white-50 small mb-1">Communication languages</label>
+        {{ form.communication_languages }}
+        {% if form.communication_languages.errors %}
+          <div class="text-danger small mt-2">{{ form.communication_languages.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label text-white-50 small mb-1">Event languages</label>
+        {{ form.event_languages }}
+        {% if form.event_languages.errors %}
+          <div class="text-danger small mt-2">{{ form.event_languages.errors }}</div>
+        {% endif %}
+      </div>
+
+      <button class="btn btn-primary btn-sm" type="submit">
+        Save languages
+      </button>
+    </form>
+
+    <hr style="border-color: rgba(255,255,255,0.08);">
+
+    <!-- Available languages -->
+    <div class="text-white-50 small mb-2">Available languages</div>
+
+    {% if languages %}
+      <div class="d-flex flex-wrap gap-2">
+        {% for l in languages %}
+          <span class="badge bg-light text-dark border">{{ l.name }}</span>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-white-50 small">No languages found.</div>
+    {% endif %}
+  </div>
+</div>

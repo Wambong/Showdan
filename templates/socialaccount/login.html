@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load socialaccount %}
+
+{% block title %}Continue with Google{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width:520px;">
+  <div class="card p-4" style="background:#0f1218; border:1px solid rgba(255,255,255,.08); border-radius:16px;">
+    <h3 class="text-white mb-1">Continue with Google</h3>
+    <div class="text-white-50 small mb-3">
+      You’ll be redirected to Google to sign in.
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary w-100">
+        Continue
+      </button>
+    </form>
+
+    <a class="btn btn-outline-light w-100 mt-2" href="{% provider_login_url 'google' %}">
+      Back
+    </a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}profession tress | Showdan{% endblock %}
+
+{% block content %}
+{% for node in roots %}
+  {% include "account/_profession_node.html" with node=node level=0 %}
+{% endfor %}
+
+{% endblock %}

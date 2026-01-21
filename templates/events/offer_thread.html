@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Offers | {{ event.name }}{% endblock %}
+
+{% block content %}
+<div class="profile-detail-wrap mx-auto">
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <a class="btn btn-sm btn-outline-light" href="{% url 'events:list' %}">← Back</a>
+    <div class="text-white fw-bold">Booking offers</div>
+    <span></span>
+  </div>
+
+  <div class="chat-card">
+    <div class="chat-header">
+      <div class="text-white fw-bold">{{ event.name }}</div>
+      <div class="text-white-50 small">
+        {% if event.currency %}Event currency: {{ event.currency.name }} ({{ event.currency.sign }}){% endif %}
+      </div>
+    </div>
+
+    <div class="chat-body">
+      {% for m in msgs %}
+        <div class="chat-row {% if m.sender_id == request.user.id %}me{% else %}them{% endif %}">
+          <div class="chat-bubble">
+
+            {% if m.proposed_amount %}
+              <div class="chat-offer">
+                <div class="chat-offer-title">
+                  {% if m.sender_type == "professional" %}Offer{% else %}Counter offer{% endif %}
+                </div>
+
+                <div class="chat-offer-amount">
+                  {% if m.proposed_currency %}{{ m.proposed_currency.sign }}{% endif %}{{ m.proposed_amount }}
+                </div>
+
+                {% if m.converted_amount and m.event_currency %}
+                  <div class="chat-offer-sub text-white-50">
+                    ≈ {{ m.event_currency.sign }}{{ m.converted_amount }}
+                    {% if m.conversion_rate %}(rate {{ m.conversion_rate }}){% endif %}
+                  </div>
+                {% endif %}
+
+                <div class="chat-status mt-2">
+                  <span class="badge
+                    {% if m.status == 'accepted' %}bg-success
+                    {% elif m.status == 'rejected' %}bg-danger
+                    {% else %}bg-secondary{% endif %}">
+                    {{ m.status|title }}
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if m.message %}
+              <div class="chat-text" style="white-space: pre-line;">{{ m.message }}</div>
+            {% endif %}
+
+            <div class="chat-time">{{ m.created_at|date:"d M Y • H:i" }}</div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="text-white-50 text-center py-4">No offers yet.</div>
+      {% endfor %}
+    </div>
+
+    <div class="chat-footer">
+      {% if is_pro %}
+        <form method="post" action="{% url 'events:offer_send' event.id %}">
+          {% csrf_token %}
+          <div class="mb-2">
+            <label class="form-label text-white-50 small mb-1">Your offer</label>
+            {{ offer_form.proposed_amount }}
+          </div>
+          <div class="mb-2">
+            <label class="form-label text-white-50 small mb-1">Currency</label>
+            {{ offer_form.proposed_currency }}
+          </div>
+          <div class="mb-2">
+            {{ offer_form.message }}
+          </div>
+          <button class="btn btn-outline-light w-100">Send offer</button>
+        </form>
+      {% endif %}
+
+      {% if is_creator %}
+        <div class="d-flex gap-2 mb-2">
+          <form method="post" action="{% url 'events:offer_accept' event.id thread.professional.id %}" class="flex-fill">
+            {% csrf_token %}
+            <button class="btn btn-success w-100">Accept</button>
+          </form>
+          <form method="post" action="{% url 'events:offer_reject' event.id thread.professional.id %}" class="flex-fill">
+            {% csrf_token %}
+            <button class="btn btn-danger w-100">Reject</button>
+          </form>
+        </div>
+
+        <form method="post" action="{% url 'events:offer_counter' event.id thread.professional.id %}">
+          {% csrf_token %}
+          <div class="mb-2">
+            <label class="form-label text-white-50 small mb-1">Counter offer (in event currency)</label>
+            {{ counter_form.proposed_amount }}
+          </div>
+          <div class="mb-2">
+            {{ counter_form.message }}
+          </div>
+          <button class="btn btn-outline-light w-100">Send counter offer</button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

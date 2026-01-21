@@ -1,0 +1,58 @@
+<div>
+  <h3 class="text-white mb-1">Currency</h3>
+  <div class="text-white-50 small mb-3">View and update your account currency</div>
+
+  <div class="p-3 rounded"
+       style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+
+    <!-- Current -->
+    <div class="mb-3">
+      <div class="text-white-50 small">Current currency</div>
+      <div class="text-white fw-semibold">
+        {% if u.currency %}
+          {{ u.currency.name }} ({{ u.currency.sign }})
+        {% else %}
+          Not set
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Update form (currency only) -->
+    <form method="post"
+          action="{% url 'accounts:dash_currency' %}"
+          hx-post="{% url 'accounts:dash_currency' %}"
+          hx-target="#dashMainCard"
+          hx-swap="innerHTML"
+          class="mb-3">
+      {% csrf_token %}
+
+      <label class="form-label text-white-50 small mb-1">Select currency</label>
+      {{ form.currency }}
+
+      {% if form.currency.errors %}
+        <div class="text-danger small mt-2">{{ form.currency.errors }}</div>
+      {% endif %}
+
+      <button class="btn btn-primary btn-sm mt-2" type="submit">
+        Save currency
+      </button>
+    </form>
+
+    <hr style="border-color: rgba(255,255,255,0.08);">
+
+    <!-- Available currencies -->
+    <div class="text-white-50 small mb-2">Available currencies</div>
+
+    {% if currencies %}
+      <div class="d-flex flex-wrap gap-2">
+        {% for c in currencies %}
+          <span class="badge bg-light text-dark border">
+            {{ c.name }} ({{ c.sign }})
+          </span>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-white-50 small">No currencies found.</div>
+    {% endif %}
+  </div>
+</div>

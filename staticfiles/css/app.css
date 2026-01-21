@@ -1,0 +1,265 @@
+/* ---------- Base page look (dark/purple app-like) ---------- */
+:root{
+  --bg-1:#07010c;
+  --bg-2:#1b0023;
+  --card:rgba(255,255,255,.06);
+  --card-2:rgba(255,255,255,.09);
+  --stroke:rgba(255,255,255,.14);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.55);
+  --accent:#ff4aa2;
+  --accent-2:#ff2b7d;
+  --shadow:0 14px 40px rgba(0,0,0,.45);
+}
+
+body{
+  color:var(--text);
+  background:
+    radial-gradient(1000px 550px at 60% -10%, rgba(255,74,162,.22), transparent 60%),
+    radial-gradient(900px 520px at 10% 25%, rgba(137,64,255,.18), transparent 55%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  min-height:100vh;
+}
+
+/* Make bootstrap containers feel like an app screen */
+.container{
+  max-width: 980px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar.bg-dark{
+  background: rgba(10, 2, 14, .72) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.navbar-brand{
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+/* ---------- Cards / panels ---------- */
+.card,
+.card-body,
+.card.card-body{
+  background: var(--card) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  border-radius: 18px !important;
+  isolation: isolate;
+}
+
+/* ---------- Headings ---------- */
+h1,h2,h3,h4,h5{
+  color: var(--text);
+}
+hr{
+  border-color: rgba(255,255,255,.10);
+  opacity: 1;
+}
+
+/* ---------- Form styling (targets your #profile-edit-form) ---------- */
+#profile-edit-form .form-label{
+  color: var(--muted);
+  font-size: .9rem;
+  margin-bottom: .4rem;
+}
+
+#profile-edit-form input[type="text"],
+#profile-edit-form input[type="email"],
+#profile-edit-form input[type="password"],
+#profile-edit-form input[type="date"],
+#profile-edit-form input[type="number"],
+#profile-edit-form input[type="tel"],
+#profile-edit-form select,
+#profile-edit-form textarea{
+  background: var(--card-2);
+  border: 1px solid var(--stroke);
+  color: var(--text);
+  border-radius: 14px;
+  padding: .9rem 1rem;
+  outline: none;
+}
+
+#profile-edit-form textarea{
+  min-height: 110px;
+  resize: vertical;
+}
+
+#profile-edit-form input::placeholder,
+#profile-edit-form textarea::placeholder{
+  color: rgba(255,255,255,.35);
+}
+
+#profile-edit-form input:focus,
+#profile-edit-form select:focus,
+#profile-edit-form textarea:focus{
+  border-color: rgba(255,74,162,.65);
+  box-shadow: 0 0 0 .20rem rgba(255,74,162,.18);
+}
+
+/* File inputs */
+#profile-edit-form input[type="file"]{
+  background: var(--card-2);
+  border: 1px dashed rgba(255,255,255,.22);
+  color: var(--muted);
+  border-radius: 14px;
+  padding: .8rem 1rem;
+}
+
+#profile-edit-form .form-text{
+  color: rgba(255,255,255,.45) !important;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary{
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: none;
+  border-radius: 14px;
+  padding: .85rem 1.05rem;
+  box-shadow: 0 10px 30px rgba(255,74,162,.22);
+}
+.btn-primary:hover{
+  filter: brightness(1.06);
+}
+.btn-outline-secondary{
+  border-radius: 14px;
+  border-color: rgba(255,255,255,.18);
+  color: rgba(255,255,255,.75);
+}
+.btn-outline-secondary:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.24);
+}
+
+/* ---------- Alerts / flash messages ---------- */
+.alert{
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+}
+.alert-success{
+  background: rgba(46, 204, 113, .10);
+  color: rgba(255,255,255,.92);
+}
+.alert-danger{
+  background: rgba(231, 76, 60, .12);
+  color: rgba(255,255,255,.92);
+}
+.alert-warning{
+  background: rgba(241, 196, 15, .12);
+  color: rgba(255,255,255,.92);
+}
+.alert-info{
+  background: rgba(52, 152, 219, .12);
+  color: rgba(255,255,255,.92);
+}
+
+/* Small “app screen” feel on large displays */
+.app-screen{
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* ---------- DOB wheel picker ---------- */
+.dob-picker{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+
+/* soft fade top/bottom like iOS picker */
+.dob-picker::before,
+.dob-picker::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  height:38%;
+  pointer-events:none;
+  z-index: 2;
+}
+.dob-picker::before{
+  top:0;
+  background: linear-gradient(to bottom, rgba(7,1,12,.90), rgba(7,1,12,0));
+}
+.dob-picker::after{
+  bottom:0;
+  background: linear-gradient(to top, rgba(7,1,12,.90), rgba(7,1,12,0));
+}
+
+.dob-col{
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.dob-col-label{
+  color: rgba(255,255,255,.60);
+  font-size: .9rem;
+  margin-bottom: 10px;
+}
+
+.dob-select{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: rgba(255,255,255,.90);
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.2;
+  padding: 8px 0;
+  text-align: center;
+
+  /* remove native styling */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* hide scrollbar (varies by browser) */
+  scrollbar-width: none;
+}
+.dob-select::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+.dob-select option{
+  background: transparent;
+  color: rgba(255,255,255,.38);
+  padding: 10px 0;
+}
+
+/* selected line will be emphasized by JS adding this class */
+.dob-select option.dob-active{
+  color: rgba(255,255,255,.94);
+}
+
+/* center highlight band */
+.dob-center-highlight{
+  position:absolute;
+  left: 14px;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 62px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  z-index: 1;
+}
+
+.dob-output{
+  font-size: 22px;
+  letter-spacing: .8px;
+  color: rgba(255,255,255,.85);
+}

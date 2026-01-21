@@ -1,0 +1,51 @@
+<div>
+  <h3 class="text-white mb-1">CRUD</h3>
+  <div class="text-white-50 small mb-3">Admin tools for managing base tables.</div>
+
+  <div class="row g-3">
+    <div class="col-12 col-md-6">
+      <a class="dash-tile" href="{% url 'accounts:dash_crud_profession_list' %}"
+         hx-get="{% url 'accounts:dash_crud_profession_list' %}"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        <div class="dash-tile-title">Professions</div>
+        <div class="dash-tile-sub">Nested tree (parent/child)</div>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <a class="dash-tile" href="{% url 'accounts:dash_crud_eventcategory_list' %}"
+         hx-get="{% url 'accounts:dash_crud_eventcategory_list' %}"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        <div class="dash-tile-title">Event categories</div>
+        <div class="dash-tile-sub">Nested tree (parent/child)</div>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <a class="dash-tile" href="{% url 'accounts:dash_crud_language_list' %}"
+         hx-get="{% url 'accounts:dash_crud_language_list' %}"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        <div class="dash-tile-title">Languages</div>
+        <div class="dash-tile-sub">Name + slug</div>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <a class="dash-tile" href="{% url 'accounts:dash_crud_currency_list' %}"
+         hx-get="{% url 'accounts:dash_crud_currency_list' %}"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        <div class="dash-tile-title">Currencies</div>
+        <div class="dash-tile-sub">Name + sign</div>
+      </a>
+    </div>
+
+    <div class="col-12">
+      <a class="dash-tile" href="{% url 'accounts:dash_crud_exchangerate_list' %}"
+         hx-get="{% url 'accounts:dash_crud_exchangerate_list' %}"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        <div class="dash-tile-title">Exchange rates</div>
+        <div class="dash-tile-sub">From currency → to currency with rate</div>
+      </a>
+    </div>
+  </div>
+</div>

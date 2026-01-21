@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Showdan{% endblock %}
+
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2 class="mb-0">Artist</h2>
+</div>
+
+<!-- Search + Filter Row -->
+<form method="get" class="mb-3">
+  <div class="d-flex gap-2 align-items-center">
+    <div class="flex-grow-1 position-relative">
+      <input
+        type="text"
+        class="form-control"
+        name="q"
+        value="{{ f_q }}"
+        placeholder="Search"
+        style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;"
+      >
+    </div>
+    <button
+    type="submit"
+    class="btn btn-primary"
+    style="white-space: nowrap;"
+  >
+    Search
+  </button>
+    <button type="button"
+            class="btn btn-outline-light"
+            data-bs-toggle="modal"
+            data-bs-target="#filtersModal">
+      <i class="bi bi-funnel"></i>
+    </button>
+
+    {% if request.GET %}
+      <a class="btn btn-outline-light" href="{% url 'home' %}">
+        Clear
+      </a>
+    {% endif %}
+  </div>
+</form>
+
+<!-- Filters Modal -->
+<div class="modal fade" id="filtersModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content"
+         style="background:#0f1218; border:1px solid rgba(255,255,255,0.10); border-radius:16px;">
+      <form method="get" class="m-0">
+        <div class="modal-header" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+          <h5 class="modal-title text-white mb-0">Filters</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <!-- keep search term when applying filters -->
+          <input type="hidden" name="q" value="{{ f_q }}">
+
+          <!-- Direction (Profession) -->
+          <div class="mb-3">
+            <div class="text-white-50 small mb-1">Direction</div>
+
+            <select class="form-select" name="profession">
+  <option value="" {% if not f_profession %}selected{% endif %}>Select</option>
+
+  {% for pid, label in profession_options %}
+    <option value="{{ pid }}" {% if f_profession == pid|stringformat:"s" %}selected{% endif %}>
+      {{ label }}
+    </option>
+  {% endfor %}
+</select>
+
+          </div>
+
+
+          <!-- Price -->
+          <div class="mb-3">
+            <div class="text-white-50 small mb-2">Price per hour</div>
+
+            <div class="d-flex gap-2 mb-2">
+              <input type="number"
+                     class="form-control"
+                     name="min_price"
+                     id="minPrice"
+                     value="{{ f_min_price|default:pmin }}"
+                     min="{{ pmin }}" max="{{ pmax }}"
+                     placeholder="From"
+                     style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+
+              <input type="number"
+                     class="form-control"
+                     name="max_price"
+                     id="maxPrice"
+                     value="{{ f_max_price|default:pmax }}"
+                     min="{{ pmin }}" max="{{ pmax }}"
+                     placeholder="To"
+                     style="background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff;">
+            </div>
+
+            <!-- Two sliders (min + max) to emulate range -->
+            <div class="px-1">
+              <input type="range" class="form-range" id="minRange"
+                     min="{{ pmin }}" max="{{ pmax }}" value="{{ f_min_price|default:pmin }}">
+              <input type="range" class="form-range mt-n2" id="maxRange"
+                     min="{{ pmin }}" max="{{ pmax }}" value="{{ f_max_price|default:pmax }}">
+              <div class="d-flex justify-content-between text-white-50 small">
+                <span>${{ pmin }}</span>
+                <span>${{ pmax }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Language chips -->
+          <div class="mb-3">
+            <div class="text-white-50 small mb-2">Language</div>
+            <div class="d-flex flex-wrap gap-2">
+              {% for l in languages %}
+                <label class="filter-chip {% if l.id in f_lang_ids %}is-active{% endif %}">
+                  <input type="checkbox" name="lang" value="{{ l.id }}"
+                         {% if l.id in f_lang_ids %}checked{% endif %} hidden>
+                  {{ l.name }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Gender chips (optional; works only if you have a gender field in Accounts) -->
+          <div class="mb-1">
+            <div class="text-white-50 small mb-2">Gender</div>
+            <div class="d-flex flex-wrap gap-2">
+              <label class="filter-chip {% if f_gender == 'male' %}is-active{% endif %}">
+                <input type="radio" name="gender" value="male" {% if f_gender == 'male' %}checked{% endif %} hidden>
+                Male
+              </label>
+              <label class="filter-chip {% if f_gender == 'female' %}is-active{% endif %}">
+                <input type="radio" name="gender" value="female" {% if f_gender == 'female' %}checked{% endif %} hidden>
+                Female
+              </label>
+              <label class="filter-chip {% if not f_gender %}is-active{% endif %}">
+                <input type="radio" name="gender" value="" {% if not f_gender %}checked{% endif %} hidden>
+                Any
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer" style="border-top:1px solid rgba(255,255,255,0.08);">
+          <a class="btn btn-outline-light" href="{% url 'home' %}">Reset</a>
+          <button type="submit" class="btn btn-primary">Apply</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<hr class="my-3" style="border-color: rgba(255,255,255,0.08);">
+
+{% if pros %}
+  <div class="row g-3">
+    {% for u in pros %}
+      <div class="col-6 col-md-3">
+        <a class="text-decoration-none" href="{% url 'accounts:profile_detail' u.id %}">
+          <div class="pro-card">
+            <div class="pro-card-media">
+
+              {# ✅ FIXED: correct images #}
+              {% if u.profile_picture %}
+                <img src="{{ u.profile_picture.url }}" alt="{{ u.first_name }}">
+              {% elif u.professional_picture %}
+                <img src="{{ u.professional_picture.url }}" alt="{{ u.first_name }}">
+
+              {% else %}
+                <div class="pro-card-fallback"></div>
+              {% endif %}
+
+              <div class="pro-rating">
+                <span class="pro-rating-star">★</span>
+                <span class="pro-rating-val">
+                  {% if u.review_count > 0 %}
+                    {{ u.avg_rating|floatformat:1 }}
+                  {% else %}
+                    New
+                  {% endif %}
+                </span>
+              </div>
+
+              <div class="pro-price">
+                {% if u.currency and u.cost_per_hour %}
+                  {{ u.currency.sign }} {{ u.cost_per_hour|floatformat:0 }}
+                {% else %}
+                  From —
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="pro-card-body">
+              <div class="pro-name">{{ u.first_name }} {{ u.last_name }}</div>
+
+              <div class="pro-sub">
+                {% with p=u.professions.first %}
+                  {% if p %}
+                    <span class="pro-icon">🎤</span> {{ p.name }}
+                  {% else %}
+                    <span class="pro-icon">🎤</span> Professional
+                  {% endif %}
+                {% endwith %}
+              </div>
+
+              {# Optional location line #}
+              {% if u.city or u.country %}
+                <div class="text-white-50 small mt-1">
+                  {{ u.city }}{% if u.city and u.country %}, {% endif %}{{ u.country }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="text-white-50 mb-0">No professionals yet.</p>
+{% endif %}
+
+{% endblock %}
+

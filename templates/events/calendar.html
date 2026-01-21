@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load events_extras %}
+{% block title %}Calendar | Showdan{% endblock %}
+
+{% block content %}
+<div class="calendar-wrap mx-auto">
+
+  <div class="calendar-head">
+    <a class="cal-nav" href="?year={{ prev_year }}&month={{ prev_month }}">‹</a>
+    <div class="cal-title">
+      <div class="text-white fw-bold">Calendar</div>
+      <div class="text-white-50 small">{{ month_name }}, {{ year }}</div>
+    </div>
+    <a class="cal-nav" href="?year={{ next_year }}&month={{ next_month }}">›</a>
+  </div>
+
+  <div class="calendar-grid">
+    <div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div>
+    <div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div><div class="cal-dow">Sun</div>
+
+    {% for week in weeks %}
+      {% for d in week %}
+        {% with booked=booked_map|get_item:d busy=busy_map|get_item:d %}
+        <button type="button"
+                class="cal-day
+                       {% if d.month != month %}is-out{% endif %}
+                       {% if d == today %}is-today{% endif %}
+                       {% if booked %}is-booked{% endif %}
+                       {% if busy %}is-busy{% endif %}"
+                data-date="{{ d|date:'Y-m-d' }}"
+
+                {# ✅ busy info for JS (only if busy exists) #}
+                {% if busy %}
+                  data-busy='[
+                    {% for b in busy %}
+                      {
+                        "all_day": {% if b.is_all_day %}true{% else %}false{% endif %},
+                        "start": "{{ b.start }}",
+                        "end": "{{ b.end }}",
+                        "note": "{{ b.note|default:''|escapejs }}"
+                      }{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                  ]'
+                {% endif %}
+
+            {% if booked and booked.avatar_url %}
+              style="--avatar-url: url('{{ booked.avatar_url }}');"
+            {% endif %}
+
+        >
+          <div class="cal-day-num">{{ d.day }}</div>
+
+          {% if booked %}
+            <div class="cal-bars">
+              {% for r in booked.ranges %}
+                <div class="cal-bar {% if r.is_start %}is-start{% endif %}{% if r.is_end %} is-end{% endif %}">
+                  <span class="cal-bar-title">{{ r.name }}</span>
+                  {% if r.label %}<span class="cal-bar-time">{{ r.label }}</span>{% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if busy %}
+            <div class="cal-busy-dot"></div>
+          {% endif %}
+        </button>
+        {% endwith %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+  <div class="calendar-form mt-3">
+    <div class="text-white fw-bold mb-2">Mark unavailable days</div>
+    <div class="text-white-50 small mb-2">
+      Click a start day, then click an end day to select a range.
+    </div>
+
+    <form method="post" class="cal-form-card">
+      {% csrf_token %}
+      <input type="hidden" name="start_date" id="cal-start-date">
+      <input type="hidden" name="end_date" id="cal-end-date">
+
+      <div class="cal-selected mb-2">
+        <span class="text-white-50 small">Selected:</span>
+        <span class="text-white fw-semibold" id="cal-selected-label">None</span>
+        <input type="hidden" name="remove_day" id="cal-remove-day">
+
+      </div>
+
+      <div class="cal-radio-group mb-2">
+        <label class="cal-radio">
+          <input type="radio" name="busy_mode" value="all_day" checked>
+          <span>Busy all day</span>
+        </label>
+
+        <label class="cal-radio">
+          <input type="radio" name="busy_mode" value="timed">
+          <span>Specific time</span>
+        </label>
+      </div>
+
+      <!-- Timed inputs -->
+      <div class="row g-2 mt-2" id="cal-timed-inputs" style="display:none;">
+        <div class="col-6">
+          <label class="form-label text-white-50 small">Start time</label>
+          <div class="d-flex gap-2">
+            <select name="start_hour" class="form-select form-select-sm">
+              {% for h in hours %}
+                <option value="{{ h }}">{{ h }}</option>
+              {% endfor %}
+            </select>
+            <select name="start_min" class="form-select form-select-sm">
+              {% for m in minutes %}
+                <option value="{{ m }}">{{ m }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label class="form-label text-white-50 small">End time</label>
+          <div class="d-flex gap-2">
+            <select name="end_hour" class="form-select form-select-sm">
+              {% for h in hours %}
+                <option value="{{ h }}">{{ h }}</option>
+              {% endfor %}
+            </select>
+            <select name="end_min" class="form-select form-select-sm">
+              {% for m in minutes %}
+                <option value="{{ m }}">{{ m }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <label class="form-label text-white-50 small">Note (optional)</label>
+        <input type="text" name="note" class="form-control" placeholder="e.g. not available for new bookings">
+      </div>
+
+      <button class="btn btn-primary w-100 mt-3">Save</button>
+    </form>
+      <div id="remove-busy-wrap" style="display:none;" class="mt-2">
+        <form method="post" action="{% url 'events:busy_delete_day' %}">
+          {% csrf_token %}
+          <input type="hidden" name="day" id="remove-busy-day">
+          <input type="hidden" name="next" value="?year={{ year }}&month={{ month }}">
+          <button type="submit" class="btn btn-outline-danger w-100">
+            Remove busy time
+          </button>
+        </form>
+      </div>
+
+
+  </div>
+
+</div>
+{% endblock %}

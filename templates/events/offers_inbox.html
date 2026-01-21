@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+{% block title %}My Offers | Showdan{% endblock %}
+
+{% block content %}
+<div class="offers-shell mx-auto">
+  <div class="offers-layout">
+
+    <!-- LEFT: THREAD LIST -->
+    <aside class="offers-sidebar">
+      <div class="offers-sidebar-head">
+        <div class="fw-bold text-white">Offers</div>
+        <div class="small text-white-50">Sent & received</div>
+      </div>
+
+      <div class="offers-threadlist">
+        {% for t in threads %}
+          <a class="thread-item {% if active_thread and active_thread.id == t.id %}active{% endif %}"
+             href="{% url 'events:offers_inbox' %}?thread={{ t.id }}">
+            <div class="thread-top">
+              <div class="thread-title">{{ t.event.name }}</div>
+
+              <div class="d-flex align-items-center gap-2">
+                {% if t.event.is_locked %}
+                  <span class="badge bg-success">Locked</span>
+                {% endif %}
+
+                {# highlight accepted thread #}
+                {% if t.event.is_locked and t.event.accepted_thread_id == t.id %}
+                  <span class="badge bg-warning text-dark">Accepted</span>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="thread-sub">
+              {% if request.user.id == t.event.created_by_id %}
+                <span class="text-white-50">From:</span>
+                <span class="text-white">{{ t.professional.first_name }} {{ t.professional.last_name }}</span>
+              {% else %}
+                <span class="text-white-50">To:</span>
+                <span class="text-white">{{ t.event.created_by.first_name }} {{ t.event.created_by.last_name }}</span>
+              {% endif %}
+            </div>
+
+            <div class="thread-sub text-white-50">
+              {{ t.event.start_datetime|date:"d M Y • H:i" }}
+            </div>
+          </a>
+        {% empty %}
+          <div class="p-3 text-white-50">No offer threads yet.</div>
+        {% endfor %}
+      </div>
+    </aside>
+
+    <!-- RIGHT: CHAT -->
+    <main class="offers-chat">
+      {% if active_thread %}
+        <div class="chat-card">
+          <div class="chat-header">
+            <div>
+              <div class="fw-bold text-white">{{ active_thread.event.name }}</div>
+              <div class="small text-white-50">
+                {% if active_thread.event.currency %}
+                  Event currency: {{ active_thread.event.currency.name }} ({{ active_thread.event.currency.sign }})
+                {% endif %}
+                {% if active_thread.event.is_locked %}
+                  • <span class="text-success fw-semibold">Locked</span>
+                  {% if active_thread.event.accepted_thread_id == active_thread.id %}
+                    • <span class="text-warning fw-semibold">Accepted thread</span>
+                  {% else %}
+                    • <span class="text-white-50">Read-only</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="text-end small text-white-50">
+              {% if is_creator %}
+                Chat with {{ active_thread.professional.first_name }} {{ active_thread.professional.last_name }}
+              {% else %}
+                Chat with {{ active_thread.event.created_by.first_name }} {{ active_thread.event.created_by.last_name }}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="chat-body">
+            {% for m in msgs %}
+              <div class="chat-row {% if m.sender_id == request.user.id %}me{% else %}them{% endif %}">
+                <div class="chat-bubble">
+
+                  {% if m.proposed_amount %}
+                    <div class="chat-offer">
+                      <div class="chat-offer-title">
+                        {% if m.sender_type == "professional" %}Offer{% else %}Counter offer{% endif %}
+                      </div>
+
+                      <div class="chat-offer-amount">
+                        {% if m.proposed_currency %}{{ m.proposed_currency.sign }}{% endif %}{{ m.proposed_amount }}
+                      </div>
+
+                      {% if m.converted_amount and m.event_currency %}
+                        <div class="chat-offer-sub text-white-50">
+                          ≈ {{ m.event_currency.sign }}{{ m.converted_amount }}
+                          {% if m.conversion_rate %}(rate {{ m.conversion_rate }}){% endif %}
+                        </div>
+                      {% endif %}
+
+                      <div class="mt-2">
+                        <span class="badge
+                          {% if m.status == 'accepted' %}bg-success
+                          {% elif m.status == 'rejected' %}bg-danger
+                          {% else %}bg-secondary{% endif %}">
+                          {{ m.status|title }}
+                        </span>
+                      </div>
+                    </div>
+                  {% endif %}
+
+                  {% if m.message %}
+                    <div class="chat-text" style="white-space: pre-line;">{{ m.message }}</div>
+                  {% endif %}
+
+                  <div class="chat-time">{{ m.created_at|date:"d M Y • H:i" }}</div>
+                </div>
+              </div>
+            {% empty %}
+              <div class="text-white-50 text-center py-4">No messages yet.</div>
+            {% endfor %}
+          </div>
+
+          <div class="chat-footer">
+
+            {# ================= LOCKED EVENT RULES ================= #}
+            {% if active_thread.event.is_locked %}
+
+              {% if active_thread.event.accepted_thread_id == active_thread.id %}
+                {# ✅ Accepted thread can continue chatting (messages only) #}
+                <form method="post" action="{% url 'events:offer_chat_send' active_thread.id %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
+
+                  <div class="mb-2">
+                    <textarea name="message"
+                              class="form-control"
+                              rows="2"
+                              placeholder="Type a message..."
+                              required></textarea>
+                  </div>
+
+                  <button class="btn btn-outline-light w-100">Send message</button>
+
+                  <div class="text-white-50 small text-center mt-2">
+                    Offers are locked, but you can continue chatting in the accepted thread.
+                  </div>
+                </form>
+              {% else %}
+                {# ❌ Not accepted thread: read-only #}
+                <div class="text-white-50 small text-center">
+                  This event is locked. Only the accepted offer thread can continue chatting.
+                </div>
+              {% endif %}
+
+            {% else %}
+
+              {# ================= BEFORE LOCK: OFFERS FLOW ================= #}
+
+              {% if is_pro %}
+                <form method="post" action="{% url 'events:offer_send' active_thread.event.id %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
+
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <label class="form-label text-white-50 small mb-1">Amount</label>
+                      {{ offer_form.proposed_amount }}
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label text-white-50 small mb-1">Currency</label>
+                      {{ offer_form.proposed_currency }}
+                    </div>
+                    <div class="col-12">
+                      {{ offer_form.message }}
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100">Send offer</button>
+                    </div>
+                  </div>
+                </form>
+              {% endif %}
+
+              {% if is_creator %}
+                <div class="d-flex gap-2 mb-2">
+                  <form method="post"
+                        action="{% url 'events:offer_accept' active_thread.event.id active_thread.professional.id %}"
+                        class="flex-fill">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
+                    <button class="btn btn-success w-100">Accept</button>
+                  </form>
+
+                  <form method="post"
+                        action="{% url 'events:offer_reject' active_thread.event.id active_thread.professional.id %}"
+                        class="flex-fill">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
+                    <button class="btn btn-danger w-100">Reject</button>
+                  </form>
+                </div>
+
+                <form method="post"
+                      action="{% url 'events:offer_counter' active_thread.event.id active_thread.professional.id %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
+
+                  <div class="mb-2">
+                    <label class="form-label text-white-50 small mb-1">Counter amount (event currency)</label>
+                    {{ counter_form.proposed_amount }}
+                  </div>
+                  <div class="mb-2">
+                    {{ counter_form.message }}
+                  </div>
+                  <button class="btn btn-outline-light w-100">Send counter offer</button>
+                </form>
+              {% endif %}
+
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        <div class="chat-empty">
+          <div class="text-white-50">Select an offer thread to view messages.</div>
+        </div>
+      {% endif %}
+    </main>
+
+  </div>
+</div>
+{% endblock %}

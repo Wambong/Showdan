@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+{% load static %}
+{% load account_extras %}
+
+{% block title %}{{ prof.first_name }} {{ prof.last_name }} | Showdan{% endblock %}
+
+{% block content %}
+<div class="profile-detail-wrap mx-auto">
+
+  <!-- Header -->
+  <div class="profile-topbar d-flex align-items-center justify-content-between mb-3">
+    <a class="btn btn-sm btn-outline-light" href="{% url 'home' %}">← Back</a>
+    <div class="profile-top-title">Artist profile</div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-sm btn-outline-light" type="button">♡</button>
+      <button class="btn btn-sm btn-outline-light" type="button">♥</button>
+    </div>
+  </div>
+
+  <!-- Main card -->
+  <div class="profile-hero text-center mb-3">
+    <div class="profile-photo">
+      <img src="{{ prof.profile_picture.url }}" alt="{{ prof.first_name }}">
+      <div class="profile-badge">
+        ★ {{ avg_rating|floatformat:1 }}
+      </div>
+    </div>
+
+    <h4 class="mt-3 mb-1">{{ prof.first_name }} {{ prof.last_name }}</h4>
+
+    {% if prof.professions.exists %}
+      <div class="text-white-50 small">
+        {% for p in prof.professions.all %}
+          <span class="me-1">{{ p.name }}</span>{% if not forloop.last %}•{% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-white-50 small">Professional</div>
+    {% endif %}
+  </div>
+
+  <!-- Tabs -->
+  <div class="profile-tabs mb-4">
+    <a class="profile-tab {% if tab != 'calendar' %}active{% endif %}"
+       href="?tab=overview">
+      Overview
+    </a>
+
+    <a class="profile-tab {% if tab == 'calendar' %}active{% endif %}"
+       href="?tab=calendar">
+      Calendar
+    </a>
+  </div>
+
+  {% if tab == "calendar" %}
+
+    <!-- =======================
+         CALENDAR TAB (READ ONLY)
+    ======================== -->
+    <div class="calendar-wrap mx-auto">
+
+      <div class="calendar-head">
+        <a class="cal-nav" href="?tab=calendar&year={{ prev_year }}&month={{ prev_month }}">‹</a>
+        <div class="cal-title">
+          <div class="text-white fw-bold">Availability</div>
+          <div class="text-white-50 small">{{ month_name }}, {{ year }}</div>
+        </div>
+        <a class="cal-nav" href="?tab=calendar&year={{ next_year }}&month={{ next_month }}">›</a>
+      </div>
+
+      <div class="calendar-grid">
+        <div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div>
+        <div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div><div class="cal-dow">Sun</div>
+
+        {% for week in weeks %}
+          {% for d in week %}
+          {% with booked=booked_map|get_item:d busy=busy_map|get_item:d %}
+              <div
+                role="button"
+                tabindex="0"
+                class="cal-day cal-day-click
+                       {% if is_past %}is-past{% endif %}
+                       {% if d.month != month %}is-out{% endif %}
+                       {% if d == today %}is-today{% endif %}
+                       {% if booked %}is-booked{% endif %}
+                       {% if busy %}is-busy{% endif %}"
+                data-date="{{ d|date:'Y-m-d' }}"
+                data-is-past="{% if d < today %}1{% else %}0{% endif %}"
+                data-date-label="{{ d|date:'d M Y' }}"
+                data-booked='[{% if booked %}{% for r in booked.ranges %}
+                    {
+                      "event_id": {{ r.event_id }},
+                      "name":"{{ r.name|escapejs }}",
+                      "label":"{{ r.label|default_if_none:""|escapejs }}",
+                      "is_locked": {{ r.is_locked|yesno:"true,false" }},
+                      "accepted_name":"{{ r.accepted_name|default_if_none:""|escapejs }}",
+                      "accepted_avatar":"{{ r.accepted_avatar|default_if_none:""|escapejs }}"
+                    }{% if not forloop.last %},{% endif %}
+                  {% endfor %}{% endif %}]'
+                data-busy='[{% if busy %}{% for b in busy %}{"all_day":{{ b.is_all_day|yesno:"true,false" }},"start":"{{ b.start|escapejs }}","end":"{{ b.end|escapejs }}","note":"{{ b.note|default_if_none:""|escapejs }}"}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}]'
+                {% if booked and avatar_url %}
+                  style="--avatar-url: url('{{ avatar_url }}');"
+                {% endif %}
+              >
+                <div class="cal-day-num">{{ d.day }}</div>
+
+                {% if booked %}
+                  <div class="cal-bars">
+                    {% for r in booked.ranges %}
+                      <div class="cal-bar {% if r.is_start %}is-start{% endif %}{% if r.is_end %} is-end{% endif %}">
+                        <span class="cal-bar-title">{{ r.name }}</span>
+                        {% if r.label %}<span class="cal-bar-time">{{ r.label }}</span>{% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                {% if busy %}
+                  <div class="cal-busy-dot"></div>
+                {% endif %}
+              </div>
+          {% endwith %}
+
+          {% endfor %}
+        {% endfor %}
+      </div>
+
+
+<!-- Calendar details modal (read-only) -->
+<div class="modal fade" id="calDayModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="background:#0f1218; border:1px solid rgba(255,255,255,0.08); border-radius:16px;">
+      <div class="modal-header" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+        <h5 class="modal-title text-white" id="calDayModalTitle">Day details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="text-white-50 small mb-3" id="calDayModalSub"></div>
+
+        <div class="mb-3" id="calModalBookedWrap" style="display:none;">
+          <div class="text-white fw-semibold mb-2">Booked events</div>
+          <div id="calModalBookedList" class="d-flex flex-column gap-2"></div>
+        </div>
+
+        <div class="mb-2" id="calModalBusyWrap" style="display:none;">
+          <div class="text-white fw-semibold mb-2">Unavailable</div>
+          <div id="calModalBusyList" class="d-flex flex-column gap-2"></div>
+        </div>
+
+        <div class="text-white-50 text-center py-4" id="calModalEmpty" style="display:none;">
+          No events or unavailable times for this day.
+        </div>
+
+        <!-- CTA area: only shown on free days -->
+        <div class="mt-3" id="calModalCTA" style="display:none;">
+          <hr style="border-color: rgba(255,255,255,0.08);">
+
+          <div class="text-white fw-semibold mb-2">Request booking</div>
+          <div class="text-white-50 small mb-2">Pick a time range for this day.</div>
+
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="form-label text-white-50 small mb-1">Start time</label>
+              <div class="d-flex gap-2">
+                <select id="calOfferStartHour" class="form-select form-select-sm"></select>
+                <select id="calOfferStartMin" class="form-select form-select-sm">
+                  <option value="00">00</option><option value="15">15</option>
+                  <option value="30">30</option><option value="45">45</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label class="form-label text-white-50 small mb-1">End time</label>
+              <div class="d-flex gap-2">
+                <select id="calOfferEndHour" class="form-select form-select-sm"></select>
+                <select id="calOfferEndMin" class="form-select form-select-sm">
+                  <option value="00">00</option><option value="15">15</option>
+                  <option value="30">30</option><option value="45">45</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-danger small mt-2" id="calOfferErr" style="display:none;"></div>
+
+          <a id="calModalMakeOfferBtn" class="btn btn-primary w-100 mt-2" href="#">
+            Make offer
+          </a>
+        </div><!-- /#calModalCTA -->
+
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /#calDayModal -->
+
+
+  {% else %}
+
+  <!-- =======================
+         OVERVIEW TAB (YOUR ORIGINAL PAGE)
+  ======================== -->
+
+  <!-- About -->
+  <div class="profile-section">
+    <div class="section-title">About me</div>
+    {% if prof.about_me %}
+      <div class="section-text" style="white-space: pre-line;">{{ prof.about_me }}</div>
+    {% else %}
+      <div class="section-muted">No description yet.</div>
+    {% endif %}
+  </div>
+
+  <!-- Languages -->
+  <div class="profile-section">
+    <div class="section-title d-flex align-items-center justify-content-between">
+      <span>Languages</span>
+      <span class="section-icon">i</span>
+    </div>
+
+    <div class="section-subtitle">Communication</div>
+    <div class="chip-row">
+      {% for l in prof.communication_languages.all %}
+        <span class="chip">{{ l.name }}</span>
+      {% empty %}
+        <span class="section-muted">None selected</span>
+      {% endfor %}
+    </div>
+
+    <div class="section-subtitle mt-3">Event language</div>
+    <div class="chip-row">
+      {% for l in prof.event_languages.all %}
+        <span class="chip">{{ l.name }}</span>
+      {% empty %}
+        <span class="section-muted">None selected</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Accepted event categories -->
+  <div class="profile-section">
+    <div class="section-title d-flex align-items-center justify-content-between">
+      <span>Accepted event categories</span>
+      <span class="section-icon">i</span>
+    </div>
+
+    <div class="chip-row">
+      {% for c in prof.accepted_event_categories.all %}
+        <span class="chip chip-soft">{{ c }}</span>
+      {% empty %}
+        <span class="section-muted">No accepted categories selected.</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="profile-section">
+    <div class="section-title">Pricing</div>
+
+    {% if prof.currency %}
+      <div class="pricing-row">
+        <div class="pricing-item">
+          <div class="pricing-label">Cost per hour</div>
+          <div class="pricing-val">{{ prof.currency.sign }}{{ prof.cost_per_hour|default:"—" }}</div>
+        </div>
+        <div class="pricing-item">
+          <div class="pricing-label">Cost per 5 hours</div>
+          <div class="pricing-val">{{ prof.currency.sign }}{{ prof.cost_per_5_hours|default:"—" }}</div>
+        </div>
+      </div>
+    {% else %}
+      <div class="section-muted">No pricing set.</div>
+    {% endif %}
+  </div>
+
+  <!-- Studio photos -->
+  <div class="profile-section">
+    <div class="section-title">Studio photos</div>
+
+    <div class="media-grid">
+      {% for ph in professional_photos|slice:":4" %}
+        <div class="media-thumb">
+          <img src="{{ ph.image.url }}" alt="Studio photo">
+        </div>
+      {% empty %}
+        <div class="section-muted">No photos uploaded yet.</div>
+      {% endfor %}
+    </div>
+
+    {% if professional_photos|length > 4 %}
+      <a class="btn btn-sm btn-outline-light w-100 mt-2"
+         href="{% url 'accounts:profile_media' prof.id %}?tab=studio">
+        View all studio photos ({{ professional_photos|length }})
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Live photos -->
+  <div class="profile-section">
+    <div class="section-title">Live / work photos</div>
+
+    <div class="media-grid">
+      {% for ph in normal_photos|slice:":4" %}
+        <div class="media-thumb">
+          <img src="{{ ph.image.url }}" alt="Work photo">
+        </div>
+      {% empty %}
+        <div class="section-muted">No photos uploaded yet.</div>
+      {% endfor %}
+    </div>
+
+    {% if normal_photos|length > 4 %}
+      <a class="btn btn-sm btn-outline-light w-100 mt-2"
+         href="{% url 'accounts:profile_media' prof.id %}?tab=work">
+        View all work photos ({{ normal_photos|length }})
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Audio -->
+  <div class="profile-section">
+    <div class="section-title">Audio performances</div>
+
+    <div class="media-list">
+      {% for a in audio_covers|slice:":4" %}
+        <div class="audio-row">
+          <div class="audio-dot">♪</div>
+          <div class="audio-meta">
+            <div class="audio-name">Audio cover {{ forloop.counter }}</div>
+            <div class="audio-sub">Tap to play</div>
+          </div>
+          <audio controls preload="none" class="audio-player">
+            <source src="{{ a.audio_file.url }}">
+          </audio>
+        </div>
+      {% empty %}
+        <div class="section-muted">No audio uploaded yet.</div>
+      {% endfor %}
+    </div>
+
+    {% if audio_covers|length > 4 %}
+      <a class="btn btn-sm btn-outline-light w-100 mt-2"
+         href="{% url 'accounts:profile_media' prof.id %}?tab=audio">
+        View all audio ({{ audio_covers|length }})
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Video -->
+  <div class="profile-section">
+    <div class="section-title">Video performances</div>
+
+    <div class="media-list">
+      {% for v in video_covers|slice:":4" %}
+        <div class="video-row">
+          <video controls preload="none" class="video-player">
+            <source src="{{ v.video_file.url }}">
+          </video>
+        </div>
+      {% empty %}
+        <div class="section-muted">No videos uploaded yet.</div>
+      {% endfor %}
+    </div>
+
+    {% if video_covers|length > 4 %}
+      <a class="btn btn-sm btn-outline-light w-100 mt-2"
+         href="{% url 'accounts:profile_media' prof.id %}?tab=video">
+        View all videos ({{ video_covers|length }})
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Reviews -->
+  <div class="profile-section">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <div class="section-title mb-0">Reviews ({{ review_count }})</div>
+    </div>
+
+    {% if can_review %}
+      {% if existing_review %}
+        <div class="section-muted mb-3">
+          You already reviewed this profile.
+        </div>
+      {% elif review_form %}
+        <form method="post" action="{% url 'accounts:create_review' prof.id %}" class="review-form mb-3">
+          {% csrf_token %}
+
+          <div class="mb-2">
+            <label class="form-label">Rating</label>
+            {{ review_form.rating }}
+            {% if review_form.rating.errors %}
+              <div class="text-danger small mt-1">{{ review_form.rating.errors }}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Comment</label>
+            {{ review_form.comment }}
+            {% if review_form.comment.errors %}
+              <div class="text-danger small mt-1">{{ review_form.comment.errors }}</div>
+            {% endif %}
+          </div>
+
+          <button type="submit" class="btn btn-sm btn-outline-light w-100">Submit review</button>
+        </form>
+      {% endif %}
+    {% endif %}
+
+    {% for r in reviews %}
+      <div class="review-card mb-3">
+        <div class="review-head">
+          <div class="review-user">
+            <div class="review-avatar">
+              <img src="{{ r.reviewer.profile_picture.url }}" alt="{{ r.reviewer.first_name }}">
+            </div>
+            <div class="review-meta">
+              <div class="review-name">{{ r.reviewer.first_name }} {{ r.reviewer.last_name }}</div>
+              <div class="review-date">{{ r.created_at|date:"d M Y • H:i" }}</div>
+            </div>
+          </div>
+
+          <div class="review-rating" aria-label="{{ r.rating }} out of 5">
+            {% for i in "12345" %}
+              {% if forloop.counter <= r.rating %}
+                <span class="star filled">★</span>
+              {% else %}
+                <span class="star">★</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if r.comment %}
+          <p class="review-text mb-0" style="white-space: pre-line;">{{ r.comment }}</p>
+        {% else %}
+          <p class="review-text mb-0 text-white-50">No comment.</p>
+        {% endif %}
+      </div>
+    {% empty %}
+      <div class="section-muted">No reviews yet.</div>
+    {% endfor %}
+  </div>
+
+  {% endif %}
+
+</div>
+
+  <script>
+  window.PUBLIC_CAL_BOOKING_URL = "{% url 'events:booking_request_calendar' prof.id %}";
+</script>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Media | {{ prof.first_name }} {{ prof.last_name }}{% endblock %}
+
+{% block content %}
+<div class="profile-detail-wrap mx-auto">
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <a class="btn btn-sm btn-outline-light" href="{% url 'accounts:profile_detail' prof.id %}">← Back</a>
+    <h5 class="mb-0">Media</h5>
+    <span></span>
+  </div>
+
+  <!-- Tabs -->
+  <div class="media-tabs mb-3">
+    {% for key,label in tabs %}
+      <a
+        href="{% url 'accounts:profile_media' prof.id %}?tab={{ key }}"
+        class="media-tab {% if tab == key %}active{% endif %}"
+      >
+        {{ label }}
+      </a>
+    {% endfor %}
+  </div>
+
+  <!-- Content -->
+  <div class="profile-section">
+    <div class="section-title mb-2">{{ title }}</div>
+
+    {% if kind == "photos" %}
+      <div class="media-grid">
+        {% for ph in items %}
+          <div class="media-thumb">
+            <img src="{{ ph.image.url }}" alt="Photo">
+          </div>
+        {% empty %}
+          <div class="section-muted">No photos uploaded yet.</div>
+        {% endfor %}
+      </div>
+
+    {% elif kind == "audio" %}
+      <div class="media-list">
+        {% for a in items %}
+          <div class="audio-row">
+            <div class="audio-dot">♪</div>
+            <div class="audio-meta">
+              <div class="audio-name">Audio cover {{ forloop.counter }}</div>
+              <div class="audio-sub">Tap to play</div>
+            </div>
+            <audio controls preload="none" class="audio-player">
+              <source src="{{ a.audio_file.url }}">
+            </audio>
+          </div>
+        {% empty %}
+          <div class="section-muted">No audio uploaded yet.</div>
+        {% endfor %}
+      </div>
+
+    {% elif kind == "video" %}
+      <div class="media-list">
+        {% for v in items %}
+          <div class="video-row mb-2">
+            <video controls preload="none" class="video-player">
+              <source src="{{ v.video_file.url }}">
+            </video>
+          </div>
+        {% empty %}
+          <div class="section-muted">No videos uploaded yet.</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

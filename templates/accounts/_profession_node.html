@@ -1,0 +1,27 @@
+<div class="mb-2" style="margin-left: {{ level }}rem;">
+  <div class="d-flex align-items-center gap-2">
+    {% if node.tree_children %}
+      <button class="btn btn-sm btn-outline-secondary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#prof-{{ node.id }}">
+        +
+      </button>
+    {% else %}
+      <span class="text-muted" style="width:2.1rem; display:inline-block;"></span>
+    {% endif %}
+
+    <span class="fw-semibold">{{ node.name }}</span>
+    {% if node.parent %}
+      <span class="badge bg-light text-dark border">child of {{ node.parent.name }}</span>
+    {% endif %}
+  </div>
+
+  {% if node.tree_children %}
+    <div class="collapse mt-2" id="prof-{{ node.id }}">
+      {% for child in node.tree_children %}
+        {% include "account/_profession_node.html" with node=child level=level|add:1 %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>

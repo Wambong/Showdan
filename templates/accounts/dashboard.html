@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard | Showdan{% endblock %}
+
+{% block content %}
+<div class="dash-shell mx-auto">
+
+  <div class="dash-layout" id="dashLayout">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar">
+      <div class="dash-sidebar-inner">
+
+        <!-- Profile header -->
+        <div class="dash-profile">
+        <a class="dash-link"
+             href="{% url 'accounts:dash_home' %}"
+             hx-get="{% url 'accounts:dash_home' %}"
+             hx-target="#dashMainCard"
+             hx-swap="innerHTML"
+             hx-push-url="true">
+          <div class="dash-avatar">
+
+            {% if u.profile_picture %}
+              <img src="{{ u.profile_picture.url }}" alt="Profile picture">
+            {% else %}
+              <div class="dash-avatar-fallback">{{ u.first_name|default:"U"|slice:":1" }}</div>
+            {% endif %}
+          </div>
+
+          <div class="dash-profile-meta">
+            <div class="dash-name">{{ u.first_name }} {{ u.last_name }}</div>
+            <div class="dash-role">{{ u.account_type|default:"user"|title }}</div>
+
+            <div class="dash-balance">
+              Balance:
+              <span class="dash-balance-val">
+                {% if u.currency %}{{ u.currency.sign }}{% endif %}
+                {{ u.balance|default:"0" }}
+              </span>
+            </div>
+          </div>
+        </a>
+          <button class="dash-collapse-btn" type="button" id="dashToggle" aria-label="Toggle sidebar">
+            <span class="dash-toggle-icon">≡</span>
+          </button>
+        </div>
+
+        <div class="dash-divider"></div>
+
+        <!-- Menu -->
+        <nav class="dash-nav">
+
+          <a class="dash-link"
+             href="{% url 'accounts:switch_profile' %}"
+             hx-get="{% url 'accounts:switch_profile' %}"
+             hx-target="#dashMainCard"
+             hx-swap="innerHTML"
+             hx-push-url="true">
+            <span class="dash-ico">👤</span>
+            <span class="dash-text">Switch profile</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link"
+             href="{% url 'accounts:dash_profile_edit' %}"
+             hx-get="{% url 'accounts:dash_profile_edit' %}"
+             hx-target="#dashMainCard"
+             hx-swap="innerHTML"
+             hx-push-url="true">
+            <span class="dash-ico">✏️</span>
+            <span class="dash-text">Edit profile</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link"
+             href="{% url 'accounts:favorites' %}"
+             hx-get="{% url 'accounts:favorites' %}"
+             hx-target="#dashMainCard"
+             hx-swap="innerHTML"
+             hx-push-url="true">
+            <span class="dash-ico">♡</span>
+            <span class="dash-text">Favorites</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link"
+             href="{% url 'accounts:dash_language' %}"
+               hx-get="{% url 'accounts:dash_language' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true">
+            <span class="dash-ico">🌐</span>
+            <span class="dash-text">Language</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link"
+             href="{% url 'accounts:dash_currency' %}"
+              hx-get="{% url 'accounts:dash_currency' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true">
+            <span class="dash-ico">💲</span>
+            <span class="dash-text">Currency</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link"
+             href="{% url 'accounts:terms' %}"
+               hx-get="{% url 'accounts:terms' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true">
+            <span class="dash-ico">ℹ️</span>
+            <span class="dash-text">Terms & policies</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link"
+             href="{% url 'accounts:support' %}"
+              hx-get="{% url 'accounts:support' %}"
+               hx-target="#dashMainCard"
+               hx-swap="innerHTML"
+               hx-push-url="true">
+            <span class="dash-ico">🎧</span>
+            <span class="dash-text">Support</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link" href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener">
+            <span class="dash-ico">✈️</span>
+            <span class="dash-text">Our Telegram</span>
+            <span class="dash-arrow">›</span>
+          </a>
+
+          <a class="dash-link" href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noopener">
+            <span class="dash-ico">📷</span>
+            <span class="dash-text">Our Instagram</span>
+            <span class="dash-arrow">›</span>
+          </a>
+          {% if request.user.is_staff %}
+              <a class="dash-link"
+                 href="{% url 'accounts:dash_crud_home' %}"
+                 hx-get="{% url 'accounts:dash_crud_home' %}"
+                 hx-target="#dashMainCard"
+                 hx-swap="innerHTML"
+                 hx-push-url="true">
+                CRUD
+              </a>
+              <a class="dash-link"
+                   href="{% url 'accounts:dash_crud_users_list' %}"
+                   hx-get="{% url 'accounts:dash_crud_users_list' %}"
+                   hx-target="#dashMainCard"
+                   hx-swap="innerHTML"
+                   hx-push-url="true">
+                  <span class="dash-ico">👥</span>
+                  <span class="dash-text">Users</span>
+                  <span class="dash-arrow">›</span>
+                </a>
+            {% endif %}
+
+          <div class="dash-divider"></div>
+
+          <form method="post" action="{% url 'account_logout' %}" class="m-0">
+            {% csrf_token %}
+            <button class="dash-link dash-link-danger w-100" type="submit">
+              <span class="dash-ico">⎋</span>
+              <span class="dash-text">Log out</span>
+              <span class="dash-arrow">›</span>
+            </button>
+          </form>
+
+        </nav>
+        <div class="dash-footer">
+          <div class="dash-footer-text">ID: {{ request.user.id }}</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+  <div class="dash-main-card" id="dashMainCard"
+       hx-get="{% url 'accounts:dash_home' %}"
+       hx-trigger="load"
+       hx-target="this"
+       hx-swap="innerHTML"
+       hx-push-url="true">
+    <!-- HTMX will load content here -->
+  </div>
+</main>
+
+  </div>
+</div>
+
+
+
+
+{% endblock %}
