@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, get_object_or_404, redirect
@@ -347,14 +347,23 @@ def register_view(request):
         form = AccountsRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            messages.success(request, "Account created successfully. Welcome!")
-            return redirect("accounts:profile")
+
+            # ✅ authenticate so Django knows which backend to attach
+            authed = authenticate(request, email=user.email, password=form.cleaned_data["password1"])
+            if authed is not None:
+                login(request, authed)
+                messages.success(request, "Account created successfully. Welcome!")
+                return redirect("accounts:dashboard")
+
+            # fallback (shouldn't usually happen)
+            messages.success(request, "Account created. Please log in.")
+            return redirect("accounts:login")
+
         messages.error(request, "Please correct the errors below.")
     else:
         form = AccountsRegistrationForm()
-    return render(request, "accounts/register.html", {"form": form})
 
+    return render(request, "accounts/register.html", {"form": form})
 
 class AccountLoginView(LoginView):
     template_name = "accounts/login.html"
