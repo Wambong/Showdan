@@ -1,0 +1,1922 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-26 09:33+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\accounts\forms.py:55
+msgid "Tell people about yourself..."
+msgstr "Расскажите людям о себе..."
+
+#: .\accounts\forms.py:183
+msgid "Write your review (optional)..."
+msgstr "Напишите ваш отзыв (необязательно)..."
+
+#: .\accounts\views.py:325
+msgid "Profile updated successfully."
+msgstr "Профиль успешно обновлён."
+
+#: .\accounts\views.py:328 .\accounts\views.py:392 .\accounts\views.py:440
+#: .\accounts\views_dashboard.py:204 .\accounts\views_dashboard.py:327
+#: .\accounts\views_dashboard.py:350 .\accounts\views_dashboard.py:631
+msgid "Please correct the errors below."
+msgstr "Пожалуйста, исправьте ошибки ниже."
+
+#: .\accounts\views.py:352
+msgid "You cannot review your own profile."
+msgstr "Вы не можете оставить отзыв о своём профиле."
+
+#: .\accounts\views.py:357
+msgid "You already left a review for this profile."
+msgstr "Вы уже оставили отзыв для этого профиля."
+
+#: .\accounts\views.py:369
+msgid "Review submitted successfully."
+msgstr "Отзыв успешно отправлен."
+
+#: .\accounts\views.py:371
+msgid "Please correct the errors in your review."
+msgstr "Пожалуйста, исправьте ошибки в вашем отзыве."
+
+#: .\accounts\views.py:385
+msgid "Account created successfully. Welcome!"
+msgstr "Аккаунт успешно создан. Добро пожаловать!"
+
+#: .\accounts\views.py:389
+msgid "Account created. Please log in."
+msgstr "Аккаунт создан. Пожалуйста, войдите."
+
+#: .\accounts\views.py:402
+msgid "You are now logged in."
+msgstr "Вы вошли в систему."
+
+#: .\accounts\views.py:406
+msgid "Invalid credentials. Please try again."
+msgstr "Неверные учетные данные. Пожалуйста, попробуйте снова."
+
+#: .\accounts\views.py:437
+#, python-brace-format
+msgid "Profession “{name}” created successfully."
+msgstr "Профессия «{name}» успешно создана."
+
+#: .\accounts\views_dashboard.py:113
+msgid "Invalid target account type."
+msgstr "Недопустимый целевой тип аккаунта."
+
+#: .\accounts\views_dashboard.py:124
+msgid "Switched to Personal profile."
+msgstr "Переключено на личный профиль."
+
+#: .\accounts\views_dashboard.py:133
+msgid "Please select at least one profession to switch to Professional."
+msgstr "Пожалуйста, выберите хотя бы одну профессию, чтобы переключиться на профессиональный профиль."
+
+#: .\accounts\views_dashboard.py:141
+msgid "Switched to Professional profile."
+msgstr "Переключено на профессиональный профиль."
+
+#: .\accounts\views_dashboard.py:242
+msgid "You cannot favorite yourself."
+msgstr "Вы не можете добавить себя в избранное."
+
+#: .\accounts\views_dashboard.py:255 .\accounts\views_dashboard.py:259
+msgid "Removed from favorites."
+msgstr "Удалено из избранного."
+
+#: .\accounts\views_dashboard.py:325 .\accounts\views_dashboard.py:516
+msgid "Currency updated."
+msgstr "Валюта обновлена."
+
+#: .\accounts\views_dashboard.py:348
+msgid "Languages updated."
+msgstr "Языки обновлены."
+
+#: .\accounts\views_dashboard.py:394
+msgid "Profession created."
+msgstr "Профессия создана."
+
+#: .\accounts\views_dashboard.py:404
+msgid "Profession updated."
+msgstr "Профессия обновлена."
+
+#: .\accounts\views_dashboard.py:413
+msgid "Profession deleted."
+msgstr "Профессия удалена."
+
+#: .\accounts\views_dashboard.py:432
+msgid "Event category created."
+msgstr "Категория события создана."
+
+#: .\accounts\views_dashboard.py:442
+msgid "Event category updated."
+msgstr "Категория события обновлена."
+
+#: .\accounts\views_dashboard.py:451
+msgid "Event category deleted."
+msgstr "Категория события удалена."
+
+#: .\accounts\views_dashboard.py:469
+msgid "Language created."
+msgstr "Язык создан."
+
+#: .\accounts\views_dashboard.py:479
+msgid "Language updated."
+msgstr "Язык обновлён."
+
+#: .\accounts\views_dashboard.py:488
+msgid "Language deleted."
+msgstr "Язык удалён."
+
+#: .\accounts\views_dashboard.py:506
+msgid "Currency created."
+msgstr "Валюта создана."
+
+#: .\accounts\views_dashboard.py:525
+msgid "Currency deleted."
+msgstr "Валюта удалена."
+
+#: .\accounts\views_dashboard.py:548
+msgid "Exchange rate created."
+msgstr "Курс обмена создан."
+
+#: .\accounts\views_dashboard.py:558
+msgid "Exchange rate updated."
+msgstr "Курс обмена обновлён."
+
+#: .\accounts\views_dashboard.py:567
+msgid "Exchange rate deleted."
+msgstr "Курс обмена удалён."
+
+#: .\accounts\views_dashboard.py:629
+msgid "User updated."
+msgstr "Пользователь обновлён."
+
+#: .\accounts\views_dashboard.py:792
+msgid "Saved."
+msgstr "Сохранено."
+
+#: .\accounts\views_dashboard.py:852
+msgid "News post created."
+msgstr "Новость создана."
+
+#: .\accounts\views_dashboard.py:854 .\accounts\views_dashboard.py:870
+msgid "Please correct the errors."
+msgstr "Пожалуйста, исправьте ошибки."
+
+#: .\accounts\views_dashboard.py:868
+msgid "News post updated."
+msgstr "Новость обновлена."
+
+#: .\accounts\views_dashboard.py:883
+msgid "News post deleted."
+msgstr "Новость удалена."
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:4
+#: .\templates\accounts\dash_pages\crud\form.html:6
+msgid "Admin only"
+msgstr "Только для администратора"
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:7
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:12
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:17
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:19
+#: .\templates\accounts\dash_pages\crud\news_form.html:62
+#: .\templates\accounts\dash_pages\crud\users_edit.html:133
+#: .\templates\accounts\dash_pages\partials\media_edit.html:104
+msgid "Cancel"
+msgstr "Отмена"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:5
+#: .\templates\accounts\dash_pages\crud\index.html:38
+msgid "Currencies"
+msgstr "Валюты"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:6
+msgid "Name and sign"
+msgstr "Название и символ"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:14
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:14
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:14
+#: .\templates\accounts\dash_pages\crud\form.html:12
+#: .\templates\accounts\dash_pages\crud\language_list.html:14
+#: .\templates\accounts\dash_pages\crud\news_list.html:14
+#: .\templates\accounts\dash_pages\crud\profession_list.html:14
+#: .\templates\accounts\dash_pages\crud\users_list.html:13
+#: .\templates\accounts\dash_pages\favorites.html:15
+#: .\templates\accounts\dash_pages\switch_profile.html:17
+#: .\templates\accounts\news_detail.html:8
+#: .\templates\accounts\profile_detail.html:12
+#: .\templates\accounts\profile_edit.html:11
+#: .\templates\accounts\profile_media.html:10
+#: .\templates\events\category_create.html:10
+#: .\templates\events\event_create.html:10
+#: .\templates\events\event_detail.html:20
+#: .\templates\events\offer_thread.html:9
+msgid "Back"
+msgstr "Назад"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:21
+msgid "New currency"
+msgstr "Новая валюта"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:30
+#: .\templates\accounts\dash_pages\crud\language_list.html:30
+msgid "Name"
+msgstr "Название"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:31
+msgid "Sign"
+msgstr "Символ"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:32
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:31
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:34
+#: .\templates\accounts\dash_pages\crud\language_list.html:32
+#: .\templates\accounts\dash_pages\crud\news_list.html:33
+#: .\templates\accounts\dash_pages\crud\profession_list.html:32
+#: .\templates\accounts\dash_pages\crud\users_list.html:73
+msgid "Actions"
+msgstr "Действия"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:45
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:61
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:49
+#: .\templates\accounts\dash_pages\crud\language_list.html:45
+#: .\templates\accounts\dash_pages\crud\news_list.html:55
+#: .\templates\accounts\dash_pages\crud\profession_list.html:66
+#: .\templates\accounts\dash_pages\crud\users_list.html:121
+#: .\templates\accounts\dash_pages\home.html:17
+#: .\templates\accounts\dash_pages\partials\media_edit.html:6
+msgid "Edit"
+msgstr "Редактировать"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:51
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:68
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:55
+#: .\templates\accounts\dash_pages\crud\language_list.html:51
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:13
+#: .\templates\accounts\dash_pages\crud\news_list.html:62
+#: .\templates\accounts\dash_pages\crud\profession_list.html:73
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:57
+#: .\templates\accounts\dash_pages\currency.html:56
+msgid "No currencies found"
+msgstr "Валюты не найдены"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:5
+#: .\templates\accounts\dash_pages\crud\index.html:20
+msgid "Event categories"
+msgstr "Категории событий"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:6
+msgid "Nested event category tree"
+msgstr "Иерархия категорий событий"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:21
+msgid "New category"
+msgstr "Новая категория"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:30
+msgid "Category"
+msgstr "Категория"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:46
+#: .\templates\accounts\dash_pages\crud\profession_list.html:31
+msgid "Parent"
+msgstr "Родительская"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:74
+msgid "No event categories found."
+msgstr "Категории событий не найдены."
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:5
+#: .\templates\accounts\dash_pages\crud\index.html:58
+msgid "Exchange rates"
+msgstr "Курсы обмена"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:6
+msgid "Currency conversion rates"
+msgstr "Курсы конвертации валют"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:21
+msgid "New rate"
+msgstr "Новый курс"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:30
+#: .\templates\accounts\profile_detail.html:508
+msgid "From"
+msgstr "Из"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:31
+msgid "To"
+msgstr "В"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:32
+msgid "Rate"
+msgstr "Курс"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:33
+msgid "Updated"
+msgstr "Обновлено"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:61
+msgid "No exchange rates found"
+msgstr "Курсы обмена не найдены"
+
+#: .\templates\accounts\dash_pages\crud\form.html:37
+#: .\templates\accounts\dash_pages\crud\news_form.html:57
+#: .\templates\events\calendar.html:144
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\templates\accounts\dash_pages\crud\index.html:3
+#: .\templates\accounts\dashboard.html:150
+msgid "CRUD"
+msgstr "CRUD"
+
+#: .\templates\accounts\dash_pages\crud\index.html:4
+msgid "Admin tools for managing base tables"
+msgstr "Инструменты администратора для управления базовыми таблицами"
+
+#: .\templates\accounts\dash_pages\crud\index.html:11
+#: .\templates\accounts\dash_pages\crud\profession_list.html:5
+#: .\templates\accounts\dash_pages\home.html:90
+#: .\templates\accounts\dash_pages\profile_edit.html:206
+#: .\templates\accounts\dash_pages\switch_profile.html:74
+#: .\templates\accounts\profile.html:42
+#: .\templates\accounts\profile_edit.html:192
+msgid "Professions"
+msgstr "Профессии"
+
+#: .\templates\accounts\dash_pages\crud\index.html:12
+#: .\templates\accounts\dash_pages\crud\index.html:21
+msgid "Nested tree (parent/child)"
+msgstr "Иерархия (родитель/дочерняя)"
+
+#: .\templates\accounts\dash_pages\crud\index.html:29
+#: .\templates\accounts\dash_pages\crud\language_list.html:5
+#: .\templates\accounts\profile.html:88
+#: .\templates\accounts\profile_detail.html:241
+msgid "Languages"
+msgstr "Языки"
+
+#: .\templates\accounts\dash_pages\crud\index.html:30
+msgid "Name + slug"
+msgstr "Название + slug"
+
+#: .\templates\accounts\dash_pages\crud\index.html:39
+msgid "Name + sign"
+msgstr "Название + символ"
+
+#: .\templates\accounts\dash_pages\crud\index.html:50
+#: .\templates\accounts\dash_pages\crud\news_list.html:5
+#: .\templates\accounts\news_list.html:9 .\templates\base.html:105
+msgid "News"
+msgstr "Новости"
+
+#: .\templates\accounts\dash_pages\crud\index.html:59
+msgid "From currency → to currency with rate"
+msgstr "Из валюты → в валюту с курсом"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:6
+msgid "Name and slug"
+msgstr "Название и slug"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:21
+msgid "New language"
+msgstr "Новый язык"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:31
+msgid "Slug"
+msgstr "Slug"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:57
+msgid "No languages found."
+msgstr "Языки не найдены."
+
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:3
+msgid "Delete news"
+msgstr "Удалить новость"
+
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:4
+msgid "This cannot be undone"
+msgstr "Это действие нельзя отменить"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:6
+msgid "Edit news"
+msgstr "Редактировать новость"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:6
+msgid "New news"
+msgstr "Новая новость"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:8
+msgid "Visible to everyone when published"
+msgstr "Видно всем после публикации"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:15
+msgid " Back"
+msgstr " Назад"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:24
+#: .\templates\accounts\dash_pages\crud\news_list.html:30
+msgid "Title"
+msgstr "Заголовок"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:30
+msgid "Excerpt"
+msgstr "Краткое описание"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:36
+msgid "Body"
+msgstr "Текст"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:42
+msgid "Image"
+msgstr "Изображение"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:46
+msgid "Current image"
+msgstr "Текущее изображение"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:53
+msgid "Publish (show to everyone)"
+msgstr "Опубликовать (показать всем)"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:6
+msgid "Manage site news posts"
+msgstr "Управление новостями сайта"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:21
+msgid "New post"
+msgstr "Новая запись"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:31
+msgid "Published"
+msgstr "Опубликовано"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:32
+msgid "Published at"
+msgstr "Дата публикации"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:42
+msgid "Yes"
+msgstr "Да"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:44
+msgid "No"
+msgstr "Нет"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:68
+msgid "No news posts yet"
+msgstr "Новостей пока нет"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:6
+msgid "Nested profession tree"
+msgstr "Иерархия профессий"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:21
+#: .\templates\accounts\profile_detail.html:499
+msgid "New"
+msgstr "Новая"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:30
+msgid "Profession"
+msgstr "Профессия"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:79
+msgid "No professions found."
+msgstr "Профессии не найдены."
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:5
+msgid "Edit user"
+msgstr "Редактировать пользователя"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:13
+msgid "Back to users"
+msgstr "Назад к пользователям"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:33
+#: .\templates\accounts\dash_pages\profile_edit.html:194
+#: .\templates\accounts\profile_edit.html:182
+msgid "Profile picture"
+msgstr "Фото профиля"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:41
+msgid "Professional picture"
+msgstr "Профессиональное фото"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:49
+#: .\templates\accounts\dash_pages\profile_edit.html:32
+#: .\templates\accounts\profile_edit.html:25
+msgid "First name"
+msgstr "Имя"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:55
+#: .\templates\accounts\dash_pages\profile_edit.html:38
+#: .\templates\accounts\profile_edit.html:30
+msgid "Last name"
+msgstr "Фамилия"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:61
+#: .\templates\accounts\dash_pages\home.html:67
+msgid "Nickname"
+msgstr "Никнейм"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:67
+#: .\templates\accounts\dash_pages\crud\users_list.html:68
+#: .\templates\accounts\dash_pages\home.html:56
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:73
+#: .\templates\accounts\dash_pages\home.html:61
+#: .\templates\accounts\dash_pages\profile_edit.html:44
+#: .\templates\accounts\profile_edit.html:35
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:79
+#: .\templates\accounts\dash_pages\profile_edit.html:200
+msgid "Account type"
+msgstr "Тип аккаунта"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:85
+#: .\templates\accounts\dash_pages\crud\users_list.html:53
+#: .\templates\accounts\dash_pages\crud\users_list.html:107
+msgid "Active"
+msgstr "Активен"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:88
+msgid "Is active"
+msgstr "Аккаунт активен"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:94
+#: .\templates\accounts\dash_pages\crud\users_list.html:45
+#: .\templates\accounts\dash_pages\crud\users_list.html:70
+#: .\templates\accounts\dash_pages\crud\users_list.html:99
+msgid "Staff"
+msgstr "Сотрудник"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:97
+msgid "Is staff"
+msgstr "Сотрудник"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:102
+msgid "gender"
+msgstr "пол"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:108
+#: .\templates\accounts\dash_pages\currency.html:3
+#: .\templates\accounts\dash_pages\home.html:41
+#: .\templates\accounts\dash_pages\profile_edit.html:162
+#: .\templates\accounts\dashboard.html:106
+#: .\templates\accounts\profile_edit.html:149
+#: .\templates\events\event_create.html:109
+#: .\templates\events\offer_thread.html:76
+#: .\templates\events\offers_inbox.html:178
+msgid "Currency"
+msgstr "Валюта"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:114
+#: .\templates\accounts\dash_pages\home.html:154
+#: .\templates\accounts\dash_pages\profile_edit.html:171
+#: .\templates\accounts\profile.html:126
+#: .\templates\accounts\profile_detail.html:287
+#: .\templates\accounts\profile_edit.html:158
+msgid "Cost per hour"
+msgstr "Стоимость за час"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:120
+#: .\templates\accounts\dash_pages\home.html:160
+#: .\templates\accounts\dash_pages\profile_edit.html:182
+#: .\templates\accounts\profile.html:133
+#: .\templates\accounts\profile_detail.html:291
+#: .\templates\accounts\profile_edit.html:169
+msgid "Cost per 5 hours"
+msgstr "Стоимость за 5 часов"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:127
+msgid ">Save"
+msgstr ">Сохранить"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:5
+#: .\templates\accounts\dashboard.html:159
+msgid "Users"
+msgstr "Пользователи"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:6
+msgid "Manage accounts (staff only)"
+msgstr "Управление аккаунтами (только для сотрудников)"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:36
+msgid "All types"
+msgstr "Все типы"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:37
+#: .\templates\accounts\dash_pages\switch_profile.html:31
+#: .\templates\accounts\dash_pages\switch_profile.html:58
+msgid "Personal"
+msgstr "Личный"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:38
+#: .\templates\accounts\dash_pages\favorites.html:59
+#: .\templates\accounts\dash_pages\switch_profile.html:38
+#: .\templates\accounts\dash_pages\switch_profile.html:68
+#: .\templates\accounts\profile.html:33
+#: .\templates\accounts\profile_detail.html:61
+#: .\templates\accounts\profile_detail.html:521
+msgid "Professional"
+msgstr "Профессиональный"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:46
+msgid "Not staff"
+msgstr "Не сотрудник"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:52
+msgid "All statuses"
+msgstr "Все статусы"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:54
+#: .\templates\accounts\dash_pages\crud\users_list.html:109
+msgid "Inactive"
+msgstr "Неактивен"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:59
+msgid "Go"
+msgstr "Перейти"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:67
+#: .\templates\accounts\dash_pages\crud\users_list.html:101
+msgid "User"
+msgstr "Пользователь"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:69
+msgid "Type"
+msgstr "Тип"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:71
+#: .\templates\events\event_detail.html:35
+msgid "Status"
+msgstr "Статус"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:72
+msgid "Joined"
+msgstr "Регистрация"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:154
+msgid "No users found"
+msgstr "Пользователи не найдены"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:174
+msgid "Prev"
+msgstr "Назад"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:183
+msgid "Next"
+msgstr "Вперёд"
+
+#: .\templates\accounts\dash_pages\currency.html:4
+msgid "View and update your account currency"
+msgstr "Просмотр и обновление валюты аккаунта"
+
+#: .\templates\accounts\dash_pages\currency.html:11
+msgid "Current currency"
+msgstr "Текущая валюта"
+
+#: .\templates\accounts\dash_pages\currency.html:16
+#: .\templates\accounts\dash_pages\home.html:43
+msgid "Not set"
+msgstr "Не задано"
+
+#: .\templates\accounts\dash_pages\currency.html:30
+msgid "Select currency"
+msgstr "Выберите валюту"
+
+#: .\templates\accounts\dash_pages\currency.html:38
+msgid "Save currency"
+msgstr "Сохранить валюту"
+
+#: .\templates\accounts\dash_pages\currency.html:45
+msgid "Available currencies"
+msgstr "Доступные валюты"
+
+#: .\templates\accounts\dash_pages\favorites.html:5
+#: .\templates\accounts\dash_pages\home.html:194
+#: .\templates\accounts\dashboard.html:84
+msgid "Favorites"
+msgstr "Избранное"
+
+#: .\templates\accounts\dash_pages\favorites.html:6
+msgid "Saved professionals"
+msgstr "Сохранённые специалисты"
+
+#: .\templates\accounts\dash_pages\favorites.html:49
+msgid "Location not set"
+msgstr "Местоположение не задано"
+
+#: .\templates\accounts\dash_pages\favorites.html:65
+msgid "hour"
+msgstr "час"
+
+#: .\templates\accounts\dash_pages\favorites.html:68
+msgid "Price not set"
+msgstr "Цена не указана"
+
+#: .\templates\accounts\dash_pages\favorites.html:78
+msgid "View"
+msgstr "Просмотр"
+
+#: .\templates\accounts\dash_pages\favorites.html:90
+msgid "Remove"
+msgstr "Удалить"
+
+#: .\templates\accounts\dash_pages\favorites.html:104
+msgid "You have no favorites yet"
+msgstr "У вас пока нет избранного"
+
+#: .\templates\accounts\dash_pages\favorites.html:106
+msgid "Browse professionals and tap “Favorite” to save them here."
+msgstr "Просматривайте специалистов и нажимайте «В избранное», чтобы сохранить их здесь."
+
+#: .\templates\accounts\dash_pages\home.html:6
+msgid "Your dashboard"
+msgstr "Ваш кабинет"
+
+#: .\templates\accounts\dash_pages\home.html:7
+msgid "Your profile and quick actions"
+msgstr "Ваш профиль и быстрые действия"
+
+#: .\templates\accounts\dash_pages\home.html:36
+msgid "Account"
+msgstr "Аккаунт"
+
+#: .\templates\accounts\dash_pages\home.html:48
+#: .\templates\accounts\dashboard.html:37
+msgid "Balance"
+msgstr "Баланс"
+
+#: .\templates\accounts\dash_pages\home.html:73
+#: .\templates\accounts\dash_pages\profile_edit.html:65
+#: .\templates\accounts\profile_edit.html:40
+msgid "Date of birth"
+msgstr "Дата рождения"
+
+#: .\templates\accounts\dash_pages\home.html:79
+#: .\templates\accounts\profile.html:62
+msgid "Experience"
+msgstr "Опыт"
+
+#: .\templates\accounts\dash_pages\home.html:96
+#: .\templates\accounts\profile.html:55
+#: .\templates\events\event_detail.html:139
+msgid "No professions selected"
+msgstr "Профессии не выбраны"
+
+#: .\templates\accounts\dash_pages\home.html:103
+#: .\templates\accounts\dash_pages\profile_edit.html:115
+#: .\templates\accounts\profile.html:73
+#: .\templates\accounts\profile_detail.html:230
+#: .\templates\accounts\profile_edit.html:94
+msgid "About me"
+msgstr "Обо мне"
+
+#: .\templates\accounts\dash_pages\home.html:111
+#: .\templates\accounts\dash_pages\language.html:11
+#: .\templates\accounts\dash_pages\language.html:47
+#: .\templates\accounts\profile.html:91
+msgid "Communication languages"
+msgstr "Языки общения"
+
+#: .\templates\accounts\dash_pages\home.html:119
+#: .\templates\accounts\dash_pages\home.html:132
+#: .\templates\accounts\dash_pages\language.html:19
+#: .\templates\accounts\dash_pages\language.html:32
+#: .\templates\accounts\profile.html:99 .\templates\accounts\profile.html:112
+#: .\templates\accounts\profile_detail.html:250
+#: .\templates\accounts\profile_detail.html:259
+msgid "None selected"
+msgstr "Не выбрано"
+
+#: .\templates\accounts\dash_pages\home.html:124
+#: .\templates\accounts\dash_pages\language.html:24
+#: .\templates\accounts\dash_pages\language.html:55
+#: .\templates\accounts\profile.html:104
+msgid "Event languages"
+msgstr "Языки мероприятий"
+
+#: .\templates\accounts\dash_pages\home.html:138
+#: .\templates\accounts\profile.html:151
+#: .\templates\accounts\profile_detail.html:267
+msgid "Accepted event categories"
+msgstr "Принимаемые категории событий"
+
+#: .\templates\accounts\dash_pages\home.html:146
+msgid "No accepted categories selected."
+msgstr "Принимаемые категории не выбраны."
+
+#: .\templates\accounts\dash_pages\home.html:150
+#: .\templates\accounts\dash_pages\profile_edit.html:159
+#: .\templates\accounts\profile.html:121
+#: .\templates\accounts\profile_detail.html:282
+#: .\templates\accounts\profile_edit.html:146
+msgid "Pricing"
+msgstr "Цены"
+
+#: .\templates\accounts\dash_pages\home.html:167
+#: .\templates\accounts\profile.html:140
+msgid "Pricing has not been set"
+msgstr "Цены не установлены"
+
+#: .\templates\accounts\dash_pages\home.html:174
+#: .\templates\accounts\profile_detail.html:74 .\templates\base.html:75
+#: .\templates\events\calendar.html:12
+msgid "Calendar"
+msgstr "Календарь"
+
+#: .\templates\accounts\dash_pages\home.html:175
+msgid "Busy days, bookings, availability"
+msgstr "Занятые дни, бронирования, доступность"
+
+#: .\templates\accounts\dash_pages\home.html:179
+#: .\templates\events\event_detail.html:23 .\templates\events\my_offers.html:31
+#: .\templates\events\offers_inbox.html:12
+msgid "Offers"
+msgstr "Предложения"
+
+#: .\templates\accounts\dash_pages\home.html:180
+msgid "Chats and booking requests"
+msgstr "Чаты и запросы на бронирование"
+
+#: .\templates\accounts\dash_pages\home.html:184
+msgid "Events"
+msgstr "События"
+
+#: .\templates\accounts\dash_pages\home.html:185
+msgid "Browse posted events"
+msgstr "Просмотр опубликованных событий"
+
+#: .\templates\accounts\dash_pages\home.html:195
+msgid "Saved profiles and events"
+msgstr "Сохранённые профили и события"
+
+#: .\templates\accounts\dash_pages\language.html:3
+#: .\templates\accounts\dashboard.html:95 .\templates\home.html:119
+msgid "Language"
+msgstr "Язык"
+
+#: .\templates\accounts\dash_pages\language.html:4
+msgid "Update your communication and event languages"
+msgstr "Обновите языки общения и языки мероприятий"
+
+#: .\templates\accounts\dash_pages\language.html:63
+msgid "Save languages"
+msgstr "Сохранить языки"
+
+#: .\templates\accounts\dash_pages\language.html:70
+msgid "Available languages"
+msgstr "Доступные языки"
+
+#: .\templates\accounts\dash_pages\language.html:79
+msgid "No languages found"
+msgstr "Языки не найдены"
+
+#: .\templates\accounts\dash_pages\partials\media_edit.html:33
+msgid "Select items to delete"
+msgstr "Выберите элементы для удаления"
+
+#: .\templates\accounts\dash_pages\partials\media_edit.html:77
+msgid "Upload more"
+msgstr "Загрузить ещё"
+
+#: .\templates\accounts\dash_pages\partials\media_edit.html:96
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: .\templates\accounts\dash_pages\partials\media_section.html:37
+#: .\templates\accounts\dash_pages\partials\media_section.html:73
+#: .\templates\accounts\dash_pages\partials\media_section.html:117
+msgid "No items yet"
+msgstr "Пока нет элементов"
+
+#: .\templates\accounts\dash_pages\partials\media_section.html:67
+#: .\templates\accounts\profile.html:216
+msgid "Your browser does not support the audio element"
+msgstr "Ваш браузер не поддерживает элемент audio"
+
+#: .\templates\accounts\dash_pages\partials\media_section.html:106
+msgid "Your browser does not support the video tag."
+msgstr "Ваш браузер не поддерживает тег video."
+
+#: .\templates\accounts\dash_pages\profile_edit.html:7
+#: .\templates\accounts\dashboard.html:73
+msgid "Edit profile"
+msgstr "Редактировать профиль"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:8
+msgid "Update your information, media and pricing"
+msgstr "Обновите информацию, медиа и цены"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:29
+#: .\templates\accounts\profile_edit.html:22
+msgid "Account details"
+msgstr "Данные аккаунта"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:49
+#: .\templates\events\event_create.html:51
+msgid "country"
+msgstr "страна"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:60
+msgid "address"
+msgstr "адрес"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:70
+#: .\templates\accounts\profile_edit.html:47
+msgid "Day"
+msgstr "День"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:75
+#: .\templates\accounts\profile_edit.html:52
+msgid "Month"
+msgstr "Месяц"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:80
+#: .\templates\accounts\profile_edit.html:57
+msgid "Year"
+msgstr "Год"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:95
+#: .\templates\accounts\profile_edit.html:72
+msgid "Years of experience"
+msgstr "Лет опыта"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:100
+#: .\templates\accounts\profile_edit.html:79
+msgid "Years"
+msgstr "Лет"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:119
+#: .\templates\accounts\profile_edit.html:98
+msgid "Maximum 1000 words"
+msgstr "Максимум 1000 слов"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:121
+#: .\templates\accounts\profile_edit.html:100
+msgid "words"
+msgstr "слов"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:131
+#: .\templates\accounts\profile_edit.html:110
+msgid "Communication language"
+msgstr "Язык общения"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:133
+#: .\templates\accounts\dash_pages\profile_edit.html:142
+#: .\templates\accounts\dash_pages\profile_edit.html:151
+#: .\templates\accounts\profile_edit.html:112
+#: .\templates\accounts\profile_edit.html:122
+msgid "Hold Ctrl (Windows) / Cmd (Mac) to select multiple"
+msgstr "Удерживайте Ctrl (Windows) / Cmd (Mac), чтобы выбрать несколько"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:140
+#: .\templates\accounts\profile_edit.html:120
+msgid "Language of the event"
+msgstr "Язык мероприятия"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:149
+#: .\templates\accounts\profile_edit.html:130
+msgid "Event categories you accept"
+msgstr "Категории событий, которые вы принимаете"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:213
+#: .\templates\accounts\profile_edit.html:198
+msgid "Upload professional pictures"
+msgstr "Загрузить профессиональные фото"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:215
+#: .\templates\accounts\profile_edit.html:202
+msgid "Professional images"
+msgstr "Профессиональные изображения"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:217
+#: .\templates\accounts\profile_edit.html:205
+msgid "You can upload multiple professional images"
+msgstr "Вы можете загрузить несколько профессиональных изображений"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:221
+#: .\templates\accounts\profile_edit.html:210
+msgid "Upload normal pictures"
+msgstr "Загрузить обычные фото"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:223
+#: .\templates\accounts\profile_edit.html:214
+msgid "Normal images"
+msgstr "Обычные изображения"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:225
+#: .\templates\accounts\profile_edit.html:217
+msgid "You can upload multiple normal images"
+msgstr "Вы можете загрузить несколько обычных изображений"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:229
+#: .\templates\accounts\profile_edit.html:222
+msgid "Upload Audio Acapella Covers"
+msgstr "Загрузить аудио акапелла-каверы"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:231
+#: .\templates\accounts\profile_edit.html:226
+msgid "Audio files"
+msgstr "Аудиофайлы"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:233
+#: .\templates\accounts\profile_edit.html:229
+msgid "Accepted formats: mp3, wav"
+msgstr "Допустимые форматы: mp3, wav"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:237
+#: .\templates\accounts\profile_edit.html:234
+msgid "Upload Video Acapella Covers"
+msgstr "Загрузить видео акапелла-каверы"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:239
+msgid "Video files"
+msgstr "Видеофайлы"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:241
+#: .\templates\accounts\profile_edit.html:241
+msgid "Accepted formats: mp4, webm"
+msgstr "Допустимые форматы: mp4, webm"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:245
+#: .\templates\accounts\profile_edit.html:246
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: .\templates\accounts\dash_pages\support.html:3
+#: .\templates\accounts\dashboard.html:128
+msgid "Support"
+msgstr "Поддержка"
+
+#: .\templates\accounts\dash_pages\support.html:4
+#: .\templates\accounts\dash_pages\terms.html:4
+msgid "Temporary page"
+msgstr "Временная страница"
+
+#: .\templates\accounts\dash_pages\support.html:7
+msgid "Support options will appear here later"
+msgstr "Варианты поддержки появятся здесь позже"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:5
+#: .\templates\accounts\dashboard.html:62
+msgid "Switch profile"
+msgstr "Переключить профиль"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:7
+msgid "Current"
+msgstr "Текущий"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:24
+msgid "Choose what you want to switch to"
+msgstr "Выберите, на что вы хотите переключиться"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:58
+#: .\templates\accounts\dash_pages\switch_profile.html:68
+msgid "Switch to"
+msgstr "Переключиться на"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:60
+msgid ""
+"Your professions will be cleared (you can re-add them if you switch back to "
+"Professional)"
+msgstr "Ваши профессии будут очищены (вы сможете добавить их снова, если переключитесь обратно на профессиональный профиль)"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:64
+msgid "Confirm switch to Personal"
+msgstr "Подтвердить переключение на личный профиль"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:70
+msgid "Select at least one profession"
+msgstr "Выберите хотя бы одну профессию"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:89
+msgid "No professions found"
+msgstr "Профессии не найдены"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:96
+msgid "Confirm switch to Professional"
+msgstr "Подтвердить переключение на профессиональный профиль"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:102
+msgid "Select an option above to continue"
+msgstr "Выберите вариант выше, чтобы продолжить"
+
+#: .\templates\accounts\dash_pages\terms.html:3
+#: .\templates\accounts\dashboard.html:117
+msgid "Terms & policies"
+msgstr "Условия и политики"
+
+#: .\templates\accounts\dash_pages\terms.html:7
+msgid "Terms content will appear here later"
+msgstr "Содержимое условий появится здесь позже"
+
+#: .\templates\accounts\dashboard.html:134
+msgid "Our Telegram"
+msgstr "Наш Telegram"
+
+#: .\templates\accounts\dashboard.html:140
+msgid "Our Instagram"
+msgstr "Наш Instagram"
+
+#: .\templates\accounts\dashboard.html:170
+msgid "Log out"
+msgstr "Выйти"
+
+#: .\templates\accounts\login.html:10 .\templates\accounts\login.html:15
+#: .\templates\accounts\profile_detail.html:37
+#: .\templates\accounts\register.html:18 .\templates\base.html:129
+msgid "Login"
+msgstr "Войти"
+
+#: .\templates\accounts\login.html:18
+msgid "Continue with Google"
+msgstr "Продолжить с Google"
+
+#: .\templates\accounts\login.html:21
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+#: .\templates\accounts\login.html:21 .\templates\accounts\register.html:14
+msgid "Register"
+msgstr "Регистрация"
+
+#: .\templates\accounts\news_list.html:10
+msgid "Updates from"
+msgstr "Обновления от"
+
+#: .\templates\accounts\news_list.html:38
+msgid "No news yet"
+msgstr "Новостей пока нет"
+
+#: .\templates\accounts\profession_create.html:9
+msgid "Create Profession"
+msgstr "Создать профессию"
+
+#: .\templates\accounts\profession_create.html:14
+msgid "Save Profession"
+msgstr "Сохранить профессию"
+
+#: .\templates\accounts\profile.html:65
+msgid "year"
+msgstr "год"
+
+#: .\templates\accounts\profile.html:65
+msgid "of experience"
+msgstr "опыта"
+
+#: .\templates\accounts\profile.html:80
+msgid "No description provided yet"
+msgstr "Описание пока не добавлено"
+
+#: .\templates\accounts\profile.html:147
+#: .\templates\accounts\profile_edit.html:10
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+#: .\templates\accounts\profile.html:158
+msgid "No accepted event categories selected"
+msgstr "Принимаемые категории событий не выбраны"
+
+#: .\templates\accounts\profile.html:173
+msgid "No professional photos uploaded yet"
+msgstr "Профессиональные фото ещё не загружены"
+
+#: .\templates\accounts\profile.html:176
+msgid "Add professional photo"
+msgstr "Добавить профессиональное фото"
+
+#: .\templates\accounts\profile.html:183
+msgid "Normal pictures"
+msgstr "Обычные фото"
+
+#: .\templates\accounts\profile.html:195
+msgid "No Normal photos uploaded yet"
+msgstr "Обычные фото ещё не загружены"
+
+#: .\templates\accounts\profile.html:198
+msgid "Add Normal photo"
+msgstr "Добавить обычное фото"
+
+#: .\templates\accounts\profile.html:204
+msgid "Audio Acapella Covers"
+msgstr "Аудио акапелла-каверы"
+
+#: .\templates\accounts\profile.html:223
+msgid "No audio covers uploaded yet"
+msgstr "Аудио-каверы ещё не загружены"
+
+#: .\templates\accounts\profile.html:224
+msgid "Add audio cover"
+msgstr "Добавить аудио-кавер"
+
+#: .\templates\accounts\profile.html:231
+msgid "Video Acapella Covers"
+msgstr "Видео акапелла-каверы"
+
+#: .\templates\accounts\profile.html:244
+msgid "Your browser does not support the video tag"
+msgstr "Ваш браузер не поддерживает тег video"
+
+#: .\templates\accounts\profile.html:253
+msgid "No video covers uploaded yet"
+msgstr "Видео-каверы ещё не загружены"
+
+#: .\templates\accounts\profile.html:254
+msgid "Add video cover"
+msgstr "Добавить видео-кавер"
+
+#: .\templates\accounts\profile_detail.html:13
+msgid "Artist profile"
+msgstr "Профиль артиста"
+
+#: .\templates\accounts\profile_detail.html:69
+msgid "Overview"
+msgstr "Обзор"
+
+#: .\templates\accounts\profile_detail.html:88
+msgid "Availability"
+msgstr "Доступность"
+
+#: .\templates\accounts\profile_detail.html:95
+#: .\templates\events\calendar.html:19
+msgid "Mon"
+msgstr "Пн"
+
+#: .\templates\accounts\profile_detail.html:95
+#: .\templates\events\calendar.html:19
+msgid "Tue"
+msgstr "Вт"
+
+#: .\templates\accounts\profile_detail.html:95
+#: .\templates\events\calendar.html:19
+msgid "Wed"
+msgstr "Ср"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Thu"
+msgstr "Чт"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Fri"
+msgstr "Пт"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Sat"
+msgstr "Сб"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Sun"
+msgstr "Вс"
+
+#: .\templates\accounts\profile_detail.html:157
+msgid "Day details"
+msgstr "Детали дня"
+
+#: .\templates\accounts\profile_detail.html:165
+msgid "Booked events"
+msgstr "Забронированные события"
+
+#: .\templates\accounts\profile_detail.html:170
+msgid "Unavailable"
+msgstr "Недоступно"
+
+#: .\templates\accounts\profile_detail.html:175
+msgid "No events or unavailable times for this day"
+msgstr "Нет событий или недоступного времени на этот день"
+
+#: .\templates\accounts\profile_detail.html:182
+msgid "Request booking"
+msgstr "Запросить бронирование"
+
+#: .\templates\accounts\profile_detail.html:183
+msgid "Pick a time range for this day"
+msgstr "Выберите диапазон времени на этот день"
+
+#: .\templates\accounts\profile_detail.html:187
+#: .\templates\events\calendar.html:107
+msgid "Start time"
+msgstr "Время начала"
+
+#: .\templates\accounts\profile_detail.html:198
+#: .\templates\events\calendar.html:123
+msgid "End time"
+msgstr "Время окончания"
+
+#: .\templates\accounts\profile_detail.html:212
+#: .\templates\events\event_detail.html:179
+#: .\templates\events\events_list.html:298
+msgid "Make offer"
+msgstr "Сделать предложение"
+
+#: .\templates\accounts\profile_detail.html:234
+msgid "No description yet"
+msgstr "Описания пока нет"
+
+#: .\templates\accounts\profile_detail.html:245
+msgid "Communication"
+msgstr "Общение"
+
+#: .\templates\accounts\profile_detail.html:254
+msgid "Event language"
+msgstr "Язык мероприятия"
+
+#: .\templates\accounts\profile_detail.html:275
+msgid "No accepted categories selected"
+msgstr "Принимаемые категории не выбраны"
+
+#: .\templates\accounts\profile_detail.html:296
+msgid "No pricing set"
+msgstr "Цены не установлены"
+
+#: .\templates\accounts\profile_detail.html:302
+msgid "Studio photos"
+msgstr "Студийные фото"
+
+#: .\templates\accounts\profile_detail.html:310
+#: .\templates\accounts\profile_detail.html:332
+#: .\templates\accounts\profile_media.html:38
+msgid "No photos uploaded yet"
+msgstr "Фото ещё не загружены"
+
+#: .\templates\accounts\profile_detail.html:317
+msgid "View all studio photos"
+msgstr "Посмотреть все студийные фото"
+
+#: .\templates\accounts\profile_detail.html:324
+msgid "Live / work photos"
+msgstr "Фото с выступлений / работы"
+
+#: .\templates\accounts\profile_detail.html:339
+msgid "View all work photos"
+msgstr "Посмотреть все рабочие фото"
+
+#: .\templates\accounts\profile_detail.html:346
+msgid "Audio performances"
+msgstr "Аудио выступления"
+
+#: .\templates\accounts\profile_detail.html:353
+#: .\templates\accounts\profile_media.html:48
+msgid "Audio cover"
+msgstr "Аудио-кавер"
+
+#: .\templates\accounts\profile_detail.html:354
+#: .\templates\accounts\profile_media.html:49
+msgid "Tap to play"
+msgstr "Нажмите, чтобы воспроизвести"
+
+#: .\templates\accounts\profile_detail.html:361
+#: .\templates\accounts\profile_media.html:56
+msgid "No audio uploaded yet"
+msgstr "Аудио ещё не загружено"
+
+#: .\templates\accounts\profile_detail.html:368
+msgid "View all audio"
+msgstr "Посмотреть всё аудио"
+
+#: .\templates\accounts\profile_detail.html:375
+msgid "Video performances"
+msgstr "Видео выступления"
+
+#: .\templates\accounts\profile_detail.html:385
+#: .\templates\accounts\profile_media.html:69
+msgid "No videos uploaded yet"
+msgstr "Видео ещё не загружены"
+
+#: .\templates\accounts\profile_detail.html:392
+msgid "View all videos"
+msgstr "Посмотреть все видео"
+
+#: .\templates\accounts\profile_detail.html:400
+msgid "Reviews"
+msgstr "Отзывы"
+
+#: .\templates\accounts\profile_detail.html:406
+msgid "You already reviewed this profile"
+msgstr "Вы уже оставили отзыв об этом профиле"
+
+#: .\templates\accounts\profile_detail.html:413
+msgid "Rating"
+msgstr "Оценка"
+
+#: .\templates\accounts\profile_detail.html:421
+msgid "Comment"
+msgstr "Комментарий"
+
+#: .\templates\accounts\profile_detail.html:428
+msgid "Submit review"
+msgstr "Отправить отзыв"
+
+#: .\templates\accounts\profile_detail.html:460
+msgid "No comment"
+msgstr "Без комментария"
+
+#: .\templates\accounts\profile_detail.html:464
+msgid "No reviews yet"
+msgstr "Отзывов пока нет"
+
+#: .\templates\accounts\profile_detail.html:473
+msgid "Similar professionals"
+msgstr "Похожие специалисты"
+
+#: .\templates\accounts\profile_detail.html:539
+msgid "No similar professionals yet"
+msgstr "Похожих специалистов пока нет"
+
+#: .\templates\accounts\profile_edit.html:136
+msgid " Hold Ctrl (Windows) / Cmd (Mac) to select multiple"
+msgstr " Удерживайте Ctrl (Windows) / Cmd (Mac), чтобы выбрать несколько"
+
+#: .\templates\accounts\profile_edit.html:238
+msgid " Video files"
+msgstr " Видеофайлы"
+
+#: .\templates\accounts\profile_media.html:11
+msgid "Media"
+msgstr "Медиа"
+
+#: .\templates\accounts\register.html:9
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+#: .\templates\accounts\register.html:18
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
+
+#: .\templates\base.html:67
+msgid "Home"
+msgstr "Главная"
+
+#: .\templates\base.html:83
+msgid "Chats"
+msgstr "Чаты"
+
+#: .\templates\base.html:90
+msgid "events"
+msgstr "события"
+
+#: .\templates\events\calendar.html:75
+msgid "Mark unavailable days"
+msgstr "Отметить недоступные дни"
+
+#: .\templates\events\calendar.html:77
+msgid "Click a start day, then click an end day to select a range."
+msgstr "Нажмите на день начала, затем на день окончания, чтобы выбрать диапазон."
+
+#: .\templates\events\calendar.html:86
+msgid "Selected:"
+msgstr "Выбрано:"
+
+#: .\templates\events\calendar.html:87
+msgid "None"
+msgstr "Ничего"
+
+#: .\templates\events\calendar.html:95
+msgid "Busy all day"
+msgstr "Занят весь день"
+
+#: .\templates\events\calendar.html:100
+msgid "Specific time"
+msgstr "Определённое время"
+
+#: .\templates\events\calendar.html:140
+msgid "Note (optional)"
+msgstr "Примечание (необязательно)"
+
+#: .\templates\events\calendar.html:152
+msgid "Remove busy time"
+msgstr "Удалить занятое время"
+
+#: .\templates\events\category_create.html:9
+msgid "Create event category"
+msgstr "Создать категорию событий"
+
+#: .\templates\events\category_create.html:17
+msgid "Category name"
+msgstr "Название категории"
+
+#: .\templates\events\category_create.html:23
+msgid "Parent category (optional)"
+msgstr "Родительская категория (необязательно)"
+
+#: .\templates\events\category_create.html:28
+msgid "Create category"
+msgstr "Создать категорию"
+
+#: .\templates\events\event_create.html:9
+#: .\templates\events\event_create.html:137
+#: .\templates\events\events_list.html:20
+msgid "Create event"
+msgstr "Создать событие"
+
+#: .\templates\events\event_create.html:18
+msgid "Event name"
+msgstr "Название события"
+
+#: .\templates\events\event_create.html:28
+msgid "Start date & time"
+msgstr "Дата и время начала"
+
+#: .\templates\events\event_create.html:36
+msgid "End date & time"
+msgstr "Дата и время окончания"
+
+#: .\templates\events\event_create.html:59
+msgid "city"
+msgstr "город"
+
+#: .\templates\events\event_create.html:67
+#: .\templates\events\event_detail.html:83
+#: .\templates\events\events_list.html:109
+msgid "Location"
+msgstr "Место проведения"
+
+#: .\templates\events\event_create.html:78
+#: .\templates\events\event_detail.html:13
+#: .\templates\events\events_list.html:243 .\templates\events\my_offers.html:22
+msgid "Created by"
+msgstr "Создано пользователем"
+
+#: .\templates\events\event_create.html:87
+#: .\templates\events\event_detail.html:101
+msgid "Event type"
+msgstr "Тип события"
+
+#: .\templates\events\event_create.html:93
+msgid "Create one"
+msgstr "Создать"
+
+#: .\templates\events\event_create.html:99
+#: .\templates\events\event_detail.html:129
+#: .\templates\events\events_list.html:279
+msgid "Required professions"
+msgstr "Требуемые профессии"
+
+#: .\templates\events\event_create.html:104
+msgid "Hold Ctrl (Windows) / Cmd (Mac) to select multiple."
+msgstr "Удерживайте Ctrl (Windows) / Cmd (Mac), чтобы выбрать несколько."
+
+#: .\templates\events\event_create.html:114
+msgid "If not selected, it will default to your profile currency (if set)"
+msgstr "Если не выбрано, будет использована валюта вашего профиля (если задана)"
+
+#: .\templates\events\event_create.html:120
+#: .\templates\events\event_detail.html:151
+msgid "Event budget"
+msgstr "Бюджет события"
+
+#: .\templates\events\event_create.html:128
+#: .\templates\events\event_detail.html:158
+msgid "Advance payment"
+msgstr "Аванс"
+
+#: .\templates\events\event_detail.html:37
+msgid "Locked (offer accepted)"
+msgstr "Закрыто (предложение принято)"
+
+#: .\templates\events\event_detail.html:39
+msgid "Open"
+msgstr "Открыто"
+
+#: .\templates\events\event_detail.html:51
+msgid "Accepted professional:"
+msgstr "Выбранный специалист:"
+
+#: .\templates\events\event_detail.html:55
+msgid ""
+"This event is locked for new offers, but the accepted thread can continue "
+"chatting."
+msgstr "Это событие закрыто для новых предложений, но в принятом чате можно продолжать общение."
+
+#: .\templates\events\event_detail.html:64
+msgid "Start"
+msgstr "Начало"
+
+#: .\templates\events\event_detail.html:71
+msgid "End"
+msgstr "Окончание"
+
+#: .\templates\events\event_detail.html:94
+msgid "View on Google Maps"
+msgstr "Посмотреть в Google Maps"
+
+#: .\templates\events\event_detail.html:147
+#: .\templates\events\events_list.html:153
+#: .\templates\events\events_list.html:259
+msgid "Budget"
+msgstr "Бюджет"
+
+#: .\templates\events\event_detail.html:164
+msgid "No currency set"
+msgstr "Валюта не задана"
+
+#: .\templates\events\event_detail.html:175
+msgid "Event locked (offers closed)"
+msgstr "Событие закрыто (предложения закрыты)"
+
+#: .\templates\events\event_detail.html:186
+msgid "View offer threads"
+msgstr "Посмотреть ветки предложений"
+
+#: .\templates\events\events_list.html:11
+msgid "Browse available events and required professions"
+msgstr "Просматривайте доступные события и требуемые профессии"
+
+#: .\templates\events\events_list.html:17
+msgid "Filter"
+msgstr "Фильтр"
+
+#: .\templates\events\events_list.html:26
+msgid "Upcoming"
+msgstr "Предстоящие"
+
+#: .\templates\events\events_list.html:29
+msgid "All"
+msgstr "Все"
+
+#: .\templates\events\events_list.html:32
+msgid "Past"
+msgstr "Прошедшие"
+
+#: .\templates\events\events_list.html:46
+msgid "Filter events"
+msgstr "Фильтровать события"
+
+#: .\templates\events\events_list.html:47
+msgid "Search and narrow down results"
+msgstr "Ищите и уточняйте результаты"
+
+#: .\templates\events\events_list.html:61 .\templates\home.html:29
+msgid "Search"
+msgstr "Поиск"
+
+#: .\templates\events\events_list.html:82
+msgid "Near me (uses my profile city/country)"
+msgstr "Рядом со мной (использует город/страну из моего профиля)"
+
+#: .\templates\events\events_list.html:89
+msgid "Country"
+msgstr "Страна"
+
+#: .\templates\events\events_list.html:99
+msgid "City"
+msgstr "Город"
+
+#: .\templates\events\events_list.html:120
+msgid "Event category"
+msgstr "Категория события"
+
+#: .\templates\events\events_list.html:124
+msgid "All categories"
+msgstr "Все категории"
+
+#: .\templates\events\events_list.html:136
+msgid "Required profession"
+msgstr "Требуемая профессия"
+
+#: .\templates\events\events_list.html:140
+msgid "Any profession"
+msgstr "Любая профессия"
+
+#: .\templates\events\events_list.html:195 .\templates\home.html:153
+msgid "Reset"
+msgstr "Сбросить"
+
+#: .\templates\events\events_list.html:199 .\templates\home.html:154
+msgid "Apply"
+msgstr "Применить"
+
+#: .\templates\events\events_list.html:218
+msgid "Event"
+msgstr "Событие"
+
+#: .\templates\events\events_list.html:229
+#: .\templates\events\events_list.html:233
+msgid "Offers received"
+msgstr "Получено предложений"
+
+#: .\templates\events\events_list.html:268
+msgid "Advance"
+msgstr "Аванс"
+
+#: .\templates\events\events_list.html:285
+msgid "No professions specified"
+msgstr "Профессии не указаны"
+
+#: .\templates\events\events_list.html:291
+msgid "View details"
+msgstr "Посмотреть детали"
+
+#: .\templates\events\events_list.html:296
+msgid "Event locked"
+msgstr "Событие закрыто"
+
+#: .\templates\events\events_list.html:312
+msgid "No events found"
+msgstr "События не найдены"
+
+#: .\templates\events\my_offers.html:9
+msgid "My offers"
+msgstr "Мои предложения"
+
+#: .\templates\events\my_offers.html:10
+msgid "Browse events"
+msgstr "Просмотр событий"
+
+#: .\templates\events\my_offers.html:23 .\templates\events\offers_inbox.html:25
+#: .\templates\events\offers_inbox.html:67
+msgid "Locked"
+msgstr "Закрыто"
+
+#: .\templates\events\my_offers.html:30
+msgid "Open chat"
+msgstr "Открыть чат"
+
+#: .\templates\events\my_offers.html:39
+msgid "You have not sent any offers yet"
+msgstr "Вы ещё не отправляли предложения"
+
+#: .\templates\events\offer_thread.html:10
+msgid "Booking offers"
+msgstr "Предложения по бронированию"
+
+#: .\templates\events\offer_thread.html:63
+msgid "No offers yet."
+msgstr "Предложений пока нет."
+
+#: .\templates\events\offer_thread.html:72
+msgid "Your offer"
+msgstr "Ваше предложение"
+
+#: .\templates\events\offer_thread.html:82
+#: .\templates\events\offers_inbox.html:185
+msgid "Send offer"
+msgstr "Отправить предложение"
+
+#: .\templates\events\offer_thread.html:90
+#: .\templates\events\offers_inbox.html:198
+msgid "Accept"
+msgstr "Принять"
+
+#: .\templates\events\offer_thread.html:94
+#: .\templates\events\offers_inbox.html:206
+msgid "Reject"
+msgstr "Отклонить"
+
+#: .\templates\events\offer_thread.html:101
+msgid "Counter offer (in event currency)"
+msgstr "Встречное предложение (в валюте события)"
+
+#: .\templates\events\offer_thread.html:107
+#: .\templates\events\offers_inbox.html:222
+msgid "Send counter offer"
+msgstr "Отправить встречное предложение"
+
+#: .\templates\events\offers_inbox.html:13
+msgid "Sent & received"
+msgstr "Отправленные и полученные"
+
+#: .\templates\events\offers_inbox.html:30
+msgid "Accepted"
+msgstr "Принято"
+
+#: .\templates\events\offers_inbox.html:37
+msgid "From:"
+msgstr "От:"
+
+#: .\templates\events\offers_inbox.html:40
+msgid "To:"
+msgstr "Кому:"
+
+#: .\templates\events\offers_inbox.html:50
+msgid "No offer threads yet."
+msgstr "Веток предложений пока нет."
+
+#: .\templates\events\offers_inbox.html:64
+msgid "Event currency"
+msgstr "Валюта события"
+
+#: .\templates\events\offers_inbox.html:69
+msgid "Accepted thread"
+msgstr "Принятая ветка"
+
+#: .\templates\events\offers_inbox.html:71
+msgid "Read-only"
+msgstr "Только чтение"
+
+#: .\templates\events\offers_inbox.html:79
+#: .\templates\events\offers_inbox.html:81
+msgid "Chat with"
+msgstr "Чат с"
+
+#: .\templates\events\offers_inbox.html:127
+msgid "No messages yet."
+msgstr "Сообщений пока нет."
+
+#: .\templates\events\offers_inbox.html:150
+msgid "Send message"
+msgstr "Отправить сообщение"
+
+#: .\templates\events\offers_inbox.html:153
+msgid ""
+"Offers are locked, but you can continue chatting in the accepted thread."
+msgstr "Предложения закрыты, но вы можете продолжать общение в принятой ветке."
+
+#: .\templates\events\offers_inbox.html:159
+msgid ""
+"This event is locked. Only the accepted offer thread can continue chatting."
+msgstr "Это событие закрыто. Только в принятой ветке предложения можно продолжать общение."
+
+#: .\templates\events\offers_inbox.html:174
+msgid "Amount"
+msgstr "Сумма"
+
+#: .\templates\events\offers_inbox.html:216
+msgid "Counter amount (event currency)"
+msgstr "Встречная сумма (валюта события)"
+
+#: .\templates\events\offers_inbox.html:231
+msgid "Select an offer thread to view messages."
+msgstr "Выберите ветку предложения, чтобы посмотреть сообщения."
+
+#: .\templates\home.html:8
+msgid "Artist"
+msgstr "Артист"
+
+#: .\templates\home.html:40
+msgid "Clear"
+msgstr "Очистить"
+
+#: .\templates\home.html:53
+msgid "Filters"
+msgstr "Фильтры"
+
+#: .\templates\home.html:65
+msgid "Direction"
+msgstr "Направление"
+
+#: .\templates\home.html:68
+msgid "Select"
+msgstr "Выбрать"
+
+#: .\templates\home.html:82
+msgid "Price per hour"
+msgstr "Цена за час"
+
+#: .\templates\home.html:133
+msgid "Gender"
+msgstr "Пол"
+
+#: .\templates\home.html:137
+msgid "Male"
+msgstr "Мужской"
+
+#: .\templates\home.html:141
+msgid "Female"
+msgstr "Женский"
+
+#: .\templates\home.html:145
+msgid "Any"
+msgstr "Любой"
+
+#: .\templates\home.html:227
+msgid "No professionals yet."
+msgstr "Профессионалов пока нет."

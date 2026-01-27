@@ -1,0 +1,1920 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-26 09:34+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\accounts\forms.py:55
+msgid "Tell people about yourself..."
+msgstr "O'zingiz haqingizda odamlarga aytib bering..."
+
+#: .\accounts\forms.py:183
+msgid "Write your review (optional)..."
+msgstr "Sharhingizni yozing (ixtiyoriy)..."
+
+#: .\accounts\views.py:325
+msgid "Profile updated successfully."
+msgstr "Profil muvaffaqiyatli yangilandi."
+
+#: .\accounts\views.py:328 .\accounts\views.py:392 .\accounts\views.py:440
+#: .\accounts\views_dashboard.py:204 .\accounts\views_dashboard.py:327
+#: .\accounts\views_dashboard.py:350 .\accounts\views_dashboard.py:631
+msgid "Please correct the errors below."
+msgstr "Iltimos, quyidagi xatolarni tuzating."
+
+#: .\accounts\views.py:352
+msgid "You cannot review your own profile."
+msgstr "O'z profilingizni baholay olmaysiz."
+
+#: .\accounts\views.py:357
+msgid "You already left a review for this profile."
+msgstr "Siz ushbu profil uchun allaqachon sharh qoldirgansiz."
+
+#: .\accounts\views.py:369
+msgid "Review submitted successfully."
+msgstr "Sharh muvaffaqiyatli yuborildi."
+
+#: .\accounts\views.py:371
+msgid "Please correct the errors in your review."
+msgstr "Iltimos, sharhingizdagi xatolarni tuzating."
+
+#: .\accounts\views.py:385
+msgid "Account created successfully. Welcome!"
+msgstr "Hisob muvaffaqiyatli yaratildi. Xush kelibsiz!"
+
+#: .\accounts\views.py:389
+msgid "Account created. Please log in."
+msgstr "Hisob yaratildi. Iltimos, tizimga kiring."
+
+#: .\accounts\views.py:402
+msgid "You are now logged in."
+msgstr "Siz endi tizimga kirgansiz."
+
+#: .\accounts\views.py:406
+msgid "Invalid credentials. Please try again."
+msgstr "Noto'g'ri ma'lumotlar. Iltimos, qayta urinib ko'ring."
+
+#: .\accounts\views.py:437
+#, python-brace-format
+msgid "Profession “{name}” created successfully."
+msgstr "“{name}” kasbi muvaffaqiyatli yaratildi."
+
+#: .\accounts\views_dashboard.py:113
+msgid "Invalid target account type."
+msgstr "Noto'g'ri maqsadli hisob turi."
+
+#: .\accounts\views_dashboard.py:124
+msgid "Switched to Personal profile."
+msgstr "Shaxsiy profilga o'tildi."
+
+#: .\accounts\views_dashboard.py:133
+msgid "Please select at least one profession to switch to Professional."
+msgstr "Professionalga o'tish uchun kamida bitta kasbni tanlang."
+
+#: .\accounts\views_dashboard.py:141
+msgid "Switched to Professional profile."
+msgstr "Professional profilga o'tildi."
+
+#: .\accounts\views_dashboard.py:242
+msgid "You cannot favorite yourself."
+msgstr "O'zingizni sevimlilarga qo'sha olmaysiz."
+
+#: .\accounts\views_dashboard.py:255 .\accounts\views_dashboard.py:259
+msgid "Removed from favorites."
+msgstr "Sevimlilardan olib tashlandi."
+
+#: .\accounts\views_dashboard.py:325 .\accounts\views_dashboard.py:516
+msgid "Currency updated."
+msgstr "Valyuta yangilandi."
+
+#: .\accounts\views_dashboard.py:348
+msgid "Languages updated."
+msgstr "Tillar yangilandi."
+
+#: .\accounts\views_dashboard.py:394
+msgid "Profession created."
+msgstr "Kasb yaratildi."
+
+#: .\accounts\views_dashboard.py:404
+msgid "Profession updated."
+msgstr "Kasb yangilandi."
+
+#: .\accounts\views_dashboard.py:413
+msgid "Profession deleted."
+msgstr "Kasb o'chirildi."
+
+#: .\accounts\views_dashboard.py:432
+msgid "Event category created."
+msgstr "Tadbir toifasi yaratildi."
+
+#: .\accounts\views_dashboard.py:442
+msgid "Event category updated."
+msgstr "Tadbir toifasi yangilandi."
+
+#: .\accounts\views_dashboard.py:451
+msgid "Event category deleted."
+msgstr "Tadbir toifasi o'chirildi."
+
+#: .\accounts\views_dashboard.py:469
+msgid "Language created."
+msgstr "Til yaratildi."
+
+#: .\accounts\views_dashboard.py:479
+msgid "Language updated."
+msgstr "Til yangilandi."
+
+#: .\accounts\views_dashboard.py:488
+msgid "Language deleted."
+msgstr "Til o'chirildi."
+
+#: .\accounts\views_dashboard.py:506
+msgid "Currency created."
+msgstr "Valyuta yaratildi."
+
+#: .\accounts\views_dashboard.py:525
+msgid "Currency deleted."
+msgstr "Valyuta o'chirildi."
+
+#: .\accounts\views_dashboard.py:548
+msgid "Exchange rate created."
+msgstr "Valyuta kursi yaratildi."
+
+#: .\accounts\views_dashboard.py:558
+msgid "Exchange rate updated."
+msgstr "Valyuta kursi yangilandi."
+
+#: .\accounts\views_dashboard.py:567
+msgid "Exchange rate deleted."
+msgstr "Valyuta kursi o'chirildi."
+
+#: .\accounts\views_dashboard.py:629
+msgid "User updated."
+msgstr "Foydalanuvchi yangilandi."
+
+#: .\accounts\views_dashboard.py:792
+msgid "Saved."
+msgstr "Saqlangan."
+
+#: .\accounts\views_dashboard.py:852
+msgid "News post created."
+msgstr "Yangilik yaratildi."
+
+#: .\accounts\views_dashboard.py:854 .\accounts\views_dashboard.py:870
+msgid "Please correct the errors."
+msgstr "Iltimos, xatolarni tuzating."
+
+#: .\accounts\views_dashboard.py:868
+msgid "News post updated."
+msgstr "Yangilik yangilandi."
+
+#: .\accounts\views_dashboard.py:883
+msgid "News post deleted."
+msgstr "Yangilik o'chirildi."
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:4
+#: .\templates\accounts\dash_pages\crud\form.html:6
+msgid "Admin only"
+msgstr "Faqat administrator uchun"
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:7
+msgid "Are you sure you want to delete"
+msgstr "Rostan ham o'chirmoqchimisiz"
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:12
+msgid "Yes, delete"
+msgstr "Ha, o'chirish"
+
+#: .\templates\accounts\dash_pages\crud\confirm_delete.html:17
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:19
+#: .\templates\accounts\dash_pages\crud\news_form.html:62
+#: .\templates\accounts\dash_pages\crud\users_edit.html:133
+#: .\templates\accounts\dash_pages\partials\media_edit.html:104
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:5
+#: .\templates\accounts\dash_pages\crud\index.html:38
+msgid "Currencies"
+msgstr "Valyutalar"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:6
+msgid "Name and sign"
+msgstr "Nomi va belgisi"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:14
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:14
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:14
+#: .\templates\accounts\dash_pages\crud\form.html:12
+#: .\templates\accounts\dash_pages\crud\language_list.html:14
+#: .\templates\accounts\dash_pages\crud\news_list.html:14
+#: .\templates\accounts\dash_pages\crud\profession_list.html:14
+#: .\templates\accounts\dash_pages\crud\users_list.html:13
+#: .\templates\accounts\dash_pages\favorites.html:15
+#: .\templates\accounts\dash_pages\switch_profile.html:17
+#: .\templates\accounts\news_detail.html:8
+#: .\templates\accounts\profile_detail.html:12
+#: .\templates\accounts\profile_edit.html:11
+#: .\templates\accounts\profile_media.html:10
+#: .\templates\events\category_create.html:10
+#: .\templates\events\event_create.html:10
+#: .\templates\events\event_detail.html:20
+#: .\templates\events\offer_thread.html:9
+msgid "Back"
+msgstr "Orqaga"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:21
+msgid "New currency"
+msgstr "Yangi valyuta"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:30
+#: .\templates\accounts\dash_pages\crud\language_list.html:30
+msgid "Name"
+msgstr "Nomi"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:31
+msgid "Sign"
+msgstr "Belgisi"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:32
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:31
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:34
+#: .\templates\accounts\dash_pages\crud\language_list.html:32
+#: .\templates\accounts\dash_pages\crud\news_list.html:33
+#: .\templates\accounts\dash_pages\crud\profession_list.html:32
+#: .\templates\accounts\dash_pages\crud\users_list.html:73
+msgid "Actions"
+msgstr "Harakatlar"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:45
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:61
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:49
+#: .\templates\accounts\dash_pages\crud\language_list.html:45
+#: .\templates\accounts\dash_pages\crud\news_list.html:55
+#: .\templates\accounts\dash_pages\crud\profession_list.html:66
+#: .\templates\accounts\dash_pages\crud\users_list.html:121
+#: .\templates\accounts\dash_pages\home.html:17
+#: .\templates\accounts\dash_pages\partials\media_edit.html:6
+msgid "Edit"
+msgstr "Tahrirlash"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:51
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:68
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:55
+#: .\templates\accounts\dash_pages\crud\language_list.html:51
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:13
+#: .\templates\accounts\dash_pages\crud\news_list.html:62
+#: .\templates\accounts\dash_pages\crud\profession_list.html:73
+msgid "Delete"
+msgstr "O'chirish"
+
+#: .\templates\accounts\dash_pages\crud\currency_list.html:57
+#: .\templates\accounts\dash_pages\currency.html:56
+msgid "No currencies found"
+msgstr "Valyuta topilmadi"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:5
+#: .\templates\accounts\dash_pages\crud\index.html:20
+msgid "Event categories"
+msgstr "Tadbir toifalari"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:6
+msgid "Nested event category tree"
+msgstr "Ichki tadbir toifalari daraxti"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:21
+msgid "New category"
+msgstr "Yangi toifa"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:30
+msgid "Category"
+msgstr "Toifa"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:46
+#: .\templates\accounts\dash_pages\crud\profession_list.html:31
+msgid "Parent"
+msgstr "Ota"
+
+#: .\templates\accounts\dash_pages\crud\eventcategory_list.html:74
+msgid "No event categories found."
+msgstr "Tadbir toifalari topilmadi."
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:5
+#: .\templates\accounts\dash_pages\crud\index.html:58
+msgid "Exchange rates"
+msgstr "Valyuta kurslari"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:6
+msgid "Currency conversion rates"
+msgstr "Valyuta konvertatsiya kurslari"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:21
+msgid "New rate"
+msgstr "Yangi kurs"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:30
+#: .\templates\accounts\profile_detail.html:508
+msgid "From"
+msgstr "Dan"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:31
+msgid "To"
+msgstr "Ga"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:32
+msgid "Rate"
+msgstr "Kurs"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:33
+msgid "Updated"
+msgstr "Yangilandi"
+
+#: .\templates\accounts\dash_pages\crud\exchangerate_list.html:61
+msgid "No exchange rates found"
+msgstr "Valyuta kurslari topilmadi"
+
+#: .\templates\accounts\dash_pages\crud\form.html:37
+#: .\templates\accounts\dash_pages\crud\news_form.html:57
+#: .\templates\events\calendar.html:144
+msgid "Save"
+msgstr "Saqlash"
+
+#: .\templates\accounts\dash_pages\crud\index.html:3
+#: .\templates\accounts\dashboard.html:150
+msgid "CRUD"
+msgstr "CRUD"
+
+#: .\templates\accounts\dash_pages\crud\index.html:4
+msgid "Admin tools for managing base tables"
+msgstr "Asosiy jadvallarni boshqarish uchun admin vositalari"
+
+#: .\templates\accounts\dash_pages\crud\index.html:11
+#: .\templates\accounts\dash_pages\crud\profession_list.html:5
+#: .\templates\accounts\dash_pages\home.html:90
+#: .\templates\accounts\dash_pages\profile_edit.html:206
+#: .\templates\accounts\dash_pages\switch_profile.html:74
+#: .\templates\accounts\profile.html:42
+#: .\templates\accounts\profile_edit.html:192
+msgid "Professions"
+msgstr "Kasblar"
+
+#: .\templates\accounts\dash_pages\crud\index.html:12
+#: .\templates\accounts\dash_pages\crud\index.html:21
+msgid "Nested tree (parent/child)"
+msgstr "Ichki daraxt (ota/bola)"
+
+#: .\templates\accounts\dash_pages\crud\index.html:29
+#: .\templates\accounts\dash_pages\crud\language_list.html:5
+#: .\templates\accounts\profile.html:88
+#: .\templates\accounts\profile_detail.html:241
+msgid "Languages"
+msgstr "Tillar"
+
+#: .\templates\accounts\dash_pages\crud\index.html:30
+msgid "Name + slug"
+msgstr "Nomi + slug"
+
+#: .\templates\accounts\dash_pages\crud\index.html:39
+msgid "Name + sign"
+msgstr "Nomi + belgisi"
+
+#: .\templates\accounts\dash_pages\crud\index.html:50
+#: .\templates\accounts\dash_pages\crud\news_list.html:5
+#: .\templates\accounts\news_list.html:9 .\templates\base.html:105
+msgid "News"
+msgstr "Yangiliklar"
+
+#: .\templates\accounts\dash_pages\crud\index.html:59
+msgid "From currency → to currency with rate"
+msgstr "Valyutadan → valyutaga kurs bilan"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:6
+msgid "Name and slug"
+msgstr "Nomi va slug"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:21
+msgid "New language"
+msgstr "Yangi til"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:31
+msgid "Slug"
+msgstr "Slug"
+
+#: .\templates\accounts\dash_pages\crud\language_list.html:57
+msgid "No languages found."
+msgstr "Tillar topilmadi."
+
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:3
+msgid "Delete news"
+msgstr "Yangilikni o'chirish"
+
+#: .\templates\accounts\dash_pages\crud\news_confirm_delete.html:4
+msgid "This cannot be undone"
+msgstr "Buni bekor qilib bo'lmaydi"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:6
+msgid "Edit news"
+msgstr "Yangilikni tahrirlash"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:6
+msgid "New news"
+msgstr "Yangi yangilik"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:8
+msgid "Visible to everyone when published"
+msgstr "Nashr etilganda hammaga ko'rinadi"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:15
+msgid " Back"
+msgstr " Orqaga"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:24
+#: .\templates\accounts\dash_pages\crud\news_list.html:30
+msgid "Title"
+msgstr "Sarlavha"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:30
+msgid "Excerpt"
+msgstr "Qisqa matn"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:36
+msgid "Body"
+msgstr "Tana"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:42
+msgid "Image"
+msgstr "Rasm"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:46
+msgid "Current image"
+msgstr "Joriy rasm"
+
+#: .\templates\accounts\dash_pages\crud\news_form.html:53
+msgid "Publish (show to everyone)"
+msgstr "Nashr qilish (hammaga ko'rsatish)"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:6
+msgid "Manage site news posts"
+msgstr "Sayt yangiliklarini boshqarish"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:21
+msgid "New post"
+msgstr "Yangi post"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:31
+msgid "Published"
+msgstr "Nashr qilingan"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:32
+msgid "Published at"
+msgstr "Nashr qilingan vaqt"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:42
+msgid "Yes"
+msgstr "Ha"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:44
+msgid "No"
+msgstr "Yo'q"
+
+#: .\templates\accounts\dash_pages\crud\news_list.html:68
+msgid "No news posts yet"
+msgstr "Hali yangiliklar yo'q"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:6
+msgid "Nested profession tree"
+msgstr "Ichki kasblar daraxti"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:21
+#: .\templates\accounts\profile_detail.html:499
+msgid "New"
+msgstr "Yangi"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:30
+msgid "Profession"
+msgstr "Kasb"
+
+#: .\templates\accounts\dash_pages\crud\profession_list.html:79
+msgid "No professions found."
+msgstr "Kasblar topilmadi."
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:5
+msgid "Edit user"
+msgstr "Foydalanuvchini tahrirlash"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:13
+msgid "Back to users"
+msgstr "Foydalanuvchilarga qaytish"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:33
+#: .\templates\accounts\dash_pages\profile_edit.html:194
+#: .\templates\accounts\profile_edit.html:182
+msgid "Profile picture"
+msgstr "Profil rasmi"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:41
+msgid "Professional picture"
+msgstr "Professional rasm"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:49
+#: .\templates\accounts\dash_pages\profile_edit.html:32
+#: .\templates\accounts\profile_edit.html:25
+msgid "First name"
+msgstr "Ism"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:55
+#: .\templates\accounts\dash_pages\profile_edit.html:38
+#: .\templates\accounts\profile_edit.html:30
+msgid "Last name"
+msgstr "Familiya"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:61
+#: .\templates\accounts\dash_pages\home.html:67
+msgid "Nickname"
+msgstr "Taxallus"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:67
+#: .\templates\accounts\dash_pages\crud\users_list.html:68
+#: .\templates\accounts\dash_pages\home.html:56
+msgid "Email"
+msgstr "Elektron pochta"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:73
+#: .\templates\accounts\dash_pages\home.html:61
+#: .\templates\accounts\dash_pages\profile_edit.html:44
+#: .\templates\accounts\profile_edit.html:35
+msgid "Phone"
+msgstr "Telefon"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:79
+#: .\templates\accounts\dash_pages\profile_edit.html:200
+msgid "Account type"
+msgstr "Hisob turi"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:85
+#: .\templates\accounts\dash_pages\crud\users_list.html:53
+#: .\templates\accounts\dash_pages\crud\users_list.html:107
+msgid "Active"
+msgstr "Faol"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:88
+msgid "Is active"
+msgstr "Faol"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:94
+#: .\templates\accounts\dash_pages\crud\users_list.html:45
+#: .\templates\accounts\dash_pages\crud\users_list.html:70
+#: .\templates\accounts\dash_pages\crud\users_list.html:99
+msgid "Staff"
+msgstr "Xodim"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:97
+msgid "Is staff"
+msgstr "Xodim"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:102
+msgid "gender"
+msgstr "jins"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:108
+#: .\templates\accounts\dash_pages\currency.html:3
+#: .\templates\accounts\dash_pages\home.html:41
+#: .\templates\accounts\dash_pages\profile_edit.html:162
+#: .\templates\accounts\dashboard.html:106
+#: .\templates\accounts\profile_edit.html:149
+#: .\templates\events\event_create.html:109
+#: .\templates\events\offer_thread.html:76
+#: .\templates\events\offers_inbox.html:178
+msgid "Currency"
+msgstr "Valyuta"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:114
+#: .\templates\accounts\dash_pages\home.html:154
+#: .\templates\accounts\dash_pages\profile_edit.html:171
+#: .\templates\accounts\profile.html:126
+#: .\templates\accounts\profile_detail.html:287
+#: .\templates\accounts\profile_edit.html:158
+msgid "Cost per hour"
+msgstr "Soatiga narx"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:120
+#: .\templates\accounts\dash_pages\home.html:160
+#: .\templates\accounts\dash_pages\profile_edit.html:182
+#: .\templates\accounts\profile.html:133
+#: .\templates\accounts\profile_detail.html:291
+#: .\templates\accounts\profile_edit.html:169
+msgid "Cost per 5 hours"
+msgstr "5 soatiga narx"
+
+#: .\templates\accounts\dash_pages\crud\users_edit.html:127
+msgid ">Save"
+msgstr ">Saqlash"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:5
+#: .\templates\accounts\dashboard.html:159
+msgid "Users"
+msgstr "Foydalanuvchilar"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:6
+msgid "Manage accounts (staff only)"
+msgstr "Hisoblarni boshqarish (faqat xodimlar uchun)"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:36
+msgid "All types"
+msgstr "Barcha turlari"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:37
+#: .\templates\accounts\dash_pages\switch_profile.html:31
+#: .\templates\accounts\dash_pages\switch_profile.html:58
+msgid "Personal"
+msgstr "Shaxsiy"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:38
+#: .\templates\accounts\dash_pages\favorites.html:59
+#: .\templates\accounts\dash_pages\switch_profile.html:38
+#: .\templates\accounts\dash_pages\switch_profile.html:68
+#: .\templates\accounts\profile.html:33
+#: .\templates\accounts\profile_detail.html:61
+#: .\templates\accounts\profile_detail.html:521
+msgid "Professional"
+msgstr "Professional"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:46
+msgid "Not staff"
+msgstr "Xodim emas"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:52
+msgid "All statuses"
+msgstr "Barcha holatlari"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:54
+#: .\templates\accounts\dash_pages\crud\users_list.html:109
+msgid "Inactive"
+msgstr "Faol emas"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:59
+msgid "Go"
+msgstr "O'tish"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:67
+#: .\templates\accounts\dash_pages\crud\users_list.html:101
+msgid "User"
+msgstr "Foydalanuvchi"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:69
+msgid "Type"
+msgstr "Turi"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:71
+#: .\templates\events\event_detail.html:35
+msgid "Status"
+msgstr "Holati"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:72
+msgid "Joined"
+msgstr "Qo'shilgan"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:154
+msgid "No users found"
+msgstr "Foydalanuvchilar topilmadi"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:174
+msgid "Prev"
+msgstr "Oldingi"
+
+#: .\templates\accounts\dash_pages\crud\users_list.html:183
+msgid "Next"
+msgstr "Keyingi"
+
+#: .\templates\accounts\dash_pages\currency.html:4
+msgid "View and update your account currency"
+msgstr "Hisobingiz valyutasini ko'rish va yangilash"
+
+#: .\templates\accounts\dash_pages\currency.html:11
+msgid "Current currency"
+msgstr "Joriy valyuta"
+
+#: .\templates\accounts\dash_pages\currency.html:16
+#: .\templates\accounts\dash_pages\home.html:43
+msgid "Not set"
+msgstr "O'rnatilmagan"
+
+#: .\templates\accounts\dash_pages\currency.html:30
+msgid "Select currency"
+msgstr "Valyutani tanlang"
+
+#: .\templates\accounts\dash_pages\currency.html:38
+msgid "Save currency"
+msgstr "Valyutani saqlash"
+
+#: .\templates\accounts\dash_pages\currency.html:45
+msgid "Available currencies"
+msgstr "Mavjud valyutalar"
+
+#: .\templates\accounts\dash_pages\favorites.html:5
+#: .\templates\accounts\dash_pages\home.html:194
+#: .\templates\accounts\dashboard.html:84
+msgid "Favorites"
+msgstr "Sevimlilar"
+
+#: .\templates\accounts\dash_pages\favorites.html:6
+msgid "Saved professionals"
+msgstr "Saqlangan professionallar"
+
+#: .\templates\accounts\dash_pages\favorites.html:49
+msgid "Location not set"
+msgstr "Manzil o'rnatilmagan"
+
+#: .\templates\accounts\dash_pages\favorites.html:65
+msgid "hour"
+msgstr "soat"
+
+#: .\templates\accounts\dash_pages\favorites.html:68
+msgid "Price not set"
+msgstr "Narx o'rnatilmagan"
+
+#: .\templates\accounts\dash_pages\favorites.html:78
+msgid "View"
+msgstr "Ko'rish"
+
+#: .\templates\accounts\dash_pages\favorites.html:90
+msgid "Remove"
+msgstr "O'chirish"
+
+#: .\templates\accounts\dash_pages\favorites.html:104
+msgid "You have no favorites yet"
+msgstr "Hali sevimlilaringiz yo'q"
+
+#: .\templates\accounts\dash_pages\favorites.html:106
+msgid "Browse professionals and tap “Favorite” to save them here."
+msgstr "Professionallarni ko'rib chiqing va ularni saqlash uchun \"Sevimli\" tugmasini bosing."
+
+#: .\templates\accounts\dash_pages\home.html:6
+msgid "Your dashboard"
+msgstr "Sizning boshqaruv paneli"
+
+#: .\templates\accounts\dash_pages\home.html:7
+msgid "Your profile and quick actions"
+msgstr "Sizning profilingiz va tezkor harakatlar"
+
+#: .\templates\accounts\dash_pages\home.html:36
+msgid "Account"
+msgstr "Hisob"
+
+#: .\templates\accounts\dash_pages\home.html:48
+#: .\templates\accounts\dashboard.html:37
+msgid "Balance"
+msgstr "Balans"
+
+#: .\templates\accounts\dash_pages\home.html:73
+#: .\templates\accounts\dash_pages\profile_edit.html:65
+#: .\templates\accounts\profile_edit.html:40
+msgid "Date of birth"
+msgstr "Tug'ilgan sana"
+
+#: .\templates\accounts\dash_pages\home.html:79
+#: .\templates\accounts\profile.html:62
+msgid "Experience"
+msgstr "Tajriba"
+
+#: .\templates\accounts\dash_pages\home.html:96
+#: .\templates\accounts\profile.html:55
+#: .\templates\events\event_detail.html:139
+msgid "No professions selected"
+msgstr "Kasblar tanlanmagan"
+
+#: .\templates\accounts\dash_pages\home.html:103
+#: .\templates\accounts\dash_pages\profile_edit.html:115
+#: .\templates\accounts\profile.html:73
+#: .\templates\accounts\profile_detail.html:230
+#: .\templates\accounts\profile_edit.html:94
+msgid "About me"
+msgstr "Men haqimda"
+
+#: .\templates\accounts\dash_pages\home.html:111
+#: .\templates\accounts\dash_pages\language.html:11
+#: .\templates\accounts\dash_pages\language.html:47
+#: .\templates\accounts\profile.html:91
+msgid "Communication languages"
+msgstr "Muloqot tillari"
+
+#: .\templates\accounts\dash_pages\home.html:119
+#: .\templates\accounts\dash_pages\home.html:132
+#: .\templates\accounts\dash_pages\language.html:19
+#: .\templates\accounts\dash_pages\language.html:32
+#: .\templates\accounts\profile.html:99 .\templates\accounts\profile.html:112
+#: .\templates\accounts\profile_detail.html:250
+#: .\templates\accounts\profile_detail.html:259
+msgid "None selected"
+msgstr "Hech narsa tanlanmagan"
+
+#: .\templates\accounts\dash_pages\home.html:124
+#: .\templates\accounts\dash_pages\language.html:24
+#: .\templates\accounts\dash_pages\language.html:55
+#: .\templates\accounts\profile.html:104
+msgid "Event languages"
+msgstr "Tadbir tillari"
+
+#: .\templates\accounts\dash_pages\home.html:138
+#: .\templates\accounts\profile.html:151
+#: .\templates\accounts\profile_detail.html:267
+msgid "Accepted event categories"
+msgstr "Qabul qilingan tadbir toifalari"
+
+#: .\templates\accounts\dash_pages\home.html:146
+msgid "No accepted categories selected."
+msgstr "Qabul qilingan toifalar tanlanmagan."
+
+#: .\templates\accounts\dash_pages\home.html:150
+#: .\templates\accounts\dash_pages\profile_edit.html:159
+#: .\templates\accounts\profile.html:121
+#: .\templates\accounts\profile_detail.html:282
+#: .\templates\accounts\profile_edit.html:146
+msgid "Pricing"
+msgstr "Narxlar"
+
+#: .\templates\accounts\dash_pages\home.html:167
+#: .\templates\accounts\profile.html:140
+msgid "Pricing has not been set"
+msgstr "Narxlar o'rnatilmagan"
+
+#: .\templates\accounts\dash_pages\home.html:174
+#: .\templates\accounts\profile_detail.html:74 .\templates\base.html:75
+#: .\templates\events\calendar.html:12
+msgid "Calendar"
+msgstr "Kalendar"
+
+#: .\templates\accounts\dash_pages\home.html:175
+msgid "Busy days, bookings, availability"
+msgstr "Band kunlar, bronlar, mavjudlik"
+
+#: .\templates\accounts\dash_pages\home.html:179
+#: .\templates\events\event_detail.html:23 .\templates\events\my_offers.html:31
+#: .\templates\events\offers_inbox.html:12
+msgid "Offers"
+msgstr "Takliflar"
+
+#: .\templates\accounts\dash_pages\home.html:180
+msgid "Chats and booking requests"
+msgstr "Chatlar va bron so'rovlari"
+
+#: .\templates\accounts\dash_pages\home.html:184
+msgid "Events"
+msgstr "Tadbirlar"
+
+#: .\templates\accounts\dash_pages\home.html:185
+msgid "Browse posted events"
+msgstr "E'lon qilingan tadbirlarni ko'rish"
+
+#: .\templates\accounts\dash_pages\home.html:195
+msgid "Saved profiles and events"
+msgstr "Saqlangan profillar va tadbirlar"
+
+#: .\templates\accounts\dash_pages\language.html:3
+#: .\templates\accounts\dashboard.html:95 .\templates\home.html:119
+msgid "Language"
+msgstr "Til"
+
+#: .\templates\accounts\dash_pages\language.html:4
+msgid "Update your communication and event languages"
+msgstr "Muloqot va tadbir tillaringizni yangilang"
+
+#: .\templates\accounts\dash_pages\language.html:63
+msgid "Save languages"
+msgstr "Tillarni saqlash"
+
+#: .\templates\accounts\dash_pages\language.html:70
+msgid "Available languages"
+msgstr "Mavjud tillar"
+
+#: .\templates\accounts\dash_pages\language.html:79
+msgid "No languages found"
+msgstr "Tillar topilmadi"
+
+#: .\templates\accounts\dash_pages\partials\media_edit.html:33
+msgid "Select items to delete"
+msgstr "O'chirish uchun elementlarni tanlang"
+
+#: .\templates\accounts\dash_pages\partials\media_edit.html:77
+msgid "Upload more"
+msgstr "Ko'proq yuklash"
+
+#: .\templates\accounts\dash_pages\partials\media_edit.html:96
+msgid "Save changes"
+msgstr "O'zgarishlarni saqlash"
+
+#: .\templates\accounts\dash_pages\partials\media_section.html:37
+#: .\templates\accounts\dash_pages\partials\media_section.html:73
+#: .\templates\accounts\dash_pages\partials\media_section.html:117
+msgid "No items yet"
+msgstr "Hali elementlar yo'q"
+
+#: .\templates\accounts\dash_pages\partials\media_section.html:67
+#: .\templates\accounts\profile.html:216
+msgid "Your browser does not support the audio element"
+msgstr "Brauzeringiz audio elementni qo'llab-quvvatlamaydi"
+
+#: .\templates\accounts\dash_pages\partials\media_section.html:106
+msgid "Your browser does not support the video tag."
+msgstr "Brauzeringiz video tegini qo'llab-quvvatlamaydi."
+
+#: .\templates\accounts\dash_pages\profile_edit.html:7
+#: .\templates\accounts\dashboard.html:73
+msgid "Edit profile"
+msgstr "Profili tahrirlash"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:8
+msgid "Update your information, media and pricing"
+msgstr "Ma'lumotlaringiz, media va narxlaringizni yangilang"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:29
+#: .\templates\accounts\profile_edit.html:22
+msgid "Account details"
+msgstr "Hisob tafsilotlari"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:49
+#: .\templates\events\event_create.html:51
+msgid "country"
+msgstr "davlat"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:60
+msgid "address"
+msgstr "manzil"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:70
+#: .\templates\accounts\profile_edit.html:47
+msgid "Day"
+msgstr "Kun"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:75
+#: .\templates\accounts\profile_edit.html:52
+msgid "Month"
+msgstr "Oy"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:80
+#: .\templates\accounts\profile_edit.html:57
+msgid "Year"
+msgstr "Yil"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:95
+#: .\templates\accounts\profile_edit.html:72
+msgid "Years of experience"
+msgstr "Tajriba yillari"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:100
+#: .\templates\accounts\profile_edit.html:79
+msgid "Years"
+msgstr "Yil"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:119
+#: .\templates\accounts\profile_edit.html:98
+msgid "Maximum 1000 words"
+msgstr "Maksimal 1000 so'z"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:121
+#: .\templates\accounts\profile_edit.html:100
+msgid "words"
+msgstr "so'z"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:131
+#: .\templates\accounts\profile_edit.html:110
+msgid "Communication language"
+msgstr "Muloqot tili"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:133
+#: .\templates\accounts\dash_pages\profile_edit.html:142
+#: .\templates\accounts\dash_pages\profile_edit.html:151
+#: .\templates\accounts\profile_edit.html:112
+#: .\templates\accounts\profile_edit.html:122
+msgid "Hold Ctrl (Windows) / Cmd (Mac) to select multiple"
+msgstr "Bir nechtasini tanlash uchun Ctrl (Windows) / Cmd (Mac) tugmasini ushlab turing"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:140
+#: .\templates\accounts\profile_edit.html:120
+msgid "Language of the event"
+msgstr "Tadbir tili"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:149
+#: .\templates\accounts\profile_edit.html:130
+msgid "Event categories you accept"
+msgstr "Qabul qiladigan tadbir toifalari"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:213
+#: .\templates\accounts\profile_edit.html:198
+msgid "Upload professional pictures"
+msgstr "Professional rasmlarni yuklash"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:215
+#: .\templates\accounts\profile_edit.html:202
+msgid "Professional images"
+msgstr "Professional rasmlar"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:217
+#: .\templates\accounts\profile_edit.html:205
+msgid "You can upload multiple professional images"
+msgstr "Bir nechta professional rasmlarni yuklashingiz mumkin"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:221
+#: .\templates\accounts\profile_edit.html:210
+msgid "Upload normal pictures"
+msgstr "Oddiy rasmlarni yuklash"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:223
+#: .\templates\accounts\profile_edit.html:214
+msgid "Normal images"
+msgstr "Oddiy rasmlar"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:225
+#: .\templates\accounts\profile_edit.html:217
+msgid "You can upload multiple normal images"
+msgstr "Bir nechta oddiy rasmlarni yuklashingiz mumkin"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:229
+#: .\templates\accounts\profile_edit.html:222
+msgid "Upload Audio Acapella Covers"
+msgstr "Audio Acapella Coverlarni yuklash"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:231
+#: .\templates\accounts\profile_edit.html:226
+msgid "Audio files"
+msgstr "Audio fayllar"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:233
+#: .\templates\accounts\profile_edit.html:229
+msgid "Accepted formats: mp3, wav"
+msgstr "Qabul qilingan formatlar: mp3, wav"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:237
+#: .\templates\accounts\profile_edit.html:234
+msgid "Upload Video Acapella Covers"
+msgstr "Video Acapella Coverlarni yuklash"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:239
+msgid "Video files"
+msgstr "Video fayllar"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:241
+#: .\templates\accounts\profile_edit.html:241
+msgid "Accepted formats: mp4, webm"
+msgstr "Qabul qilingan formatlar: mp4, webm"
+
+#: .\templates\accounts\dash_pages\profile_edit.html:245
+#: .\templates\accounts\profile_edit.html:246
+msgid "Save Changes"
+msgstr "O'zgarishlarni saqlash"
+
+#: .\templates\accounts\dash_pages\support.html:3
+#: .\templates\accounts\dashboard.html:128
+msgid "Support"
+msgstr "Yordam"
+
+#: .\templates\accounts\dash_pages\support.html:4
+#: .\templates\accounts\dash_pages\terms.html:4
+msgid "Temporary page"
+msgstr "Vaqtincha sahifa"
+
+#: .\templates\accounts\dash_pages\support.html:7
+msgid "Support options will appear here later"
+msgstr "Yordam opsiyalari keyinroq bu yerda paydo bo'ladi"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:5
+#: .\templates\accounts\dashboard.html:62
+msgid "Switch profile"
+msgstr "Profili almashtirish"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:7
+msgid "Current"
+msgstr "Joriy"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:24
+msgid "Choose what you want to switch to"
+msgstr "Qaysi profilga o'tmoqchi ekanligingizni tanlang"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:58
+#: .\templates\accounts\dash_pages\switch_profile.html:68
+msgid "Switch to"
+msgstr "O'tish"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:60
+msgid ""
+"Your professions will be cleared (you can re-add them if you switch back to "
+"Professional)"
+msgstr "Kasblaringiz tozalanadi (Professionalga qaytsangiz, ularni qayta qo'shishingiz mumkin)"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:64
+msgid "Confirm switch to Personal"
+msgstr "Shaxsiy profilga o'tishni tasdiqlash"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:70
+msgid "Select at least one profession"
+msgstr "Kamida bitta kasbni tanlang"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:89
+msgid "No professions found"
+msgstr "Kasblar topilmadi"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:96
+msgid "Confirm switch to Professional"
+msgstr "Professional profilga o'tishni tasdiqlash"
+
+#: .\templates\accounts\dash_pages\switch_profile.html:102
+msgid "Select an option above to continue"
+msgstr "Davom etish uchun yuqoridagi variantlardan birini tanlang"
+
+#: .\templates\accounts\dash_pages\terms.html:3
+#: .\templates\accounts\dashboard.html:117
+msgid "Terms & policies"
+msgstr "Shartlar va siyosatlar"
+
+#: .\templates\accounts\dash_pages\terms.html:7
+msgid "Terms content will appear here later"
+msgstr "Shartlar tarkibi keyinroq bu yerda paydo bo'ladi"
+
+#: .\templates\accounts\dashboard.html:134
+msgid "Our Telegram"
+msgstr "Bizning Telegram"
+
+#: .\templates\accounts\dashboard.html:140
+msgid "Our Instagram"
+msgstr "Bizning Instagram"
+
+#: .\templates\accounts\dashboard.html:170
+msgid "Log out"
+msgstr "Chiqish"
+
+#: .\templates\accounts\login.html:10 .\templates\accounts\login.html:15
+#: .\templates\accounts\profile_detail.html:37
+#: .\templates\accounts\register.html:18 .\templates\base.html:129
+msgid "Login"
+msgstr "Kirish"
+
+#: .\templates\accounts\login.html:18
+msgid "Continue with Google"
+msgstr "Google orqali davom etish"
+
+#: .\templates\accounts\login.html:21
+msgid "Don't have an account?"
+msgstr "Hisobingiz yo'qmi?"
+
+#: .\templates\accounts\login.html:21 .\templates\accounts\register.html:14
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+#: .\templates\accounts\news_list.html:10
+msgid "Updates from"
+msgstr "Yangiliklar"
+
+#: .\templates\accounts\news_list.html:38
+msgid "No news yet"
+msgstr "Hali yangiliklar yo'q"
+
+#: .\templates\accounts\profession_create.html:9
+msgid "Create Profession"
+msgstr "Kasb yaratish"
+
+#: .\templates\accounts\profession_create.html:14
+msgid "Save Profession"
+msgstr "Kasbni saqlash"
+
+#: .\templates\accounts\profile.html:65
+msgid "year"
+msgstr "yil"
+
+#: .\templates\accounts\profile.html:65
+msgid "of experience"
+msgstr "tajriba"
+
+#: .\templates\accounts\profile.html:80
+msgid "No description provided yet"
+msgstr "Hali tavsif kiritilmagan"
+
+#: .\templates\accounts\profile.html:147
+#: .\templates\accounts\profile_edit.html:10
+msgid "Edit Profile"
+msgstr "Profili tahrirlash"
+
+#: .\templates\accounts\profile.html:158
+msgid "No accepted event categories selected"
+msgstr "Qabul qilingan tadbir toifalari tanlanmagan"
+
+#: .\templates\accounts\profile.html:173
+msgid "No professional photos uploaded yet"
+msgstr "Hali professional fotosuratlar yuklanmagan"
+
+#: .\templates\accounts\profile.html:176
+msgid "Add professional photo"
+msgstr "Professional fotosurat qo'shish"
+
+#: .\templates\accounts\profile.html:183
+msgid "Normal pictures"
+msgstr "Oddiy rasmlar"
+
+#: .\templates\accounts\profile.html:195
+msgid "No Normal photos uploaded yet"
+msgstr "Hali oddiy fotosuratlar yuklanmagan"
+
+#: .\templates\accounts\profile.html:198
+msgid "Add Normal photo"
+msgstr "Oddiy fotosurat qo'shish"
+
+#: .\templates\accounts\profile.html:204
+msgid "Audio Acapella Covers"
+msgstr "Audio Acapella Coverlar"
+
+#: .\templates\accounts\profile.html:223
+msgid "No audio covers uploaded yet"
+msgstr "Hali audio coverlar yuklanmagan"
+
+#: .\templates\accounts\profile.html:224
+msgid "Add audio cover"
+msgstr "Audio cover qo'shish"
+
+#: .\templates\accounts\profile.html:231
+msgid "Video Acapella Covers"
+msgstr "Video Acapella Coverlar"
+
+#: .\templates\accounts\profile.html:244
+msgid "Your browser does not support the video tag"
+msgstr "Brauzeringiz video tegini qo'llab-quvvatlamaydi"
+
+#: .\templates\accounts\profile.html:253
+msgid "No video covers uploaded yet"
+msgstr "Hali video coverlar yuklanmagan"
+
+#: .\templates\accounts\profile.html:254
+msgid "Add video cover"
+msgstr "Video cover qo'shish"
+
+#: .\templates\accounts\profile_detail.html:13
+msgid "Artist profile"
+msgstr "Artist profili"
+
+#: .\templates\accounts\profile_detail.html:69
+msgid "Overview"
+msgstr "Umumiy ko'rinish"
+
+#: .\templates\accounts\profile_detail.html:88
+msgid "Availability"
+msgstr "Mavjudlik"
+
+#: .\templates\accounts\profile_detail.html:95
+#: .\templates\events\calendar.html:19
+msgid "Mon"
+msgstr "Dush"
+
+#: .\templates\accounts\profile_detail.html:95
+#: .\templates\events\calendar.html:19
+msgid "Tue"
+msgstr "Sesh"
+
+#: .\templates\accounts\profile_detail.html:95
+#: .\templates\events\calendar.html:19
+msgid "Wed"
+msgstr "Chor"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Thu"
+msgstr "Pay"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Fri"
+msgstr "Jum"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Sat"
+msgstr "Shan"
+
+#: .\templates\accounts\profile_detail.html:96
+#: .\templates\events\calendar.html:20
+msgid "Sun"
+msgstr "Yak"
+
+#: .\templates\accounts\profile_detail.html:157
+msgid "Day details"
+msgstr "Kun tafsilotlari"
+
+#: .\templates\accounts\profile_detail.html:165
+msgid "Booked events"
+msgstr "Bron qilingan tadbirlar"
+
+#: .\templates\accounts\profile_detail.html:170
+msgid "Unavailable"
+msgstr "Mavjud emas"
+
+#: .\templates\accounts\profile_detail.html:175
+msgid "No events or unavailable times for this day"
+msgstr "Bugungi kun uchun tadbirlar yoki mavjud bo'lmagan vaqtlar yo'q"
+
+#: .\templates\accounts\profile_detail.html:182
+msgid "Request booking"
+msgstr "Bron so'rash"
+
+#: .\templates\accounts\profile_detail.html:183
+msgid "Pick a time range for this day"
+msgstr "Bugungi kun uchun vaqt oralig'ini tanlang"
+
+#: .\templates\accounts\profile_detail.html:187
+#: .\templates\events\calendar.html:107
+msgid "Start time"
+msgstr "Boshlanish vaqti"
+
+#: .\templates\accounts\profile_detail.html:198
+#: .\templates\events\calendar.html:123
+msgid "End time"
+msgstr "Tugash vaqti"
+
+#: .\templates\accounts\profile_detail.html:212
+#: .\templates\events\event_detail.html:179
+#: .\templates\events\events_list.html:298
+msgid "Make offer"
+msgstr "Taklif berish"
+
+#: .\templates\accounts\profile_detail.html:234
+msgid "No description yet"
+msgstr "Hali tavsif yo'q"
+
+#: .\templates\accounts\profile_detail.html:245
+msgid "Communication"
+msgstr "Muloqot"
+
+#: .\templates\accounts\profile_detail.html:254
+msgid "Event language"
+msgstr "Tadbir tili"
+
+#: .\templates\accounts\profile_detail.html:275
+msgid "No accepted categories selected"
+msgstr "Qabul qilingan toifalar tanlanmagan"
+
+#: .\templates\accounts\profile_detail.html:296
+msgid "No pricing set"
+msgstr "Narxlar o'rnatilmagan"
+
+#: .\templates\accounts\profile_detail.html:302
+msgid "Studio photos"
+msgstr "Studiya fotosuratlari"
+
+#: .\templates\accounts\profile_detail.html:310
+#: .\templates\accounts\profile_detail.html:332
+#: .\templates\accounts\profile_media.html:38
+msgid "No photos uploaded yet"
+msgstr "Hali fotosuratlar yuklanmagan"
+
+#: .\templates\accounts\profile_detail.html:317
+msgid "View all studio photos"
+msgstr "Barcha studiya fotosuratlarini ko'rish"
+
+#: .\templates\accounts\profile_detail.html:324
+msgid "Live / work photos"
+msgstr "Jonli / ish fotosuratlari"
+
+#: .\templates\accounts\profile_detail.html:339
+msgid "View all work photos"
+msgstr "Barcha ish fotosuratlarini ko'rish"
+
+#: .\templates\accounts\profile_detail.html:346
+msgid "Audio performances"
+msgstr "Audio ijrolar"
+
+#: .\templates\accounts\profile_detail.html:353
+#: .\templates\accounts\profile_media.html:48
+msgid "Audio cover"
+msgstr "Audio cover"
+
+#: .\templates\accounts\profile_detail.html:354
+#: .\templates\accounts\profile_media.html:49
+msgid "Tap to play"
+msgstr "O'ynatish uchun bosing"
+
+#: .\templates\accounts\profile_detail.html:361
+#: .\templates\accounts\profile_media.html:56
+msgid "No audio uploaded yet"
+msgstr "Hali audio yuklanmagan"
+
+#: .\templates\accounts\profile_detail.html:368
+msgid "View all audio"
+msgstr "Barcha audiolarni ko'rish"
+
+#: .\templates\accounts\profile_detail.html:375
+msgid "Video performances"
+msgstr "Video ijrolar"
+
+#: .\templates\accounts\profile_detail.html:385
+#: .\templates\accounts\profile_media.html:69
+msgid "No videos uploaded yet"
+msgstr "Hali videolar yuklanmagan"
+
+#: .\templates\accounts\profile_detail.html:392
+msgid "View all videos"
+msgstr "Barcha videolarni ko'rish"
+
+#: .\templates\accounts\profile_detail.html:400
+msgid "Reviews"
+msgstr "Sharhlar"
+
+#: .\templates\accounts\profile_detail.html:406
+msgid "You already reviewed this profile"
+msgstr "Siz ushbu profilni allaqachon baholagansiz"
+
+#: .\templates\accounts\profile_detail.html:413
+msgid "Rating"
+msgstr "Reyting"
+
+#: .\templates\accounts\profile_detail.html:421
+msgid "Comment"
+msgstr "Izoh"
+
+#: .\templates\accounts\profile_detail.html:428
+msgid "Submit review"
+msgstr "Sharh yuborish"
+
+#: .\templates\accounts\profile_detail.html:460
+msgid "No comment"
+msgstr "Izohsiz"
+
+#: .\templates\accounts\profile_detail.html:464
+msgid "No reviews yet"
+msgstr "Hali sharhlar yo'q"
+
+#: .\templates\accounts\profile_detail.html:473
+msgid "Similar professionals"
+msgstr "O'xshash professionallar"
+
+#: .\templates\accounts\profile_detail.html:539
+msgid "No similar professionals yet"
+msgstr "Hali o'xshash professionallar yo'q"
+
+#: .\templates\accounts\profile_edit.html:136
+msgid " Hold Ctrl (Windows) / Cmd (Mac) to select multiple"
+msgstr " Bir nechtasini tanlash uchun Ctrl (Windows) / Cmd (Mac) tugmasini ushlab turing"
+
+#: .\templates\accounts\profile_edit.html:238
+msgid " Video files"
+msgstr " Video fayllar"
+
+#: .\templates\accounts\profile_media.html:11
+msgid "Media"
+msgstr "Media"
+
+#: .\templates\accounts\register.html:9
+msgid "Create Account"
+msgstr "Hisob yaratish"
+
+#: .\templates\accounts\register.html:18
+msgid "Already have an account?"
+msgstr "Allaqachon hisobingiz bormi?"
+
+#: .\templates\base.html:67
+msgid "Home"
+msgstr "Bosh sahifa"
+
+#: .\templates\base.html:83
+msgid "Chats"
+msgstr "Chatlar"
+
+#: .\templates\base.html:90
+msgid "events"
+msgstr "tadbirlar"
+
+#: .\templates\events\calendar.html:75
+msgid "Mark unavailable days"
+msgstr "Mavjud bo'lmagan kunlarni belgilash"
+
+#: .\templates\events\calendar.html:77
+msgid "Click a start day, then click an end day to select a range."
+msgstr "Boshlanish kunini bosing, keyin oralig'ni tanlash uchun tugash kunini bosing."
+
+#: .\templates\events\calendar.html:86
+msgid "Selected:"
+msgstr "Tanlangan:"
+
+#: .\templates\events\calendar.html:87
+msgid "None"
+msgstr "Hech narsa"
+
+#: .\templates\events\calendar.html:95
+msgid "Busy all day"
+msgstr "Kun bo'yi band"
+
+#: .\templates\events\calendar.html:100
+msgid "Specific time"
+msgstr "Muayyan vaqt"
+
+#: .\templates\events\calendar.html:140
+msgid "Note (optional)"
+msgstr "Eslatma (ixtiyoriy)"
+
+#: .\templates\events\calendar.html:152
+msgid "Remove busy time"
+msgstr "Band vaqtni olib tashlash"
+
+#: .\templates\events\category_create.html:9
+msgid "Create event category"
+msgstr "Tadbir toifasini yaratish"
+
+#: .\templates\events\category_create.html:17
+msgid "Category name"
+msgstr "Toifa nomi"
+
+#: .\templates\events\category_create.html:23
+msgid "Parent category (optional)"
+msgstr "Ota toifa (ixtiyoriy)"
+
+#: .\templates\events\category_create.html:28
+msgid "Create category"
+msgstr "Toifa yaratish"
+
+#: .\templates\events\event_create.html:9
+#: .\templates\events\event_create.html:137
+#: .\templates\events\events_list.html:20
+msgid "Create event"
+msgstr "Tadbir yaratish"
+
+#: .\templates\events\event_create.html:18
+msgid "Event name"
+msgstr "Tadbir nomi"
+
+#: .\templates\events\event_create.html:28
+msgid "Start date & time"
+msgstr "Boshlanish sanasi va vaqti"
+
+#: .\templates\events\event_create.html:36
+msgid "End date & time"
+msgstr "Tugash sanasi va vaqti"
+
+#: .\templates\events\event_create.html:59
+msgid "city"
+msgstr "shahar"
+
+#: .\templates\events\event_create.html:67
+#: .\templates\events\event_detail.html:83
+#: .\templates\events\events_list.html:109
+msgid "Location"
+msgstr "Manzil"
+
+#: .\templates\events\event_create.html:78
+#: .\templates\events\event_detail.html:13
+#: .\templates\events\events_list.html:243 .\templates\events\my_offers.html:22
+msgid "Created by"
+msgstr "Yaratgan"
+
+#: .\templates\events\event_create.html:87
+#: .\templates\events\event_detail.html:101
+msgid "Event type"
+msgstr "Tadbir turi"
+
+#: .\templates\events\event_create.html:93
+msgid "Create one"
+msgstr "Yaratish"
+
+#: .\templates\events\event_create.html:99
+#: .\templates\events\event_detail.html:129
+#: .\templates\events\events_list.html:279
+msgid "Required professions"
+msgstr "Talab qilinadigan kasblar"
+
+#: .\templates\events\event_create.html:104
+msgid "Hold Ctrl (Windows) / Cmd (Mac) to select multiple."
+msgstr "Bir nechtasini tanlash uchun Ctrl (Windows) / Cmd (Mac) tugmasini ushlab turing."
+
+#: .\templates\events\event_create.html:114
+msgid "If not selected, it will default to your profile currency (if set)"
+msgstr "Agar tanlanmagan bo'lsa, profil valyutangizga o'tadi (agar o'rnatilgan bo'lsa)"
+
+#: .\templates\events\event_create.html:120
+#: .\templates\events\event_detail.html:151
+msgid "Event budget"
+msgstr "Tadbir byudjeti"
+
+#: .\templates\events\event_create.html:128
+#: .\templates\events\event_detail.html:158
+msgid "Advance payment"
+msgstr "Oldindan to'lov"
+
+#: .\templates\events\event_detail.html:37
+msgid "Locked (offer accepted)"
+msgstr "Qulflangan (taklif qabul qilindi)"
+
+#: .\templates\events\event_detail.html:39
+msgid "Open"
+msgstr "Ochiq"
+
+#: .\templates\events\event_detail.html:51
+msgid "Accepted professional:"
+msgstr "Qabul qilingan professional:"
+
+#: .\templates\events\event_detail.html:55
+msgid ""
+"This event is locked for new offers, but the accepted thread can continue "
+"chatting."
+msgstr "Ushbu tadbir yangi takliflar uchun qulflangan, ammo qabul qilingan chat davom etishi mumkin."
+
+#: .\templates\events\event_detail.html:64
+msgid "Start"
+msgstr "Boshlanish"
+
+#: .\templates\events\event_detail.html:71
+msgid "End"
+msgstr "Tugash"
+
+#: .\templates\events\event_detail.html:94
+msgid "View on Google Maps"
+msgstr "Google Maps-da ko'rish"
+
+#: .\templates\events\event_detail.html:147
+#: .\templates\events\events_list.html:153
+#: .\templates\events\events_list.html:259
+msgid "Budget"
+msgstr "Byudjet"
+
+#: .\templates\events\event_detail.html:164
+msgid "No currency set"
+msgstr "Valyuta o'rnatilmagan"
+
+#: .\templates\events\event_detail.html:175
+msgid "Event locked (offers closed)"
+msgstr "Tadbir qulflangan (takliflar yopilgan)"
+
+#: .\templates\events\event_detail.html:186
+msgid "View offer threads"
+msgstr "Taklif chatlarini ko'rish"
+
+#: .\templates\events\events_list.html:11
+msgid "Browse available events and required professions"
+msgstr "Mavjud tadbirlar va talab qilinadigan kasblarni ko'rish"
+
+#: .\templates\events\events_list.html:17
+msgid "Filter"
+msgstr "Filtr"
+
+#: .\templates\events\events_list.html:26
+msgid "Upcoming"
+msgstr "Kelejakdagi"
+
+#: .\templates\events\events_list.html:29
+msgid "All"
+msgstr "Barchasi"
+
+#: .\templates\events\events_list.html:32
+msgid "Past"
+msgstr "O'tgan"
+
+#: .\templates\events\events_list.html:46
+msgid "Filter events"
+msgstr "Tadbirlarni filtrlash"
+
+#: .\templates\events\events_list.html:47
+msgid "Search and narrow down results"
+msgstr "Qidirish va natijalarni toraytirish"
+
+#: .\templates\events\events_list.html:61 .\templates\home.html:29
+msgid "Search"
+msgstr "Qidirish"
+
+#: .\templates\events\events_list.html:82
+msgid "Near me (uses my profile city/country)"
+msgstr "Yonimda (profilimdagi shahar/davlatdan foydalanadi)"
+
+#: .\templates\events\events_list.html:89
+msgid "Country"
+msgstr "Davlat"
+
+#: .\templates\events\events_list.html:99
+msgid "City"
+msgstr "Shahar"
+
+#: .\templates\events\events_list.html:120
+msgid "Event category"
+msgstr "Tadbir toifasi"
+
+#: .\templates\events\events_list.html:124
+msgid "All categories"
+msgstr "Barcha toifalar"
+
+#: .\templates\events\events_list.html:136
+msgid "Required profession"
+msgstr "Talab qilinadigan kasb"
+
+#: .\templates\events\events_list.html:140
+msgid "Any profession"
+msgstr "Har qanday kasb"
+
+#: .\templates\events\events_list.html:195 .\templates\home.html:153
+msgid "Reset"
+msgstr "Qayta o'rnatish"
+
+#: .\templates\events\events_list.html:199 .\templates\home.html:154
+msgid "Apply"
+msgstr "Qo'llash"
+
+#: .\templates\events\events_list.html:218
+msgid "Event"
+msgstr "Tadbir"
+
+#: .\templates\events\events_list.html:229
+#: .\templates\events\events_list.html:233
+msgid "Offers received"
+msgstr "Qabul qilingan takliflar"
+
+#: .\templates\events\events_list.html:268
+msgid "Advance"
+msgstr "Oldindan to'lov"
+
+#: .\templates\events\events_list.html:285
+msgid "No professions specified"
+msgstr "Kasblar ko'rsatilmagan"
+
+#: .\templates\events\events_list.html:291
+msgid "View details"
+msgstr "Tafsilotlarni ko'rish"
+
+#: .\templates\events\events_list.html:296
+msgid "Event locked"
+msgstr "Tadbir qulflangan"
+
+#: .\templates\events\events_list.html:312
+msgid "No events found"
+msgstr "Tadbirlar topilmadi"
+
+#: .\templates\events\my_offers.html:9
+msgid "My offers"
+msgstr "Mening takliflarim"
+
+#: .\templates\events\my_offers.html:10
+msgid "Browse events"
+msgstr "Tadbirlarni ko'rish"
+
+#: .\templates\events\my_offers.html:23 .\templates\events\offers_inbox.html:25
+#: .\templates\events\offers_inbox.html:67
+msgid "Locked"
+msgstr "Qulflangan"
+
+#: .\templates\events\my_offers.html:30
+msgid "Open chat"
+msgstr "Chatni ochish"
+
+#: .\templates\events\my_offers.html:39
+msgid "You have not sent any offers yet"
+msgstr "Siz hali hech qanday taklif yubormagansiz"
+
+#: .\templates\events\offer_thread.html:10
+msgid "Booking offers"
+msgstr "Bron takliflari"
+
+#: .\templates\events\offer_thread.html:63
+msgid "No offers yet."
+msgstr "Hali takliflar yo'q."
+
+#: .\templates\events\offer_thread.html:72
+msgid "Your offer"
+msgstr "Sizning taklifingiz"
+
+#: .\templates\events\offer_thread.html:82
+#: .\templates\events\offers_inbox.html:185
+msgid "Send offer"
+msgstr "Taklif yuborish"
+
+#: .\templates\events\offer_thread.html:90
+#: .\templates\events\offers_inbox.html:198
+msgid "Accept"
+msgstr "Qabul qilish"
+
+#: .\templates\events\offer_thread.html:94
+#: .\templates\events\offers_inbox.html:206
+msgid "Reject"
+msgstr "Rad etish"
+
+#: .\templates\events\offer_thread.html:101
+msgid "Counter offer (in event currency)"
+msgstr "Qarshi taklif (tadbir valyutasida)"
+
+#: .\templates\events\offer_thread.html:107
+#: .\templates\events\offers_inbox.html:222
+msgid "Send counter offer"
+msgstr "Qarshi taklif yuborish"
+
+#: .\templates\events\offers_inbox.html:13
+msgid "Sent & received"
+msgstr "Yuborilgan va qabul qilingan"
+
+#: .\templates\events\offers_inbox.html:30
+msgid "Accepted"
+msgstr "Qabul qilingan"
+
+#: .\templates\events\offers_inbox.html:37
+msgid "From:"
+msgstr "Kimdan:"
+
+#: .\templates\events\offers_inbox.html:40
+msgid "To:"
+msgstr "Kimga:"
+
+#: .\templates\events\offers_inbox.html:50
+msgid "No offer threads yet."
+msgstr "Hali taklif chatlari yo'q."
+
+#: .\templates\events\offers_inbox.html:64
+msgid "Event currency"
+msgstr "Tadbir valyutasi"
+
+#: .\templates\events\offers_inbox.html:69
+msgid "Accepted thread"
+msgstr "Qabul qilingan chat"
+
+#: .\templates\events\offers_inbox.html:71
+msgid "Read-only"
+msgstr "Faqat o'qish"
+
+#: .\templates\events\offers_inbox.html:79
+#: .\templates\events\offers_inbox.html:81
+msgid "Chat with"
+msgstr "Bilan chat"
+
+#: .\templates\events\offers_inbox.html:127
+msgid "No messages yet."
+msgstr "Hali xabarlar yo'q."
+
+#: .\templates\events\offers_inbox.html:150
+msgid "Send message"
+msgstr "Xabar yuborish"
+
+#: .\templates\events\offers_inbox.html:153
+msgid ""
+"Offers are locked, but you can continue chatting in the accepted thread."
+msgstr "Takliflar qulflangan, ammo qabul qilingan chatda davom etishingiz mumkin."
+
+#: .\templates\events\offers_inbox.html:159
+msgid ""
+"This event is locked. Only the accepted offer thread can continue chatting."
+msgstr "Ushbu tadbir qulflangan. Faqat qabul qilingan taklif chatida davom etishingiz mumkin."
+
+#: .\templates\events\offers_inbox.html:174
+msgid "Amount"
+msgstr "Miqdor"
+
+#: .\templates\events\offers_inbox.html:216
+msgid "Counter amount (event currency)"
+msgstr "Qarshi miqdor (tadbir valyutasida)"
+
+#: .\templates\events\offers_inbox.html:231
+msgid "Select an offer thread to view messages."
+msgstr "Xabarlarni ko'rish uchun taklif chatini tanlang."
+
+#: .\templates\home.html:8
+msgid "Artist"
+msgstr "Artist"
+
+#: .\templates\home.html:40
+msgid "Clear"
+msgstr "Tozalash"
+
+#: .\templates\home.html:53
+msgid "Filters"
+msgstr "Filtrlash"
+
+#: .\templates\home.html:65
+msgid "Direction"
+msgstr "Yo'nalish"
+
+#: .\templates\home.html:68
+msgid "Select"
+msgstr "Tanlash"
+
+#: .\templates\home.html:82
+msgid "Price per hour"
+msgstr "Soatiga narx"
+
+#: .\templates\home.html:133
+msgid "Gender"
+msgstr "Jins"
+
+#: .\templates\home.html:137
+msgid "Male"
+msgstr "Erkak"
+
+#: .\templates\home.html:141
+msgid "Female"
+msgstr "Ayol"
+
+#: .\templates\home.html:145
+msgid "Any"
+msgstr "Har qanday"
+
+#: .\templates\home.html:227
+msgid "No professionals yet."
+msgstr "Hali professionallar yo'q."
