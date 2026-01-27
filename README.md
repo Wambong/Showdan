@@ -58,3 +58,22 @@ Shwdowdawdnwd.32wd
 # Static assets are under:
 `` static/css/app.css``
 `` static/js/main.js``
+
+```commandline
+curl -X 'POST' \
+  'http://127.0.0.1:8000/en/api/accounts/auth/login/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-CSRFTOKEN: shDNW46qAjEvBb3GHKLjCjTxGxf0dNxoQ76nhU2NxXZnehJu9oI1ZBMQtt1fakZb' \
+  -d '{
+  "email": "showdan@gmail.com",
+  "password": "Shwdowdawdnwd.32wd"
+}'
+```
+
+```commandline
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2OTUzOTM5MSwiaWF0IjoxNzY5NDUyOTkxLCJqdGkiOiI5YjFiYWZiODliZGE0MGZkOGQwYjRhODNkMjMyYzQ5MSIsInVzZXJfaWQiOiIxMSJ9._YoSFjgxSRjeklXA_FySPcGL1N605K8FpAET0kDa1Y0",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY5NDUzMjkxLCJpYXQiOjE3Njk0NTI5OTEsImp0aSI6IjVkZTViYzU0NzM2YzQxYzViOGU0NjE3MjUwMmU0YWVjIiwidXNlcl9pZCI6IjExIn0.2OWSyHw0-pq9Tb1ADllUnNt7zAbakoU0TvZ-VZmVpTA"
+}
+```

@@ -301,20 +301,3 @@ def event_create_view(request):
 
 
 
-# @login_required
-# def my_offers_view(request):
-#     if request.user.account_type != "professional":
-#         messages.error(request, "Only professional accounts can access My Offers.")
-#         return render(request, "events/my_offers.html", {"threads": []})
-#
-#     threads = (
-#         OfferThread.objects
-#         .filter(professional=request.user)
-#         .select_related("event", "event__created_by", "event__currency")
-#         .annotate(last_msg_at=Max("messages__created_at"))
-#         .order_by("-last_msg_at", "-created_at")
-#     )
-#
-#     # Optional: prefetch messages if you want preview text later.
-#     return render(request, "events/my_offers.html", {"threads": threads})
-

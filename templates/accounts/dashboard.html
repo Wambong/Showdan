@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}Dashboard | Showdan{% endblock %}
 
 {% block content %}
@@ -34,7 +34,7 @@
             <div class="dash-role">{{ u.account_type|default:"user"|title }}</div>
 
             <div class="dash-balance">
-              Balance:
+              {% translate "Balance" %}:
               <span class="dash-balance-val">
                 {% if u.currency %}{{ u.currency.sign }}{% endif %}
                 {{ u.balance|default:"0" }}
@@ -59,7 +59,7 @@
              hx-swap="innerHTML"
              hx-push-url="true">
             <span class="dash-ico">👤</span>
-            <span class="dash-text">Switch profile</span>
+            <span class="dash-text">{% translate "Switch profile" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
@@ -70,7 +70,7 @@
              hx-swap="innerHTML"
              hx-push-url="true">
             <span class="dash-ico">✏️</span>
-            <span class="dash-text">Edit profile</span>
+            <span class="dash-text">{% translate "Edit profile" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
@@ -81,7 +81,7 @@
              hx-swap="innerHTML"
              hx-push-url="true">
             <span class="dash-ico">♡</span>
-            <span class="dash-text">Favorites</span>
+            <span class="dash-text">{% translate "Favorites" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
@@ -92,7 +92,7 @@
                hx-swap="innerHTML"
                hx-push-url="true">
             <span class="dash-ico">🌐</span>
-            <span class="dash-text">Language</span>
+            <span class="dash-text">{% translate "Language" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
@@ -103,7 +103,7 @@
                hx-swap="innerHTML"
                hx-push-url="true">
             <span class="dash-ico">💲</span>
-            <span class="dash-text">Currency</span>
+            <span class="dash-text">{% translate "Currency" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
@@ -114,7 +114,7 @@
                hx-swap="innerHTML"
                hx-push-url="true">
             <span class="dash-ico">ℹ️</span>
-            <span class="dash-text">Terms & policies</span>
+            <span class="dash-text">{% translate "Terms & policies" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
@@ -125,19 +125,19 @@
                hx-swap="innerHTML"
                hx-push-url="true">
             <span class="dash-ico">🎧</span>
-            <span class="dash-text">Support</span>
+            <span class="dash-text">{% translate "Support" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
           <a class="dash-link" href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener">
             <span class="dash-ico">✈️</span>
-            <span class="dash-text">Our Telegram</span>
+            <span class="dash-text">{% translate "Our Telegram" %}</span>
             <span class="dash-arrow">›</span>
           </a>
 
           <a class="dash-link" href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noopener">
             <span class="dash-ico">📷</span>
-            <span class="dash-text">Our Instagram</span>
+            <span class="dash-text">{% translate "Our Instagram" %}</span>
             <span class="dash-arrow">›</span>
           </a>
           {% if request.user.is_staff %}
@@ -147,7 +147,7 @@
                  hx-target="#dashMainCard"
                  hx-swap="innerHTML"
                  hx-push-url="true">
-                CRUD
+                {% translate "CRUD" %}
               </a>
               <a class="dash-link"
                    href="{% url 'accounts:dash_crud_users_list' %}"
@@ -156,7 +156,7 @@
                    hx-swap="innerHTML"
                    hx-push-url="true">
                   <span class="dash-ico">👥</span>
-                  <span class="dash-text">Users</span>
+                  <span class="dash-text">{% translate "Users" %}</span>
                   <span class="dash-arrow">›</span>
                 </a>
             {% endif %}
@@ -167,14 +167,14 @@
             {% csrf_token %}
             <button class="dash-link dash-link-danger w-100" type="submit">
               <span class="dash-ico">⎋</span>
-              <span class="dash-text">Log out</span>
+              <span class="dash-text">{% translate "Log out" %}</span>
               <span class="dash-arrow">›</span>
             </button>
           </form>
 
         </nav>
         <div class="dash-footer">
-          <div class="dash-footer-text">ID: {{ request.user.id }}</div>
+          <div class="dash-footer-text">ID: {{ request.user.public_id }}</div>
         </div>
       </div>
     </aside>

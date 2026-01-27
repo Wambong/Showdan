@@ -1,8 +1,105 @@
+{% load i18n %}
 <div>
-  <h3 class="text-white mb-1">Switch profile</h3>
-  <div class="text-white-50 small mb-3">Temporary page</div>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+      <h3 class="text-white mb-1">{% translate "Switch profile" %}</h3>
+      <div class="text-white-50 small">
+        {% translate "Current" %}: <span class="text-white">{{ current|title }}</span>
+      </div>
+    </div>
 
-  <div class="p-3 rounded" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
-    This is a placeholder. Later you can add switching logic here.
+    <a class="btn btn-outline-light btn-sm"
+       href="{% url 'accounts:dash_home' %}"
+       hx-get="{% url 'accounts:dash_home' %}"
+       hx-target="#dashMainCard"
+       hx-swap="innerHTML"
+       hx-push-url="true">
+      {% translate "Back" %}
+    </a>
   </div>
+
+  <div class="p-3 rounded mb-3"
+       style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+
+    <div class="text-white-50 small mb-2">{% translate "Choose what you want to switch to" %}:</div>
+
+    <div class="d-flex flex-wrap gap-2">
+      <a class="btn btn-sm {% if target == 'personal' %}btn-light{% else %}btn-outline-light{% endif %}"
+         href="{% url 'accounts:switch_profile' %}?target=personal"
+         hx-get="{% url 'accounts:switch_profile' %}?target=personal"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        {% translate "Personal" %}
+      </a>
+
+      <a class="btn btn-sm {% if target == 'professional' %}btn-light{% else %}btn-outline-light{% endif %}"
+         href="{% url 'accounts:switch_profile' %}?target=professional"
+         hx-get="{% url 'accounts:switch_profile' %}?target=professional"
+         hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
+        {% translate "Professional" %}
+      </a>
+    </div>
+
+  </div>
+
+  {% if target %}
+    <form method="post"
+          action="{% url 'accounts:switch_profile' %}"
+          hx-post="{% url 'accounts:switch_profile' %}"
+          hx-target="#dashMainCard"
+          hx-swap="innerHTML"
+          hx-push-url="true"
+          class="p-3 rounded"
+          style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+      {% csrf_token %}
+
+      <input type="hidden" name="target" value="{{ target }}">
+
+      {% if target == "personal" %}
+        <div class="text-white mb-2">{% translate "Switch to" %} <strong>{% translate "Personal" %}</strong>?</div>
+        <div class="text-white-50 small mb-3">
+          {% translate "Your professions will be cleared (you can re-add them if you switch back to Professional)" %}.
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          {% translate "Confirm switch to Personal" %}
+        </button>
+
+      {% elif target == "professional" %}
+        <div class="text-white mb-2">{% translate "Switch to" %} <strong>{% translate "Professional" %}</strong>?</div>
+        <div class="text-white-50 small mb-3">
+          {% translate "Select at least one profession" %}.
+        </div>
+
+        <div class="mb-3">
+          <div class="text-white-50 small mb-2">{% translate "Professions" %}</div>
+
+          <div class="p-2 rounded"
+               style="max-height: 280px; overflow:auto; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+
+            {% for pid, label in profession_options %}
+              <label class="d-flex align-items-center gap-2 py-1"
+                     style="cursor:pointer;">
+                <input type="checkbox"
+                       name="professions"
+                       value="{{ pid }}"
+                       {% if pid in selected_prof_ids %}checked{% endif %}>
+                <span class="text-white" style="line-height:1.25;">{{ label|safe }}</span>
+              </label>
+            {% empty %}
+              <div class="text-white-50 small">{% translate "No professions found" %}.</div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          {% translate "Confirm switch to Professional" %}
+        </button>
+      {% endif %}
+    </form>
+  {% else %}
+    <div class="text-white-50 small">
+      {% translate "Select an option above to continue" %}.
+    </div>
+  {% endif %}
 </div>

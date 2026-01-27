@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}Home | Showdan{% endblock %}
 
 {% block content %}
 
 <div class="d-flex align-items-center justify-content-between mb-3">
-  <h2 class="mb-0">Artist</h2>
+  <h2 class="mb-0">{% translate "Artist" %}</h2>
 </div>
 
 <!-- Search + Filter Row -->
@@ -26,7 +26,7 @@
     class="btn btn-primary"
     style="white-space: nowrap;"
   >
-    Search
+    {% translate "Search" %}
   </button>
     <button type="button"
             class="btn btn-outline-light"
@@ -37,7 +37,7 @@
 
     {% if request.GET %}
       <a class="btn btn-outline-light" href="{% url 'home' %}">
-        Clear
+        {% translate "Clear" %}
       </a>
     {% endif %}
   </div>
@@ -50,7 +50,7 @@
          style="background:#0f1218; border:1px solid rgba(255,255,255,0.10); border-radius:16px;">
       <form method="get" class="m-0">
         <div class="modal-header" style="border-bottom:1px solid rgba(255,255,255,0.08);">
-          <h5 class="modal-title text-white mb-0">Filters</h5>
+          <h5 class="modal-title text-white mb-0">{% translate "Filters" %}</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                   aria-label="Close"></button>
         </div>
@@ -62,10 +62,10 @@
 
           <!-- Direction (Profession) -->
           <div class="mb-3">
-            <div class="text-white-50 small mb-1">Direction</div>
+            <div class="text-white-50 small mb-1">{% translate "Direction" %}</div>
 
             <select class="form-select" name="profession">
-  <option value="" {% if not f_profession %}selected{% endif %}>Select</option>
+  <option value="" {% if not f_profession %}selected{% endif %}>{% translate "Select" %}</option>
 
   {% for pid, label in profession_options %}
     <option value="{{ pid }}" {% if f_profession == pid|stringformat:"s" %}selected{% endif %}>
@@ -79,7 +79,7 @@
 
           <!-- Price -->
           <div class="mb-3">
-            <div class="text-white-50 small mb-2">Price per hour</div>
+            <div class="text-white-50 small mb-2">{% translate "Price per hour" %}</div>
 
             <div class="d-flex gap-2 mb-2">
               <input type="number"
@@ -116,7 +116,7 @@
 
           <!-- Language chips -->
           <div class="mb-3">
-            <div class="text-white-50 small mb-2">Language</div>
+            <div class="text-white-50 small mb-2">{% translate "Language" %}</div>
             <div class="d-flex flex-wrap gap-2">
               {% for l in languages %}
                 <label class="filter-chip {% if l.id in f_lang_ids %}is-active{% endif %}">
@@ -130,19 +130,19 @@
 
           <!-- Gender chips (optional; works only if you have a gender field in Accounts) -->
           <div class="mb-1">
-            <div class="text-white-50 small mb-2">Gender</div>
+            <div class="text-white-50 small mb-2">{% translate "Gender" %}</div>
             <div class="d-flex flex-wrap gap-2">
               <label class="filter-chip {% if f_gender == 'male' %}is-active{% endif %}">
                 <input type="radio" name="gender" value="male" {% if f_gender == 'male' %}checked{% endif %} hidden>
-                Male
+                {% translate "Male" %}
               </label>
               <label class="filter-chip {% if f_gender == 'female' %}is-active{% endif %}">
                 <input type="radio" name="gender" value="female" {% if f_gender == 'female' %}checked{% endif %} hidden>
-                Female
+                {% translate "Female" %}
               </label>
               <label class="filter-chip {% if not f_gender %}is-active{% endif %}">
                 <input type="radio" name="gender" value="" {% if not f_gender %}checked{% endif %} hidden>
-                Any
+                {% translate "Any" %}
               </label>
             </div>
           </div>
@@ -150,8 +150,8 @@
         </div>
 
         <div class="modal-footer" style="border-top:1px solid rgba(255,255,255,0.08);">
-          <a class="btn btn-outline-light" href="{% url 'home' %}">Reset</a>
-          <button type="submit" class="btn btn-primary">Apply</button>
+          <a class="btn btn-outline-light" href="{% url 'home' %}">{% translate "Reset" %}</a>
+          <button type="submit" class="btn btn-primary">{% translate "Apply" %}</button>
         </div>
       </form>
     </div>
@@ -224,7 +224,7 @@
     {% endfor %}
   </div>
 {% else %}
-  <p class="text-white-50 mb-0">No professionals yet.</p>
+  <p class="text-white-50 mb-0">{% translate "No professionals yet." %}</p>
 {% endif %}
 
 {% endblock %}

@@ -1,8 +1,111 @@
+{% load i18n %}
 <div>
-  <h3 class="text-white mb-1">Favorites</h3>
-  <div class="text-white-50 small mb-3">Temporary page</div>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+      <h3 class="text-white mb-0">{% translate "Favorites" %}</h3>
+      <div class="text-white-50 small">{% translate "Saved professionals" %}</div>
+    </div>
 
-  <div class="p-3 rounded" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
-    Favorites list will appear here later.
+    <a class="btn btn-outline-light btn-sm"
+       href="{% url 'accounts:dash_home' %}"
+       hx-get="{% url 'accounts:dash_home' %}"
+       hx-target="#dashMainCard"
+       hx-swap="innerHTML"
+       hx-push-url="true">
+      {% translate "Back" %}
+    </a>
   </div>
+
+  {% with favs=request.user.favorite_professionals.all %}
+    {% if favs %}
+      <div class="row g-3">
+        {% for f in favs %}
+          {% with p=f.professional %}
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm"
+                   style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); overflow:hidden;">
+
+                {# Image on top #}
+                <div style="height: 180px; background: rgba(255,255,255,0.06);">
+                  {% if p.profile_picture %}
+                    <img src="{{ p.profile_picture.url }}"
+                         alt="{{ p.first_name }}"
+                         style="width:100%;height:100%;object-fit:cover;">
+                  {% else %}
+                    <div style="width:100%;height:100%;"></div>
+                  {% endif %}
+                </div>
+
+                {# Details below image #}
+                <div class="card-body">
+                  <div class="text-white fw-semibold" style="font-size: 16px;">
+                    {{ p.first_name }} {{ p.last_name }}
+                  </div>
+
+                  <div class="text-white-50 small mt-1">
+                    {% if p.country or p.city %}
+                      {{ p.country }}{% if p.country and p.city %}, {% endif %}{{ p.city }}
+                    {% else %}
+                      {% translate "Location not set" %}
+                    {% endif %}
+                  </div>
+
+                  <div class="text-white-50 small mt-1">
+                    {% if p.professions.exists %}
+                      {% with first_prof=p.professions.first %}
+                        {{ first_prof.name }}
+                      {% endwith %}
+                    {% else %}
+                      {% translate "Professional" %}
+                    {% endif %}
+                  </div>
+
+                  {% if p.currency and p.cost_per_hour %}
+                    <div class="text-white mt-2 fw-semibold">
+                      {{ p.currency.sign }}{{ p.cost_per_hour|floatformat:0 }} <span class="text-white-50 small fw-normal">/ {% translate "hour" %}</span>
+                    </div>
+                  {% else %}
+                    <div class="text-white-50 small mt-2">{% translate "Price not set" %}</div>
+                  {% endif %}
+                </div>
+
+                {# Actions below details #}
+                <div class="card-footer bg-transparent"
+                     style="border-top:1px solid rgba(255,255,255,0.08);">
+                  <div class="d-flex gap-2">
+                    <a class="btn btn-sm btn-outline-light flex-fill"
+                       href="{% url 'accounts:profile_detail' p.id %}">
+                      {% translate "View" %}
+                    </a>
+
+                    <form class="m-0 flex-fill"
+                          method="post"
+                          action="{% url 'accounts:favorite_remove' p.id %}"
+                          hx-post="{% url 'accounts:favorite_remove' p.id %}"
+                          hx-target="#dashMainCard"
+                          hx-swap="innerHTML"
+                          hx-push-url="true">
+                      {% csrf_token %}
+                      <button class="btn btn-sm btn-outline-danger w-100" type="submit">
+                        {% translate "Remove" %}
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          {% endwith %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="p-3 rounded"
+           style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+        <div class="text-white-50">{% translate "You have no favorites yet" %}.</div>
+        <div class="text-white-50 small mt-1">
+          {% translate "Browse professionals and tap “Favorite” to save them here." %}
+        </div>
+      </div>
+    {% endif %}
+  {% endwith %}
 </div>

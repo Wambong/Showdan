@@ -5,6 +5,8 @@ from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
 from django.db.models import Q
+import hashlib
+import hmac
 class AccountsManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -27,6 +29,28 @@ class AccountsManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
+class FavoriteProfessional(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="favorite_professionals",
+    )
+    professional = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="favorited_by",
+    )
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        unique_together = ("user", "professional")
+        indexes = [
+            models.Index(fields=["user", "professional"]),
+            models.Index(fields=["professional"]),
+        ]
+
+    def __str__(self):
+        return f"{self.user_id} -> {self.professional_id}"
 
 class Profession(models.Model):
     name = models.CharField(max_length=120)
@@ -75,8 +99,70 @@ class Profession(models.Model):
             for child in self.children.all():
                 child.save()
 
+class NewsRead(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="news_reads",
+    )
+    post = models.ForeignKey(
+        "NewsPost",
+        on_delete=models.CASCADE,
+        related_name="reads",
+    )
+    read_at = models.DateTimeField(default=timezone.now)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "post"], name="uniq_news_read_user_post")
+        ]
+        ordering = ["-read_at"]
 
+    def __str__(self):
+        return f"{self.user_id} read {self.post_id}"
+
+class NewsPost(models.Model):
+    title = models.CharField(max_length=220)
+    slug = models.SlugField(max_length=260, unique=True, blank=True)
+    excerpt = models.CharField(max_length=320, blank=True, default="")
+    body = models.TextField(blank=True, default="")
+    image = models.ImageField(upload_to="news/", blank=True, null=True)
+
+    is_published = models.BooleanField(default=False)
+    published_at = models.DateTimeField(null=True, blank=True)
+
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="news_created",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-published_at", "-created_at"]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        # slug
+        if not self.slug:
+            base = slugify(self.title)[:240] or "news"
+            slug = base
+            i = 1
+            while NewsPost.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                i += 1
+                slug = f"{base}-{i}"
+            self.slug = slug
+
+        # auto publish timestamp if toggled on
+        if self.is_published and not self.published_at:
+            self.published_at = timezone.now()
+
+        super().save(*args, **kwargs)
 
 
 class Review(models.Model):
@@ -227,7 +313,14 @@ class Accounts(AbstractBaseUser, PermissionsMixin):
     country = models.CharField(max_length=120, blank=True, default="")
     city = models.CharField(max_length=120, blank=True, default="")
     address = models.CharField(max_length=255, blank=True, default="")
-
+    public_id = models.CharField(
+        max_length=8,
+        unique=True,
+        null=True,
+        blank=True,
+        db_index=True,
+        help_text="Public-facing 8-digit user ID (non-guessable).",
+    )
     objects = AccountsManager()
 
     USERNAME_FIELD = "email"
@@ -242,6 +335,41 @@ class Accounts(AbstractBaseUser, PermissionsMixin):
         Note: M2M isn't available until after save; enforce this via forms/serializer too.
         """
         super().clean()
+
+    def _generate_public_id(self, attempt=0) -> str:
+        """
+        Deterministic 8-digit ID derived from (id + date_joined) + SECRET_KEY.
+        attempt is used only to break extremely rare collisions.
+        """
+        uid = str(self.id or "")
+        dj = self.date_joined.isoformat() if self.date_joined else ""
+        msg = f"{uid}|{dj}|{attempt}".encode("utf-8")
+        key = settings.SECRET_KEY.encode("utf-8")
+
+        digest = hmac.new(key, msg, hashlib.sha256).hexdigest()
+        num = int(digest[:16], 16) % 100_000_000  # 0..99,999,999
+        return str(num).zfill(8)
+
+    def save(self, *args, **kwargs):
+        # Ensure date_joined exists early (your model already defaults it, but safe)
+        if not self.date_joined:
+            self.date_joined = timezone.now()
+
+        is_new = self.pk is None
+        super().save(*args, **kwargs)
+
+        # After first save: we have self.id, so we can create public_id and persist it
+        if not self.public_id:
+            attempt = 0
+            pid = self._generate_public_id(attempt=attempt)
+
+            # Collision-safe loop
+            while Accounts.objects.filter(public_id=pid).exclude(pk=self.pk).exists():
+                attempt += 1
+                pid = self._generate_public_id(attempt=attempt)
+
+            Accounts.objects.filter(pk=self.pk).update(public_id=pid)
+            self.public_id = pid
 
 
 class AccountPhoto(models.Model):

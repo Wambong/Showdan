@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}Create Event | Showdan{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
   <div class="col-md-9 col-lg-7 app-screen">
     <div class="d-flex align-items-center justify-content-between mb-3">
-      <h2 class="mb-0">Create event</h2>
-      <a class="btn btn-outline-secondary" href="{% url 'events:list' %}">Back</a>
+      <h2 class="mb-0">{% translate "Create event" %}</h2>
+      <a class="btn btn-outline-secondary" href="{% url 'events:list' %}">{% translate "Back" %}</a>
     </div>
 
     <form method="post" class="card card-body shadow-sm">
@@ -15,7 +15,7 @@
 
       <!-- Event name -->
       <div class="mb-3">
-        <label for="id_name" class="form-label">Event name</label>
+        <label for="id_name" class="form-label">{% translate "Event name" %}</label>
         {{ form.name }}
         {% if form.name.errors %}
           <div class="text-danger small mt-2">{{ form.name.errors }}</div>
@@ -25,7 +25,7 @@
       <!-- Start / End datetime -->
       <div class="row g-3">
         <div class="col-md-6">
-          <label for="id_start_datetime" class="form-label">Start date & time</label>
+          <label for="id_start_datetime" class="form-label">{% translate "Start date & time" %}</label>
           {{ form.start_datetime }}
           {% if form.start_datetime.errors %}
             <div class="text-danger small mt-2">{{ form.start_datetime.errors }}</div>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-md-6">
-          <label for="id_end_datetime" class="form-label">End date & time</label>
+          <label for="id_end_datetime" class="form-label">{% translate "End date & time" %}</label>
           {{ form.end_datetime }}
           {% if form.end_datetime.errors %}
             <div class="text-danger small mt-2">{{ form.end_datetime.errors }}</div>
@@ -48,7 +48,7 @@
       {% endif %}
       <!-- country -->
       <div class="mt-3 mb-3">
-        <label for="id_country" class="form-label">country</label>
+        <label for="id_country" class="form-label">{% translate "country" %}</label>
         {{ form.country }}
         {% if form.country.errors %}
           <div class="text-danger small mt-2">{{ form.country.errors }}</div>
@@ -56,7 +56,7 @@
       </div>
             <!-- city -->
       <div class="mt-3 mb-3">
-        <label for="id_city" class="form-label">city</label>
+        <label for="id_city" class="form-label">{% translate "city" %}</label>
         {{ form.city }}
         {% if form.city.errors %}
           <div class="text-danger small mt-2">{{ form.city.errors }}</div>
@@ -64,7 +64,7 @@
       </div>
       <!-- Location -->
       <div class="mt-3 mb-3">
-        <label for="id_location" class="form-label">Location</label>
+        <label for="id_location" class="form-label">{% translate "Location" %}</label>
         {{ form.location }}
         {% if form.location.errors %}
           <div class="text-danger small mt-2">{{ form.location.errors }}</div>
@@ -75,7 +75,7 @@
       <div class="event-meta mb-3">
         <span class="event-meta-dot">👤</span>
         <span>
-          Created by
+          {% translate "Created by" %}
           <strong class="text-white">
             {{ request.user.first_name }} {{ request.user.last_name }}
           </strong>
@@ -84,40 +84,40 @@
 
       <!-- Event type -->
       <div class="mb-3">
-        <label for="id_event_type" class="form-label">Event type</label>
+        <label for="id_event_type" class="form-label">{% translate "Event type" %}</label>
         {{ form.event_type }}
         {% if form.event_type.errors %}
           <div class="text-danger small mt-2">{{ form.event_type.errors }}</div>
         {% endif %}
         <div class="form-text">
-          Need a new category? <a href="{% url 'events:category_create' %}">Create one</a>.
+          Need a new category? <a href="{% url 'events:category_create' %}">{% translate "Create one" %}</a>.
         </div>
       </div>
 
       <!-- Required professions -->
       <div class="mb-3">
-        <label for="id_required_professions" class="form-label">Required professions</label>
+        <label for="id_required_professions" class="form-label">{% translate "Required professions" %}</label>
         {{ form.required_professions }}
         {% if form.required_professions.errors %}
           <div class="text-danger small mt-2">{{ form.required_professions.errors }}</div>
         {% endif %}
-        <div class="form-text">Hold Ctrl (Windows) / Cmd (Mac) to select multiple.</div>
+        <div class="form-text">{% translate "Hold Ctrl (Windows) / Cmd (Mac) to select multiple." %}</div>
       </div>
 
       <!-- Currency -->
       <div class="mb-3">
-        <label for="id_currency" class="form-label">Currency</label>
+        <label for="id_currency" class="form-label">{% translate "Currency" %}</label>
         {{ form.currency }}
         {% if form.currency.errors %}
           <div class="text-danger small mt-2">{{ form.currency.errors }}</div>
         {% endif %}
-        <div class="form-text">If not selected, it will default to your profile currency (if set).</div>
+        <div class="form-text">{% translate "If not selected, it will default to your profile currency (if set)" %}.</div>
       </div>
 
       <!-- Budget -->
       <div class="row g-3">
         <div class="col-md-6">
-          <label for="id_event_budget" class="form-label">Event budget</label>
+          <label for="id_event_budget" class="form-label">{% translate "Event budget" %}</label>
           {{ form.event_budget }}
           {% if form.event_budget.errors %}
             <div class="text-danger small mt-2">{{ form.event_budget.errors }}</div>
@@ -125,7 +125,7 @@
         </div>
 
         <div class="col-md-6">
-          <label for="id_advance_payment" class="form-label">Advance payment</label>
+          <label for="id_advance_payment" class="form-label">{% translate "Advance payment" %}</label>
           {{ form.advance_payment }}
           {% if form.advance_payment.errors %}
             <div class="text-danger small mt-2">{{ form.advance_payment.errors }}</div>
@@ -134,7 +134,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary w-100 mt-4">
-        Create event
+        {% translate "Create event" %}
       </button>
     </form>
   </div>

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}My Offers | Showdan{% endblock %}
 
 {% block content %}
 <div class="profile-detail-wrap mx-auto">
 
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <h2 class="mb-0">My offers</h2>
-    <a class="btn btn-sm btn-outline-light" href="{% url 'events:list' %}">Browse events</a>
+    <h2 class="mb-0">{% translate "My offers" %}</h2>
+    <a class="btn btn-sm btn-outline-light" href="{% url 'events:list' %}">{% translate "Browse events" %}</a>
   </div>
 
   {% if threads %}
@@ -18,16 +19,16 @@
             <div>
               <div class="fw-bold">{{ t.event.name }}</div>
               <div class="small text-white-50">
-                Created by {{ t.event.created_by.first_name }} {{ t.event.created_by.last_name }}
-                {% if t.event.is_locked %} • <span class="text-success fw-bold">Locked</span>{% endif %}
+                {% translate "Created by" %} {{ t.event.created_by.first_name }} {{ t.event.created_by.last_name }}
+                {% if t.event.is_locked %} • <span class="text-success fw-bold">{% translate "Locked" %}</span>{% endif %}
               </div>
               <div class="small text-white-50">
                 {{ t.event.start_datetime|date:"d M Y • H:i" }} → {{ t.event.end_datetime|date:"d M Y • H:i" }}
               </div>
             </div>
             <div class="text-end">
-              <div class="small text-white-50">Open chat</div>
-              <div class="badge bg-primary">Offers</div>
+              <div class="small text-white-50">{% translate "Open chat" %}</div>
+              <div class="badge bg-primary">{% translate "Offers" %}</div>
             </div>
           </div>
         </a>
@@ -35,7 +36,7 @@
     </div>
   {% else %}
     <div class="event-empty">
-      <div class="text-white-50">You have not sent any offers yet.</div>
+      <div class="text-white-50">{% translate "You have not sent any offers yet" %}.</div>
     </div>
   {% endif %}
 

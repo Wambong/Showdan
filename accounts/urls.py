@@ -5,8 +5,8 @@ from .views import (
     profession_create_view,
     AccountLoginView,
     AccountLogoutView,
-    profession_tree_view,
-    profile_edit_view,
+    # profession_tree_view,
+    # profile_edit_view,
     public_profile_detail_view,
     profile_media_hub_view,
     create_review_view,
@@ -23,8 +23,7 @@ urlpatterns = [
     path("logout/", AccountLogoutView.as_view(), name="logout"),
     path("profile/", profile_view, name="profile"),
     path("professions/new/", profession_create_view, name="profession_create"),
-    path("professions/tree/", profession_tree_view, name="profession_tree"),
-    path("profile/edit/", profile_edit_view, name="profile_edit"),
+
 
     path("profiles/<int:pk>/", public_profile_detail_view, name="profile_detail"),
     path("profiles/<int:pk>/media/", profile_media_hub_view, name="profile_media"),
@@ -36,6 +35,9 @@ urlpatterns = [
     path("dashboard/switch-profile/", dv.dash_switch_profile, name="switch_profile"),
     path("dashboard/profile-edit/", dv.dash_profile_edit, name="dash_profile_edit"),
     path("dashboard/favorites/", dv.dash_favorites, name="favorites"),
+    path("favorites/add/<int:pro_id>/", dv.favorite_add_view, name="favorite_add"),
+    path("favorites/remove/<int:pro_id>/", dv.favorite_remove_view, name="favorite_remove"),
+    path("favorites/toggle/<int:pro_id>/", dv.favorite_toggle_view, name="favorite_toggle"),
     path("dashboard/language/", dv.dash_language, name="dash_language"),
     path("dashboard/currency/", dv.dash_currency, name="dash_currency"),
     path("dashboard/terms/", dv.dash_terms, name="terms"),
@@ -85,5 +87,14 @@ urlpatterns = [
          name="dash_crud_users_toggle_active"),
     path("dashboard/crud/users/<int:pk>/toggle-staff/", dv.dash_crud_users_toggle_staff,
          name="dash_crud_users_toggle_staff"),
+    path("dashboard/media/<str:kind>/", dv.dash_media_section_view, name="dash_media_section"),
+    path("dashboard/media/<str:kind>/edit/", dv.dash_media_section_edit_view, name="dash_media_section_edit"),
+
+    path("news/", dv.news_list_view, name="news"),
+    path("news/<slug:slug>/", dv.news_detail_view, name="news_detail"),
+    path("dashboard/crud/news/", dv.dash_crud_news_list, name="dash_crud_news_list"),
+    path("dashboard/crud/news/create/", dv.dash_crud_news_create, name="dash_crud_news_create"),
+    path("dashboard/crud/news/<int:pk>/edit/", dv.dash_crud_news_edit, name="dash_crud_news_edit"),
+    path("dashboard/crud/news/<int:pk>/delete/", dv.dash_crud_news_delete, name="dash_crud_news_delete"),
 
 ]

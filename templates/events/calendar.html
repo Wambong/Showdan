@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load events_extras %}
+{% load i18n %}
 {% block title %}Calendar | Showdan{% endblock %}
 
 {% block content %}
@@ -8,15 +9,15 @@
   <div class="calendar-head">
     <a class="cal-nav" href="?year={{ prev_year }}&month={{ prev_month }}">‹</a>
     <div class="cal-title">
-      <div class="text-white fw-bold">Calendar</div>
+      <div class="text-white fw-bold">{% translate "Calendar" %}</div>
       <div class="text-white-50 small">{{ month_name }}, {{ year }}</div>
     </div>
     <a class="cal-nav" href="?year={{ next_year }}&month={{ next_month }}">›</a>
   </div>
 
   <div class="calendar-grid">
-    <div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div>
-    <div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div><div class="cal-dow">Sun</div>
+    <div class="cal-dow">{% translate "Mon" %}</div><div class="cal-dow">{% translate "Tue" %}</div><div class="cal-dow">{% translate "Wed" %}</div>
+    <div class="cal-dow">{% translate "Thu" %}</div><div class="cal-dow">{% translate "Fri" %}</div><div class="cal-dow">{% translate "Sat" %}</div><div class="cal-dow">{% translate "Sun" %}</div>
 
     {% for week in weeks %}
       {% for d in week %}
@@ -71,9 +72,9 @@
   </div>
 
   <div class="calendar-form mt-3">
-    <div class="text-white fw-bold mb-2">Mark unavailable days</div>
+    <div class="text-white fw-bold mb-2">{% translate "Mark unavailable days" %}</div>
     <div class="text-white-50 small mb-2">
-      Click a start day, then click an end day to select a range.
+      {% translate "Click a start day, then click an end day to select a range." %}
     </div>
 
     <form method="post" class="cal-form-card">
@@ -82,8 +83,8 @@
       <input type="hidden" name="end_date" id="cal-end-date">
 
       <div class="cal-selected mb-2">
-        <span class="text-white-50 small">Selected:</span>
-        <span class="text-white fw-semibold" id="cal-selected-label">None</span>
+        <span class="text-white-50 small">{% translate "Selected:" %}</span>
+        <span class="text-white fw-semibold" id="cal-selected-label">{% translate "None" %}</span>
         <input type="hidden" name="remove_day" id="cal-remove-day">
 
       </div>
@@ -91,19 +92,19 @@
       <div class="cal-radio-group mb-2">
         <label class="cal-radio">
           <input type="radio" name="busy_mode" value="all_day" checked>
-          <span>Busy all day</span>
+          <span>{% translate "Busy all day" %}</span>
         </label>
 
         <label class="cal-radio">
           <input type="radio" name="busy_mode" value="timed">
-          <span>Specific time</span>
+          <span>{% translate "Specific time" %}</span>
         </label>
       </div>
 
       <!-- Timed inputs -->
       <div class="row g-2 mt-2" id="cal-timed-inputs" style="display:none;">
         <div class="col-6">
-          <label class="form-label text-white-50 small">Start time</label>
+          <label class="form-label text-white-50 small">{% translate "Start time" %}</label>
           <div class="d-flex gap-2">
             <select name="start_hour" class="form-select form-select-sm">
               {% for h in hours %}
@@ -119,7 +120,7 @@
         </div>
 
         <div class="col-6">
-          <label class="form-label text-white-50 small">End time</label>
+          <label class="form-label text-white-50 small">{% translate "End time" %}</label>
           <div class="d-flex gap-2">
             <select name="end_hour" class="form-select form-select-sm">
               {% for h in hours %}
@@ -136,11 +137,11 @@
       </div>
 
       <div class="mt-2">
-        <label class="form-label text-white-50 small">Note (optional)</label>
+        <label class="form-label text-white-50 small">{% translate "Note (optional)" %}</label>
         <input type="text" name="note" class="form-control" placeholder="e.g. not available for new bookings">
       </div>
 
-      <button class="btn btn-primary w-100 mt-3">Save</button>
+      <button class="btn btn-primary w-100 mt-3">{% translate "Save" %}</button>
     </form>
       <div id="remove-busy-wrap" style="display:none;" class="mt-2">
         <form method="post" action="{% url 'events:busy_delete_day' %}">
@@ -148,7 +149,7 @@
           <input type="hidden" name="day" id="remove-busy-day">
           <input type="hidden" name="next" value="?year={{ year }}&month={{ month }}">
           <button type="submit" class="btn btn-outline-danger w-100">
-            Remove busy time
+            {% translate "Remove busy time" %}
           </button>
         </form>
       </div>

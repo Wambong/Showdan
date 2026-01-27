@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}My Offers | Showdan{% endblock %}
 
 {% block content %}
@@ -8,8 +9,8 @@
     <!-- LEFT: THREAD LIST -->
     <aside class="offers-sidebar">
       <div class="offers-sidebar-head">
-        <div class="fw-bold text-white">Offers</div>
-        <div class="small text-white-50">Sent & received</div>
+        <div class="fw-bold text-white">{% translate "Offers" %}</div>
+        <div class="small text-white-50">{% translate "Sent & received" %}</div>
       </div>
 
       <div class="offers-threadlist">
@@ -21,22 +22,22 @@
 
               <div class="d-flex align-items-center gap-2">
                 {% if t.event.is_locked %}
-                  <span class="badge bg-success">Locked</span>
+                  <span class="badge bg-success">{% translate "Locked" %}</span>
                 {% endif %}
 
                 {# highlight accepted thread #}
                 {% if t.event.is_locked and t.event.accepted_thread_id == t.id %}
-                  <span class="badge bg-warning text-dark">Accepted</span>
+                  <span class="badge bg-warning text-dark">{% translate "Accepted" %}</span>
                 {% endif %}
               </div>
             </div>
 
             <div class="thread-sub">
               {% if request.user.id == t.event.created_by_id %}
-                <span class="text-white-50">From:</span>
+                <span class="text-white-50">{% translate "From:" %}</span>
                 <span class="text-white">{{ t.professional.first_name }} {{ t.professional.last_name }}</span>
               {% else %}
-                <span class="text-white-50">To:</span>
+                <span class="text-white-50">{% translate "To:" %}</span>
                 <span class="text-white">{{ t.event.created_by.first_name }} {{ t.event.created_by.last_name }}</span>
               {% endif %}
             </div>
@@ -46,7 +47,7 @@
             </div>
           </a>
         {% empty %}
-          <div class="p-3 text-white-50">No offer threads yet.</div>
+          <div class="p-3 text-white-50">{% translate "No offer threads yet." %}</div>
         {% endfor %}
       </div>
     </aside>
@@ -60,14 +61,14 @@
               <div class="fw-bold text-white">{{ active_thread.event.name }}</div>
               <div class="small text-white-50">
                 {% if active_thread.event.currency %}
-                  Event currency: {{ active_thread.event.currency.name }} ({{ active_thread.event.currency.sign }})
+                  {% translate "Event currency" %}: {{ active_thread.event.currency.name }} ({{ active_thread.event.currency.sign }})
                 {% endif %}
                 {% if active_thread.event.is_locked %}
-                  • <span class="text-success fw-semibold">Locked</span>
+                  • <span class="text-success fw-semibold">{% translate "Locked" %}</span>
                   {% if active_thread.event.accepted_thread_id == active_thread.id %}
-                    • <span class="text-warning fw-semibold">Accepted thread</span>
+                    • <span class="text-warning fw-semibold">{% translate "Accepted thread" %}</span>
                   {% else %}
-                    • <span class="text-white-50">Read-only</span>
+                    • <span class="text-white-50">{% translate "Read-only" %}</span>
                   {% endif %}
                 {% endif %}
               </div>
@@ -75,9 +76,9 @@
 
             <div class="text-end small text-white-50">
               {% if is_creator %}
-                Chat with {{ active_thread.professional.first_name }} {{ active_thread.professional.last_name }}
+                {% translate "Chat with" %} {{ active_thread.professional.first_name }} {{ active_thread.professional.last_name }}
               {% else %}
-                Chat with {{ active_thread.event.created_by.first_name }} {{ active_thread.event.created_by.last_name }}
+                {% translate "Chat with" %} {{ active_thread.event.created_by.first_name }} {{ active_thread.event.created_by.last_name }}
               {% endif %}
             </div>
           </div>
@@ -123,7 +124,7 @@
                 </div>
               </div>
             {% empty %}
-              <div class="text-white-50 text-center py-4">No messages yet.</div>
+              <div class="text-white-50 text-center py-4">{% translate "No messages yet." %}</div>
             {% endfor %}
           </div>
 
@@ -146,16 +147,16 @@
                               required></textarea>
                   </div>
 
-                  <button class="btn btn-outline-light w-100">Send message</button>
+                  <button class="btn btn-outline-light w-100">{% translate "Send message" %}</button>
 
                   <div class="text-white-50 small text-center mt-2">
-                    Offers are locked, but you can continue chatting in the accepted thread.
+                    {% translate "Offers are locked, but you can continue chatting in the accepted thread." %}
                   </div>
                 </form>
               {% else %}
                 {# ❌ Not accepted thread: read-only #}
                 <div class="text-white-50 small text-center">
-                  This event is locked. Only the accepted offer thread can continue chatting.
+                  {% translate "This event is locked. Only the accepted offer thread can continue chatting." %}
                 </div>
               {% endif %}
 
@@ -170,18 +171,18 @@
 
                   <div class="row g-2">
                     <div class="col-6">
-                      <label class="form-label text-white-50 small mb-1">Amount</label>
+                      <label class="form-label text-white-50 small mb-1">{% translate "Amount" %}</label>
                       {{ offer_form.proposed_amount }}
                     </div>
                     <div class="col-6">
-                      <label class="form-label text-white-50 small mb-1">Currency</label>
+                      <label class="form-label text-white-50 small mb-1">{% translate "Currency" %}</label>
                       {{ offer_form.proposed_currency }}
                     </div>
                     <div class="col-12">
                       {{ offer_form.message }}
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100">Send offer</button>
+                      <button class="btn btn-primary w-100">{% translate "Send offer" %}</button>
                     </div>
                   </div>
                 </form>
@@ -194,7 +195,7 @@
                         class="flex-fill">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
-                    <button class="btn btn-success w-100">Accept</button>
+                    <button class="btn btn-success w-100">{% translate "Accept" %}</button>
                   </form>
 
                   <form method="post"
@@ -202,7 +203,7 @@
                         class="flex-fill">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
-                    <button class="btn btn-danger w-100">Reject</button>
+                    <button class="btn btn-danger w-100">{% translate "Reject" %}</button>
                   </form>
                 </div>
 
@@ -212,13 +213,13 @@
                   <input type="hidden" name="next" value="{% url 'events:offers_inbox' %}?thread={{ active_thread.id }}">
 
                   <div class="mb-2">
-                    <label class="form-label text-white-50 small mb-1">Counter amount (event currency)</label>
+                    <label class="form-label text-white-50 small mb-1">{% translate "Counter amount (event currency)" %}</label>
                     {{ counter_form.proposed_amount }}
                   </div>
                   <div class="mb-2">
                     {{ counter_form.message }}
                   </div>
-                  <button class="btn btn-outline-light w-100">Send counter offer</button>
+                  <button class="btn btn-outline-light w-100">{% translate "Send counter offer" %}</button>
                 </form>
               {% endif %}
 
@@ -227,7 +228,7 @@
         </div>
       {% else %}
         <div class="chat-empty">
-          <div class="text-white-50">Select an offer thread to view messages.</div>
+          <div class="text-white-50">{% translate "Select an offer thread to view messages." %}</div>
         </div>
       {% endif %}
     </main>

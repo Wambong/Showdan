@@ -11,7 +11,7 @@ class ProfessionAdmin(admin.ModelAdmin):
 @admin.register(Accounts)
 class AccountsAdmin(BaseUserAdmin):
     ordering = ("email",)
-    list_display = ("email", "first_name", "last_name", "account_type", "is_staff", "is_active")
+    list_display = ("email", "first_name", "last_name", "account_type", "is_staff", "is_active", "public_id")
     search_fields = ("email", "first_name", "last_name")
     list_filter = ("account_type", "is_staff", "is_active")
 

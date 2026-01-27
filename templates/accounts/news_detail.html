@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ item.title }} | Showdan{% endblock %}
+
+{% block content %}
+<div class="mx-auto" style="max-width: 900px;">
+  <a class="btn btn-sm btn-outline-light mb-3" href="{% url 'accounts:news' %}">← {% translate "Back" %}</a>
+
+  <div class="card shadow-sm" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); overflow:hidden;">
+    {% if item.image %}
+      <img src="{{ item.image.url }}" alt="{{ item.title }}" style="width:100%; max-height:360px; object-fit:cover;">
+    {% endif %}
+    <div class="card-body">
+      <h3 class="text-white mb-1">{{ item.title }}</h3>
+      <div class="text-white-50 small mb-3">
+        {% if item.published_at %}{{ item.published_at|date:"d M Y • H:i" }}{% endif %}
+      </div>
+
+      {% if item.excerpt %}
+        <div class="text-white-50 mb-3">{{ item.excerpt }}</div>
+      {% endif %}
+
+      <div class="text-white" style="white-space: pre-line;">{{ item.body }}</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

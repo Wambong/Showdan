@@ -1,13 +1,14 @@
+{% load i18n %}
 <div>
-  <h3 class="text-white mb-1">Language</h3>
-  <div class="text-white-50 small mb-3">Update your communication and event languages</div>
+  <h3 class="text-white mb-1">{% translate "Language" %}</h3>
+  <div class="text-white-50 small mb-3">{% translate "Update your communication and event languages" %}</div>
 
   <div class="p-3 rounded"
        style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
 
     <!-- Current selections -->
     <div class="mb-3">
-      <div class="text-white-50 small mb-1">Communication languages</div>
+      <div class="text-white-50 small mb-1">{% translate "Communication languages" %}</div>
       {% if u.communication_languages.exists %}
         <div class="d-flex flex-wrap gap-2">
           {% for l in u.communication_languages.all %}
@@ -15,12 +16,12 @@
           {% endfor %}
         </div>
       {% else %}
-        <div class="text-white-50 small">None selected</div>
+        <div class="text-white-50 small">{% translate "None selected" %}</div>
       {% endif %}
     </div>
 
     <div class="mb-3">
-      <div class="text-white-50 small mb-1">Event languages</div>
+      <div class="text-white-50 small mb-1">{% translate "Event languages" %}</div>
       {% if u.event_languages.exists %}
         <div class="d-flex flex-wrap gap-2">
           {% for l in u.event_languages.all %}
@@ -28,7 +29,7 @@
           {% endfor %}
         </div>
       {% else %}
-        <div class="text-white-50 small">None selected</div>
+        <div class="text-white-50 small">{% translate "None selected" %}</div>
       {% endif %}
     </div>
 
@@ -43,7 +44,7 @@
       {% csrf_token %}
 
       <div class="mb-3">
-        <label class="form-label text-white-50 small mb-1">Communication languages</label>
+        <label class="form-label text-white-50 small mb-1">{% translate "Communication languages" %}</label>
         {{ form.communication_languages }}
         {% if form.communication_languages.errors %}
           <div class="text-danger small mt-2">{{ form.communication_languages.errors }}</div>
@@ -51,7 +52,7 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label text-white-50 small mb-1">Event languages</label>
+        <label class="form-label text-white-50 small mb-1">{% translate "Event languages" %}</label>
         {{ form.event_languages }}
         {% if form.event_languages.errors %}
           <div class="text-danger small mt-2">{{ form.event_languages.errors }}</div>
@@ -59,14 +60,14 @@
       </div>
 
       <button class="btn btn-primary btn-sm" type="submit">
-        Save languages
+        {% translate "Save languages" %}
       </button>
     </form>
 
     <hr style="border-color: rgba(255,255,255,0.08);">
 
     <!-- Available languages -->
-    <div class="text-white-50 small mb-2">Available languages</div>
+    <div class="text-white-50 small mb-2">{% translate "Available languages" %}</div>
 
     {% if languages %}
       <div class="d-flex flex-wrap gap-2">
@@ -75,7 +76,7 @@
         {% endfor %}
       </div>
     {% else %}
-      <div class="text-white-50 small">No languages found.</div>
+      <div class="text-white-50 small">{% translate "No languages found" %}.</div>
     {% endif %}
   </div>
 </div>

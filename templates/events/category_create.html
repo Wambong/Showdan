@@ -1,31 +1,31 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}Create Event Category | Showdan{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
   <div class="col-md-8 col-lg-6 app-screen">
     <div class="d-flex align-items-center justify-content-between mb-3">
-      <h2 class="mb-0">Create event category</h2>
-      <a class="btn btn-outline-secondary" href="{% url 'home' %}">Back</a>
+      <h2 class="mb-0">{% translate "Create event category" %}</h2>
+      <a class="btn btn-outline-secondary" href="{% url 'home' %}">{% translate "Back" %}</a>
     </div>
 
     <form method="post" class="card card-body shadow-sm">
       {% csrf_token %}
 
       <div class="mb-3">
-        <label for="id_name" class="form-label">Category name</label>
+        <label for="id_name" class="form-label">{% translate "Category name" %}</label>
         {{ form.name }}
         {% if form.name.errors %}<div class="text-danger small mt-2">{{ form.name.errors }}</div>{% endif %}
       </div>
 
       <div class="mb-3">
-        <label for="id_parent" class="form-label">Parent category (optional)</label>
+        <label for="id_parent" class="form-label">{% translate "Parent category (optional)" %}</label>
         {{ form.parent }}
         {% if form.parent.errors %}<div class="text-danger small mt-2">{{ form.parent.errors }}</div>{% endif %}
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Create category</button>
+      <button type="submit" class="btn btn-primary w-100">{% translate "Create category" %}</button>
     </form>
   </div>
 </div>

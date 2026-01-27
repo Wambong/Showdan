@@ -1,14 +1,15 @@
+{% load i18n %}
 <div>
-  <h3 class="text-white mb-1">CRUD</h3>
-  <div class="text-white-50 small mb-3">Admin tools for managing base tables.</div>
+  <h3 class="text-white mb-1">{% translate "CRUD" %}</h3>
+  <div class="text-white-50 small mb-3">{% translate "Admin tools for managing base tables" %}.</div>
 
   <div class="row g-3">
     <div class="col-12 col-md-6">
       <a class="dash-tile" href="{% url 'accounts:dash_crud_profession_list' %}"
          hx-get="{% url 'accounts:dash_crud_profession_list' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        <div class="dash-tile-title">Professions</div>
-        <div class="dash-tile-sub">Nested tree (parent/child)</div>
+        <div class="dash-tile-title">{% translate "Professions" %}</div>
+        <div class="dash-tile-sub">{% translate "Nested tree (parent/child)" %}</div>
       </a>
     </div>
 
@@ -16,8 +17,8 @@
       <a class="dash-tile" href="{% url 'accounts:dash_crud_eventcategory_list' %}"
          hx-get="{% url 'accounts:dash_crud_eventcategory_list' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        <div class="dash-tile-title">Event categories</div>
-        <div class="dash-tile-sub">Nested tree (parent/child)</div>
+        <div class="dash-tile-title">{% translate "Event categories" %}</div>
+        <div class="dash-tile-sub">{% translate "Nested tree (parent/child)" %}</div>
       </a>
     </div>
 
@@ -25,8 +26,8 @@
       <a class="dash-tile" href="{% url 'accounts:dash_crud_language_list' %}"
          hx-get="{% url 'accounts:dash_crud_language_list' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        <div class="dash-tile-title">Languages</div>
-        <div class="dash-tile-sub">Name + slug</div>
+        <div class="dash-tile-title">{% translate "Languages" %}</div>
+        <div class="dash-tile-sub">{% translate "Name + slug" %}</div>
       </a>
     </div>
 
@@ -34,17 +35,28 @@
       <a class="dash-tile" href="{% url 'accounts:dash_crud_currency_list' %}"
          hx-get="{% url 'accounts:dash_crud_currency_list' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        <div class="dash-tile-title">Currencies</div>
-        <div class="dash-tile-sub">Name + sign</div>
+        <div class="dash-tile-title">{% translate "Currencies" %}</div>
+        <div class="dash-tile-sub">{% translate "Name + sign" %}</div>
       </a>
     </div>
-
+     <div class="col-12 col-md-6">
+         <a class="dash-link"
+         href="{% url 'accounts:dash_crud_news_list' %}"
+         hx-get="{% url 'accounts:dash_crud_news_list' %}"
+         hx-target="#dashMainCard"
+         hx-swap="innerHTML"
+         hx-push-url="true">
+        <span class="dash-ico">📰</span>
+        <span class="dash-text">{% translate "News" %}</span>
+        <span class="dash-arrow">›</span>
+      </a>
+     </div>
     <div class="col-12">
       <a class="dash-tile" href="{% url 'accounts:dash_crud_exchangerate_list' %}"
          hx-get="{% url 'accounts:dash_crud_exchangerate_list' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        <div class="dash-tile-title">Exchange rates</div>
-        <div class="dash-tile-sub">From currency → to currency with rate</div>
+        <div class="dash-tile-title">{% translate "Exchange rates" %}</div>
+        <div class="dash-tile-sub">{% translate "From currency → to currency with rate" %}</div>
       </a>
     </div>
   </div>

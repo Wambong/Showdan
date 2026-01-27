@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}Edit Profile | Showdan{% endblock %}
 
 {% block content %}
@@ -7,8 +7,8 @@
   <div class="col-md-8 col-lg-7">
 
     <div class="d-flex align-items-center justify-content-between mb-3">
-      <h2 class="mb-0">Edit Profile</h2>
-      <a class="btn btn-outline-secondary" href="{% url 'accounts:profile' %}">Back</a>
+      <h2 class="mb-0">{% translate "Edit Profile" %}</h2>
+      <a class="btn btn-outline-secondary" href="{% url 'accounts:profile' %}">{% translate "Back" %}</a>
     </div>
 
     <form method="post"
@@ -19,42 +19,42 @@
       {% csrf_token %}
 
       <!-- ================= ACCOUNT DETAILS ================= -->
-      <h5 class="mb-3">Account details</h5>
+      <h5 class="mb-3">{% translate "Account details" %}</h5>
 
       <div class="mb-3">
-        <label for="id_first_name" class="form-label">First name</label>
+        <label for="id_first_name" class="form-label">{% translate "First name" %}</label>
         {{ form.first_name }}
       </div>
 
       <div class="mb-3">
-        <label for="id_last_name" class="form-label">Last name</label>
+        <label for="id_last_name" class="form-label">{% translate "Last name" %}</label>
         {{ form.last_name }}
       </div>
 
       <div class="mb-3">
-        <label for="id_phone" class="form-label">Phone</label>
+        <label for="id_phone" class="form-label">{% translate "Phone" %}</label>
         {{ form.phone }}
       </div>
 
     <div class="mb-3">
-      <label class="form-label">Date of birth</label>
+      <label class="form-label">{% translate "Date of birth" %}</label>
 
       {# Keep the real Django field, but hidden. This is what gets submitted. #}
       {{ form.date_of_birth.as_hidden }}
 
       <div class="dob-picker" id="dob-picker">
         <div class="dob-col">
-          <div class="dob-col-label">Day</div>
+          <div class="dob-col-label">{% translate "Day" %}</div>
           <select id="dob-day" class="dob-select" size="5"></select>
         </div>
 
         <div class="dob-col">
-          <div class="dob-col-label">Month</div>
+          <div class="dob-col-label">{% translate "Month" %}</div>
           <select id="dob-month" class="dob-select" size="5"></select>
         </div>
 
         <div class="dob-col">
-          <div class="dob-col-label">Year</div>
+          <div class="dob-col-label">{% translate "Year" %}</div>
           <select id="dob-year" class="dob-select" size="5"></select>
         </div>
 
@@ -69,14 +69,14 @@
     </div>
 
        <div class="mb-3">
-          <label class="form-label">Years of experience</label>
+          <label class="form-label">{% translate "Years of experience" %}</label>
 
           {# Keep the real Django field, but hidden — this value gets submitted #}
           {{ form.years_of_experience.as_hidden }}
 
           <div class="exp-picker" id="exp-picker">
             <div class="exp-col">
-              <div class="exp-col-label">Years</div>
+              <div class="exp-col-label">{% translate "Years" %}</div>
               <select id="exp-years" class="exp-select" size="5"></select>
             </div>
 
@@ -91,13 +91,13 @@
         </div>
 
       <div class="mb-3">
-          <label for="id_about_me" class="form-label">About me</label>
+          <label for="id_about_me" class="form-label">{% translate "About me" %}</label>
           {{ form.about_me }}
 
           <div class="d-flex justify-content-between mt-2">
-            <small class="text-muted">Maximum 1000 words.</small>
+            <small class="text-muted">{% translate "Maximum 1000 words" %}.</small>
             <small class="text-muted">
-              <span id="about-word-count">0</span>/1000 words
+              <span id="about-word-count">0</span>/1000 {% translate "words" %}
             </small>
           </div>
 
@@ -107,9 +107,9 @@
         </div>
 
         <div class="mb-3">
-              <label for="id_communication_languages" class="form-label">Communication language</label>
+              <label for="id_communication_languages" class="form-label">{% translate "Communication language" %}</label>
               {{ form.communication_languages }}
-              <div class="form-text">Hold Ctrl (Windows) / Cmd (Mac) to select multiple.</div>
+              <div class="form-text">{% translate "Hold Ctrl (Windows) / Cmd (Mac) to select multiple" %}.</div>
 
               {% if form.communication_languages.errors %}
                 <div class="text-danger small mt-2">{{ form.communication_languages.errors }}</div>
@@ -117,9 +117,9 @@
             </div>
 
             <div class="mb-3">
-              <label for="id_event_languages" class="form-label">Language of the event</label>
+              <label for="id_event_languages" class="form-label">{% translate "Language of the event" %}</label>
               {{ form.event_languages }}
-              <div class="form-text">Hold Ctrl (Windows) / Cmd (Mac) to select multiple.</div>
+              <div class="form-text">{% translate "Hold Ctrl (Windows) / Cmd (Mac) to select multiple" %}.</div>
 
               {% if form.event_languages.errors %}
                 <div class="text-danger small mt-2">{{ form.event_languages.errors }}</div>
@@ -127,13 +127,13 @@
             </div>
             <div class="mb-3">
               <label for="id_accepted_event_categories" class="form-label">
-                Event categories you accept
+                {% translate "Event categories you accept" %}
               </label>
 
               {{ form.accepted_event_categories }}
 
               <div class="form-text">
-                Hold Ctrl (Windows) / Cmd (Mac) to select multiple.
+               {% translate " Hold Ctrl (Windows) / Cmd (Mac) to select multiple" %}.
               </div>
 
               {% if form.accepted_event_categories.errors %}
@@ -143,10 +143,10 @@
 
      <!-- ================= PRICING ================= -->
       <hr class="my-4">
-      <h5 class="mb-2">Pricing</h5>
+      <h5 class="mb-2">{% translate "Pricing" %}</h5>
 
       <div class="mb-3">
-        <label for="id_currency" class="form-label">Currency</label>
+        <label for="id_currency" class="form-label">{% translate "Currency" %}</label>
         {{ form.currency }}
         {% if form.currency.errors %}
           <div class="text-danger small mt-2">{{ form.currency.errors }}</div>
@@ -155,7 +155,7 @@
 
       <div id="pricing-fields" style="display:none;">
         <div class="mb-3">
-          <label for="id_cost_per_hour" class="form-label">Cost per hour</label>
+          <label for="id_cost_per_hour" class="form-label">{% translate "Cost per hour" %}</label>
           <div class="input-group">
             <span class="input-group-text" id="currency-sign-hour">$</span>
             {{ form.cost_per_hour }}
@@ -166,7 +166,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="id_cost_per_5_hours" class="form-label">Cost per 5 hours</label>
+          <label for="id_cost_per_5_hours" class="form-label">{% translate "Cost per 5 hours" %}</label>
           <div class="input-group">
             <span class="input-group-text" id="currency-sign-five">$</span>
             {{ form.cost_per_5_hours }}
@@ -179,71 +179,71 @@
 
 
       <div class="mb-3">
-        <label for="id_profile_picture" class="form-label">Profile picture</label>
+        <label for="id_profile_picture" class="form-label">{% translate "Profile picture" %}</label>
         {{ form.profile_picture }}
       </div>
 
       <div class="mb-3">
-        <label for="id_account_type" class="form-label">Account type</label>
+        <label for="id_account_type" class="form-label">{% translate "Account type</label>
         {{ form.account_type }}
       </div>
 
       <div class="mb-3" id="professions-wrapper">
-        <label for="id_professions" class="form-label">Professions</label>
+        <label for="id_professions" class="form-label">{% translate "Professions" %}</label>
         {{ form.professions }}
       </div>
 
       <!-- ================= PROFESSIONAL PHOTOS ================= -->
       <hr class="my-4">
-      <h5 class="mb-2">Upload professional pictures</h5>
+      <h5 class="mb-2">{% translate "Upload professional pictures" %}</h5>
 
       <div class="mb-3">
         <label for="id_professional_images" class="form-label">
-          Professional images
+          {% translate "Professional images" %}
         </label>
         {{ professional_form.professional_images }}
-        <div class="form-text">You can upload multiple professional images.</div>
+        <div class="form-text">{% translate "You can upload multiple professional images" %}.</div>
       </div>
 
       <!-- ================= NORMAL PHOTOS ================= -->
       <hr class="my-4">
-      <h5 class="mb-2">Upload normal pictures</h5>
+      <h5 class="mb-2">{% translate "Upload normal pictures" %}</h5>
 
       <div class="mb-3">
         <label for="id_normal_images" class="form-label">
-          Normal images
+          {% translate "Normal images" %}
         </label>
         {{ photos_form.normal_images }}
-        <div class="form-text">You can upload multiple normal images.</div>
+        <div class="form-text">{% translate "You can upload multiple normal images" %}.</div>
       </div>
 
       <!-- ================= AUDIO ACAPELLA ================= -->
       <hr class="my-4">
-      <h5 class="mb-2">Upload Audio Acapella Covers</h5>
+      <h5 class="mb-2">{% translate "Upload Audio Acapella Covers" %}</h5>
 
       <div class="mb-3">
         <label for="id_audio_files" class="form-label">
-          Audio files
+          {% translate "Audio files" %}
         </label>
         {{ audio_form.audio_files }}
-        <div class="form-text">Accepted formats: mp3, wav</div>
+        <div class="form-text">{% translate "Accepted formats: mp3, wav" %}</div>
       </div>
 
       <!-- ================= VIDEO ACAPELLA ================= -->
       <hr class="my-4">
-      <h5 class="mb-2">Upload Video Acapella Covers</h5>
+      <h5 class="mb-2">{% translate "Upload Video Acapella Covers" %}</h5>
 
       <div class="mb-3">
         <label for="id_video_files" class="form-label">
-          Video files
+         {% translate " Video files" %}
         </label>
         {{ video_form.video_files }}
-        <div class="form-text">Accepted formats: mp4, webm</div>
+        <div class="form-text">{% translate "Accepted formats: mp4, webm" %}</div>
       </div>
 
       <!-- ================= SUBMIT ================= -->
       <button type="submit" class="btn btn-primary w-100 mt-2">
-        Save Changes
+        {% translate "Save Changes" %}
       </button>
 
     </form>

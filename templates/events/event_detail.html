@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}{{ e.name }} | Showdan{% endblock %}
 
 {% block content %}
@@ -10,19 +10,17 @@
       <div>
         <h2 class="mb-1">{{ e.name }}</h2>
         <div class="text-white-50 small">
-          Created by
+          {% translate "Created by" %}
           <span class="text-white fw-semibold">
             {{ e.created_by.first_name }} {{ e.created_by.last_name }}
           </span>
         </div>
       </div>
-
       <div class="d-flex gap-2">
-        <a class="btn btn-outline-secondary" href="{% url 'events:list' %}">Back</a>
-
+        <a class="btn btn-outline-secondary" href="{% url 'events:list' %}">{% translate "Back" %}</a>
         {% if is_creator %}
           <a class="btn btn-outline-light" href="{% url 'events:offers_inbox' %}?event={{ e.id }}">
-            Offers
+            {% translate "Offers" %}
           </a>
         {% endif %}
       </div>
@@ -34,11 +32,11 @@
 
         <!-- Status -->
         <div class="d-flex align-items-center justify-content-between mb-3">
-          <div class="text-white-50">Status</div>
+          <div class="text-white-50">{% translate "Status" %}</div>
           {% if e.is_locked %}
-            <span class="badge bg-success">Locked (offer accepted)</span>
+            <span class="badge bg-success">{% translate "Locked (offer accepted)" %}</span>
           {% else %}
-            <span class="badge bg-secondary">Open</span>
+            <span class="badge bg-secondary">{% translate "Open" %}</span>
           {% endif %}
         </div>
 
@@ -50,11 +48,11 @@
             {% endif %}
             <div>
               <div class="text-white fw-semibold">
-                Accepted professional:
+                {% translate "Accepted professional:" %}
                 {{ accepted_pro.first_name }} {{ accepted_pro.last_name }}
               </div>
               <div class="text-white-50 small">
-                This event is locked for new offers, but the accepted thread can continue chatting.
+                {% translate "This event is locked for new offers, but the accepted thread can continue chatting." %}
               </div>
             </div>
           </div>
@@ -63,14 +61,14 @@
         <!-- When -->
         <div class="row g-3">
           <div class="col-md-6">
-            <div class="text-white-50 small mb-1">Start</div>
+            <div class="text-white-50 small mb-1">{% translate "Start" %}</div>
             <div class="text-white fw-semibold">
               {% if start_local %}{{ start_local|date:"d M Y • H:i" }}{% else %}-{% endif %}
             </div>
           </div>
 
           <div class="col-md-6">
-            <div class="text-white-50 small mb-1">End</div>
+            <div class="text-white-50 small mb-1">{% translate "End" %}</div>
             <div class="text-white fw-semibold">
               {% if end_local %}{{ end_local|date:"d M Y • H:i" }}{% else %}-{% endif %}
             </div>
@@ -82,7 +80,7 @@
         <!-- Location + Type -->
         <div class="row g-3 align-items-end">
           <div class="col-md-6">
-            <div class="text-white-50 small mb-1">Location</div>
+            <div class="text-white-50 small mb-1">{% translate "Location" %}</div>
             <div class="text-white fw-semibold">
               {% if e.location %}{{ e.location }}{% else %}-{% endif %}
             </div>
@@ -93,14 +91,14 @@
                    target="_blank"
                    rel="noopener"
                    href="https://www.google.com/maps?q={{ e.location|urlencode }}">
-                  View on Google Maps →
+                  {% translate "View on Google Maps" %} →
                 </a>
               </div>
             {% endif %}
           </div>
 
           <div class="col-md-6">
-            <div class="text-white-50 small mb-1">Event type</div>
+            <div class="text-white-50 small mb-1">{% translate "Event type" %}</div>
             <div class="text-white fw-semibold">
               {% if e.event_type %}{{ e.event_type.name }}{% else %}Event{% endif %}
             </div>
@@ -128,7 +126,7 @@
 
         <!-- Professions -->
         <div class="mb-3">
-          <div class="text-white-50 small mb-2">Required professions</div>
+          <div class="text-white-50 small mb-2">{% translate "Required professions" %}</div>
           {% if e.required_professions.all %}
             <div class="d-flex flex-wrap gap-2">
               {% for p in e.required_professions.all %}
@@ -138,7 +136,7 @@
               {% endfor %}
             </div>
           {% else %}
-            <div class="text-white-50">No professions selected.</div>
+            <div class="text-white-50">{% translate "No professions selected" %}.</div>
           {% endif %}
         </div>
 
@@ -146,24 +144,24 @@
 
         <!-- Pricing -->
         <div class="mb-3">
-          <div class="text-white-50 small mb-2">Budget</div>
+          <div class="text-white-50 small mb-2">{% translate "Budget" %}</div>
 
           {% if e.currency %}
             <div class="d-flex justify-content-between">
-              <div class="text-white-50">Event budget</div>
+              <div class="text-white-50">{% translate "Event budget" %}</div>
               <div class="text-white fw-semibold">
                 {{ e.currency.sign }}{{ e.event_budget|default:"-" }}
               </div>
             </div>
 
             <div class="d-flex justify-content-between mt-2">
-              <div class="text-white-50">Advance payment</div>
+              <div class="text-white-50">{% translate "Advance payment" %}</div>
               <div class="text-white fw-semibold">
                 {{ e.currency.sign }}{{ e.advance_payment|default:"-" }}
               </div>
             </div>
           {% else %}
-            <div class="text-white-50">No currency set.</div>
+            <div class="text-white-50">{% translate "No currency set" %}.</div>
           {% endif %}
         </div>
 
@@ -174,18 +172,18 @@
           {% if is_pro and not is_creator %}
             {% if e.is_locked %}
               <button class="btn btn-secondary w-100" disabled>
-                Event locked (offers closed)
+                {% translate "Event locked (offers closed)" %}
               </button>
             {% else %}
               <a class="btn btn-primary w-100" href="{% url 'events:offers_inbox' %}?event={{ e.id }}">
-                Make offer
+                {% translate "Make offer" %}
               </a>
             {% endif %}
           {% endif %}
 
           {% if is_creator %}
             <a class="btn btn-outline-light w-100" href="{% url 'events:offers_inbox' %}?event={{ e.id }}">
-              View offer threads
+              {% translate "View offer threads" %}
             </a>
           {% endif %}
         </div>

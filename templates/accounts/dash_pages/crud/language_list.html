@@ -1,8 +1,9 @@
+{% load i18n %}
 <div>
   <div class="d-flex align-items-center justify-content-between mb-3">
     <div>
-      <h3 class="text-white mb-0">Languages</h3>
-      <div class="text-white-50 small">Name and slug</div>
+      <h3 class="text-white mb-0">{% translate "Languages" %}</h3>
+      <div class="text-white-50 small">{% translate "Name and slug" %}</div>
     </div>
 
     <div class="d-flex gap-2">
@@ -10,14 +11,14 @@
          href="{% url 'accounts:dash_crud_home' %}"
          hx-get="{% url 'accounts:dash_crud_home' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        Back
+        {% translate "Back" %}
       </a>
 
       <a class="btn btn-primary btn-sm"
          href="{% url 'accounts:dash_crud_language_create' %}"
          hx-get="{% url 'accounts:dash_crud_language_create' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        New language
+        {% translate "New language" %}
       </a>
     </div>
   </div>
@@ -26,9 +27,9 @@
     <table class="table table-dark table-striped align-middle">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Slug</th>
-          <th style="width: 200px;">Actions</th>
+          <th>{% translate "Name" %}</th>
+          <th>{% translate "Slug" %}</th>
+          <th style="width: 200px;">{% translate "Actions" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -41,19 +42,19 @@
                  href="{% url 'accounts:dash_crud_language_edit' l.id %}"
                  hx-get="{% url 'accounts:dash_crud_language_edit' l.id %}"
                  hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-                Edit
+                {% translate "Edit" %}
               </a>
               <a class="btn btn-outline-danger btn-sm"
                  href="{% url 'accounts:dash_crud_language_delete' l.id %}"
                  hx-get="{% url 'accounts:dash_crud_language_delete' l.id %}"
                  hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-                Delete
+                {% translate "Delete" %}
               </a>
             </td>
           </tr>
         {% empty %}
           <tr>
-            <td colspan="3" class="text-white-50">No languages found.</td>
+            <td colspan="3" class="text-white-50">{% translate "No languages found." %}</td>
           </tr>
         {% endfor %}
       </tbody>

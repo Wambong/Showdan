@@ -1,8 +1,9 @@
+{% load i18n %}
 <div>
   <div class="d-flex align-items-center justify-content-between mb-3">
     <div>
-      <h3 class="text-white mb-0">Currencies</h3>
-      <div class="text-white-50 small">Name and sign</div>
+      <h3 class="text-white mb-0">{% translate "Currencies" %}</h3>
+      <div class="text-white-50 small">{% translate "Name and sign" %}</div>
     </div>
 
     <div class="d-flex gap-2">
@@ -10,14 +11,14 @@
          href="{% url 'accounts:dash_crud_home' %}"
          hx-get="{% url 'accounts:dash_crud_home' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        Back
+        {% translate "Back" %}
       </a>
 
       <a class="btn btn-primary btn-sm"
          href="{% url 'accounts:dash_crud_currency_create' %}"
          hx-get="{% url 'accounts:dash_crud_currency_create' %}"
          hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-        New currency
+        {% translate "New currency" %}
       </a>
     </div>
   </div>
@@ -26,9 +27,9 @@
     <table class="table table-dark table-striped align-middle">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Sign</th>
-          <th style="width: 200px;">Actions</th>
+          <th>{% translate "Name" %}</th>
+          <th>{% translate "Sign" %}</th>
+          <th style="width: 200px;">{% translate "Actions" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -41,19 +42,19 @@
                  href="{% url 'accounts:dash_crud_currency_edit' c.id %}"
                  hx-get="{% url 'accounts:dash_crud_currency_edit' c.id %}"
                  hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-                Edit
+                {% translate "Edit" %}
               </a>
               <a class="btn btn-outline-danger btn-sm"
                  href="{% url 'accounts:dash_crud_currency_delete' c.id %}"
                  hx-get="{% url 'accounts:dash_crud_currency_delete' c.id %}"
                  hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-                Delete
+                {% translate "Delete" %}
               </a>
             </td>
           </tr>
         {% empty %}
           <tr>
-            <td colspan="3" class="text-white-50">No currencies found.</td>
+            <td colspan="3" class="text-white-50">{% translate "No currencies found" %}.</td>
           </tr>
         {% endfor %}
       </tbody>

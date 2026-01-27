@@ -5,7 +5,7 @@ from .models import Profession, Review
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
 User = get_user_model()
-
+from django.utils.translation import gettext_lazy as _
 import re
 class AccountsRegistrationForm(UserCreationForm):
     class Meta:
@@ -52,7 +52,7 @@ class AccountsProfileForm(forms.ModelForm):
         widgets = {
             "about_me": forms.Textarea(attrs={
                 "rows": 6,
-                "placeholder": "Tell people about yourself...",
+                "placeholder": _("Tell people about yourself..."),
             }),
             "communication_languages": forms.SelectMultiple(attrs={"class": "form-select", "size": "6"}),
             "event_languages": forms.SelectMultiple(attrs={"class": "form-select", "size": "6"}),
@@ -180,7 +180,7 @@ class ReviewForm(forms.ModelForm):
             "comment": forms.Textarea(attrs={
                 "class": "form-control",
                 "rows": 4,
-                "placeholder": "Write your review (optional)..."
+                "placeholder":_("Write your review (optional)...")
             }),
         }
 

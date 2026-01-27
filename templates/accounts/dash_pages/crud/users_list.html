@@ -1,15 +1,16 @@
+{% load i18n %}
 <div>
   <div class="d-flex align-items-center justify-content-between mb-3">
     <div>
-      <h3 class="text-white mb-0">Users</h3>
-      <div class="text-white-50 small">Manage accounts (staff only)</div>
+      <h3 class="text-white mb-0">{% translate "Users" %}</h3>
+      <div class="text-white-50 small">{% translate "Manage accounts (staff only)" %}</div>
     </div>
 
     <a class="btn btn-outline-light btn-sm"
        href="{% url 'accounts:dash_crud_home' %}"
        hx-get="{% url 'accounts:dash_crud_home' %}"
        hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-      Back
+      {% translate "Back" %}
     </a>
   </div>
 
@@ -32,30 +33,30 @@
 
     <div class="col-6 col-lg-2">
       <select name="type" class="form-select form-select-sm">
-        <option value="">All types</option>
-        <option value="personal" {% if account_type == "personal" %}selected{% endif %}>Personal</option>
-        <option value="professional" {% if account_type == "professional" %}selected{% endif %}>Professional</option>
+        <option value="">{% translate "All types" %}</option>
+        <option value="personal" {% if account_type == "personal" %}selected{% endif %}>{% translate "Personal" %}</option>
+        <option value="professional" {% if account_type == "professional" %}selected{% endif %}>{% translate "Professional" %}</option>
       </select>
     </div>
 
     <div class="col-6 col-lg-2">
       <select name="staff" class="form-select form-select-sm">
-        <option value="">All roles</option>
-        <option value="1" {% if staff == "1" %}selected{% endif %}>Staff</option>
-        <option value="0" {% if staff == "0" %}selected{% endif %}>Not staff</option>
+        <option value="">{% translate "All roles</option>
+        <option value="1" {% if staff == "1" %}selected{% endif %}>{% translate "Staff" %}</option>
+        <option value="0" {% if staff == "0" %}selected{% endif %}>{% translate "Not staff" %}</option>
       </select>
     </div>
 
     <div class="col-6 col-lg-2">
       <select name="active" class="form-select form-select-sm">
-        <option value="">All statuses</option>
-        <option value="1" {% if active == "1" %}selected{% endif %}>Active</option>
-        <option value="0" {% if active == "0" %}selected{% endif %}>Inactive</option>
+        <option value="">{% translate "All statuses" %}</option>
+        <option value="1" {% if active == "1" %}selected{% endif %}>{% translate "Active" %}</option>
+        <option value="0" {% if active == "0" %}selected{% endif %}>{% translate "Inactive" %}</option>
       </select>
     </div>
 
     <div class="col-6 col-lg-1 d-grid">
-      <button class="btn btn-primary btn-sm" type="submit">Go</button>
+      <button class="btn btn-primary btn-sm" type="submit">{% translate "Go" %}</button>
     </div>
   </form>
 
@@ -63,13 +64,13 @@
     <table class="table table-dark table-striped align-middle">
       <thead>
         <tr>
-          <th>User</th>
-          <th>Email</th>
-          <th>Type</th>
-          <th>Staff</th>
-          <th>Status</th>
-          <th>Joined</th>
-          <th style="width: 260px;">Actions</th>
+          <th>{% translate "User" %}</th>
+          <th>{% translate "Email" %}</th>
+          <th>{% translate "Type" %}</th>
+          <th>{% translate "Staff" %}</th>
+          <th>{% translate "Status" %}</th>
+          <th>{% translate "Joined" %}</th>
+          <th style="width: 260px;">{% translate "Actions" %}</th>
         </tr>
       </thead>
 
@@ -95,17 +96,17 @@
 
             <td>
               {% if u.is_staff %}
-                <span class="badge bg-info text-dark">Staff</span>
+                <span class="badge bg-info text-dark">{% translate "Staff" %}</span>
               {% else %}
-                <span class="badge bg-secondary">User</span>
+                <span class="badge bg-secondary">{% translate "User" %}</span>
               {% endif %}
             </td>
 
             <td>
               {% if u.is_active %}
-                <span class="badge bg-success">Active</span>
+                <span class="badge bg-success">{% translate "Active" %}</span>
               {% else %}
-                <span class="badge bg-danger">Inactive</span>
+                <span class="badge bg-danger">{% translate "Inactive" %}</span>
               {% endif %}
             </td>
 
@@ -117,7 +118,7 @@
                    href="{% url 'accounts:dash_crud_users_edit' u.id %}"
                    hx-get="{% url 'accounts:dash_crud_users_edit' u.id %}"
                    hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-                  Edit
+                  {% translate "Edit" %}
                 </a>
 
                 <form method="post"
@@ -150,7 +151,7 @@
           </tr>
         {% empty %}
           <tr>
-            <td colspan="7" class="text-white-50">No users found.</td>
+            <td colspan="7" class="text-white-50">{% translate "No users found" %}.</td>
           </tr>
         {% endfor %}
       </tbody>
@@ -170,7 +171,7 @@
              href="?q={{ q }}&type={{ account_type }}&staff={{ staff }}&active={{ active }}&page={{ page_obj.previous_page_number }}"
              hx-get="?q={{ q }}&type={{ account_type }}&staff={{ staff }}&active={{ active }}&page={{ page_obj.previous_page_number }}"
              hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-            Prev
+            {% translate "Prev" %}
           </a>
         {% endif %}
 
@@ -179,7 +180,7 @@
              href="?q={{ q }}&type={{ account_type }}&staff={{ staff }}&active={{ active }}&page={{ page_obj.next_page_number }}"
              hx-get="?q={{ q }}&type={{ account_type }}&staff={{ staff }}&active={{ active }}&page={{ page_obj.next_page_number }}"
              hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-            Next
+            {% translate "Next" %}
           </a>
         {% endif %}
       </div>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}News | Showdan{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <div>
+    <h2 class="mb-0">{% translate "News" %}</h2>
+    <div class="text-white-50 small">{% translate "Updates from" %} Showdan</div>
+  </div>
+</div>
+
+{% if items %}
+  <div class="row g-3">
+    {% for n in items %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <a class="text-decoration-none" href="{% url 'accounts:news_detail' n.slug %}">
+          <div class="card shadow-sm" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); overflow:hidden;">
+            {% if n.image %}
+              <img src="{{ n.image.url }}" alt="{{ n.title }}" style="width:100%; height:180px; object-fit:cover;">
+            {% endif %}
+            <div class="card-body">
+              <div class="text-white fw-semibold">{{ n.title }}</div>
+              <div class="text-white-50 small mt-1">
+                {% if n.published_at %}{{ n.published_at|date:"d M Y" }}{% endif %}
+              </div>
+              {% if n.excerpt %}
+                <div class="text-white-50 small mt-2">{{ n.excerpt }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="text-white-50">{% translate "No news yet" %}.</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,120 @@
+{% load i18n %}
+<div class="d-flex align-items-center justify-content-between mb-2">
+  <h5 class="text-white mb-0">{{ cfg.title }}</h5>
+</div>
+
+{% if cfg.item_type == "image" %}
+
+  <div class="row g-3">
+
+    {# ✅ Edit tile INSIDE same grid #}
+    <div class="col-6 col-md-4 col-lg-3">
+      <a class="media-tile-btn"
+         href="{% url 'accounts:dash_media_section_edit' cfg.kind %}"
+         hx-get="{% url 'accounts:dash_media_section_edit' cfg.kind %}"
+         hx-target="#dashMainCard"
+         hx-swap="innerHTML"
+         hx-push-url="true"
+         aria-label="Edit {{ cfg.title }}">
+        <span class="media-tile-ico">
+          <i class="bi bi-image"></i>
+          <i class="bi bi-plus-lg media-tile-plus"></i>
+        </span>
+      </a>
+    </div>
+
+    {% if items %}
+      {% for x in items %}
+        <div class="col-6 col-md-4 col-lg-3">
+          <img src="{{ x.image.url }}" class="img-fluid rounded border" alt="">
+        </div>
+      {% endfor %}
+    {% endif %}
+
+  </div>
+
+  {% if not items %}
+    <div class="text-white-50 small mt-2">{% translate "No items yet" %}.</div>
+  {% endif %}
+
+{% elif cfg.item_type == "audio" %}
+
+  <div class="mb-3">
+    <a class="media-tile-btn"
+       style="aspect-ratio:auto; height: 140px;"
+       href="{% url 'accounts:dash_media_section_edit' cfg.kind %}"
+       hx-get="{% url 'accounts:dash_media_section_edit' cfg.kind %}"
+       hx-target="#dashMainCard"
+       hx-swap="innerHTML"
+       hx-push-url="true"
+       aria-label="Edit {{ cfg.title }}">
+      <span class="media-tile-ico">
+        <i class="bi bi-music-note-beamed"></i>
+        <i class="bi bi-plus-lg media-tile-plus"></i>
+      </span>
+    </a>
+  </div>
+  {% if items %}
+    <div class="list-group">
+      {% for x in items %}
+        <div class="list-group-item">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-semibold">{{ x.title|default:"Audio cover" }}</div>
+            <small class="text-muted">{{ x.uploaded_at }}</small>
+          </div>
+          <audio controls class="w-100 mt-2">
+            <source src="{{ x.audio_file.url }}">
+            {% translate "Your browser does not support the audio element" %}.
+          </audio>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-white-50 small">{% translate "No items yet" %}.</div>
+  {% endif %}
+
+{% elif cfg.item_type == "video" %}
+
+  <div class="row g-3">
+
+    <div class="col-12 col-md-6">
+      <a class="media-tile-btn"
+         style="aspect-ratio:auto; min-height: 220px;"
+         href="{% url 'accounts:dash_media_section_edit' cfg.kind %}"
+         hx-get="{% url 'accounts:dash_media_section_edit' cfg.kind %}"
+         hx-target="#dashMainCard"
+         hx-swap="innerHTML"
+         hx-push-url="true"
+         aria-label="Edit {{ cfg.title }}">
+        <span class="media-tile-ico">
+          <i class="bi bi-camera-video"></i>
+          <i class="bi bi-plus-lg media-tile-plus"></i>
+        </span>
+      </a>
+    </div>
+    {% if items %}
+      {% for x in items %}
+        <div class="col-12 col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="fw-semibold">{{ x.title|default:"Video cover" }}</div>
+                <small class="text-muted">{{ x.uploaded_at }}</small>
+              </div>
+              <video controls class="w-100 mt-2" style="max-height:360px;">
+                <source src="{{ x.video_file.url }}">
+                {% translate "Your browser does not support the video tag." %}
+              </video>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+  </div>
+
+  {% if not items %}
+    <div class="text-white-50 small mt-2">{% translate "No items yet" %}.</div>
+  {% endif %}
+
+{% endif %}

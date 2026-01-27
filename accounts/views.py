@@ -7,6 +7,8 @@ from django.urls import reverse_lazy
 from django.db.models import Avg, Count
 from django.contrib.auth import get_user_model
 import calendar
+from django.utils.translation import gettext_lazy as _
+from django.utils.text import format_lazy
 from datetime import date, datetime, timedelta
 from django.utils import timezone
 from .forms import (
@@ -22,7 +24,7 @@ from .forms import (
 
 User = get_user_model()
 from events.models import Event, BusyTime
-from .models import Profession, AccountPhoto, ProfessionalPhoto, AudioAcapellaCover, VideoAcapellaCover, Review
+from .models import Profession, AccountPhoto, ProfessionalPhoto, AudioAcapellaCover, VideoAcapellaCover, Review, FavoriteProfessional
 
 @login_required
 def dashboard_view(request):
@@ -46,12 +48,17 @@ def daterange(d1: date, d2: date):
         yield cur
         cur += timedelta(days=1)
 
-
-
 def public_profile_detail_view(request, pk):
     prof = get_object_or_404(User, pk=pk, account_type="professional", is_active=True)
 
-    # tab support
+    # ✅ Favorite state
+    is_favorite = False
+    if request.user.is_authenticated:
+        is_favorite = FavoriteProfessional.objects.filter(
+            user=request.user,
+            professional=prof
+        ).exists()
+
     tab = request.GET.get("tab", "overview")
     valid_tabs = {"overview", "calendar"}
     if tab not in valid_tabs:
@@ -77,6 +84,30 @@ def public_profile_detail_view(request, pk):
         if not existing_review:
             review_form = ReviewForm()
 
+    # ✅ Similar professionals (same professions if possible)
+    base_similar = (
+        User.objects
+        .filter(account_type="professional", is_active=True)
+        .exclude(pk=prof.pk)
+        .prefetch_related("professions")
+        .select_related("currency")
+        .annotate(avg_rating=Avg("reviews_received__rating"))
+        .annotate(review_count=Count("reviews_received"))
+    )
+
+    prof_profession_ids = list(prof.professions.values_list("id", flat=True))
+
+    if prof_profession_ids:
+        pros = (
+            base_similar
+            .filter(professions__id__in=prof_profession_ids)
+            .distinct()
+            .order_by("-id")[:8]
+        )
+    else:
+        # fallback: show some professionals anyway
+        pros = base_similar.order_by("-id")[:8]
+
     # ===============================
     # Calendar tab context (read-only)
     # ===============================
@@ -91,14 +122,12 @@ def public_profile_detail_view(request, pk):
         cal = calendar.Calendar(firstweekday=0)  # Monday
         weeks = cal.monthdatescalendar(year, month)
 
-        # Show locked/accepted bookings for this professional
         events_qs = (
             Event.objects
             .select_related("accepted_thread", "accepted_thread__professional", "created_by")
             .filter(is_locked=True, accepted_thread__professional=prof)
         )
 
-        # professional avatar for background use (optional)
         avatar_url = ""
         if getattr(prof, "profile_picture", None):
             try:
@@ -106,7 +135,7 @@ def public_profile_detail_view(request, pk):
             except Exception:
                 avatar_url = ""
 
-        booked_map = {}  # date -> {"avatar_url": "", "ranges": [...]}
+        booked_map = {}
 
         for e in events_qs:
             if not e.start_datetime or not e.end_datetime:
@@ -117,7 +146,6 @@ def public_profile_detail_view(request, pk):
             d1 = start_local.date()
             d2 = end_local.date()
 
-            # ✅ accepted pro info (for locked event)
             accepted_name = ""
             accepted_avatar = ""
             if e.is_locked and getattr(e, "accepted_thread", None) and getattr(e.accepted_thread, "professional", None):
@@ -150,13 +178,10 @@ def public_profile_detail_view(request, pk):
                     "is_end": is_end,
                     "label": label,
                     "is_locked": bool(e.is_locked),
-
-                    # ✅ for modal display
                     "accepted_name": accepted_name,
                     "accepted_avatar": accepted_avatar,
                 })
 
-        # busy times (read-only)
         busy_qs = BusyTime.objects.filter(
             user=prof,
             start_datetime__date__lte=last_day,
@@ -198,21 +223,26 @@ def public_profile_detail_view(request, pk):
         {
             "prof": prof,
             "tab": tab,
+            "is_favorite": is_favorite,
+
             "normal_photos": normal_photos,
             "professional_photos": professional_photos,
             "audio_covers": audio_covers,
             "video_covers": video_covers,
+
             "reviews": reviews,
             "avg_rating": avg_rating,
             "review_count": review_count,
             "review_form": review_form,
             "can_review": can_review,
             "existing_review": existing_review,
+
+            # ✅ NEW
+            "pros": pros,
+
             **calendar_ctx,
         },
     )
-
-
 
 def profile_media_hub_view(request, pk):
     prof = get_object_or_404(User, pk=pk, account_type="professional", is_active=True)
@@ -254,77 +284,18 @@ def profile_media_hub_view(request, pk):
         context["title"] = "Video"
 
     return render(request, "accounts/profile_media.html", context)
-@login_required
-def profile_edit_view(request):
-    user = request.user
 
-    if request.method == "POST":
-        form = AccountsProfileForm(request.POST, request.FILES, instance=user)
-
-        photos_form = NormalPhotosUploadForm(request.POST, request.FILES)
-        professional_form = ProfessionalPhotosUploadForm(request.POST, request.FILES)
-
-        audio_form = AudioCoversUploadForm(request.POST, request.FILES)
-        video_form = VideoCoversUploadForm(request.POST, request.FILES)
-
-        if (
-                form.is_valid()
-                and photos_form.is_valid()
-                and professional_form.is_valid()
-                and audio_form.is_valid()
-                and video_form.is_valid()
-        ):
-            form.save()
-
-            # Normal photos
-            for f in photos_form.cleaned_data["normal_images"]:
-                AccountPhoto.objects.create(user=user, image=f)
-
-            # Professional photos
-            for f in professional_form.cleaned_data["professional_images"]:
-                ProfessionalPhoto.objects.create(user=user, image=f)
-
-            # Audio acapella covers
-            for f in audio_form.cleaned_data["audio_files"]:
-                AudioAcapellaCover.objects.create(user=user, audio_file=f)
-
-            # Video acapella covers
-            for f in video_form.cleaned_data["video_files"]:
-                VideoAcapellaCover.objects.create(user=user, video_file=f)
-
-            messages.success(request, "Profile updated successfully.")
-            return redirect("accounts:profile")
-
-        messages.error(request, "Please correct the errors below.")
-    else:
-        form = AccountsProfileForm(instance=user)
-        photos_form = NormalPhotosUploadForm()
-        professional_form = ProfessionalPhotosUploadForm()
-        audio_form = AudioCoversUploadForm()
-        video_form = VideoCoversUploadForm()
-
-    return render(
-        request,
-        "accounts/profile_edit.html",
-        {
-            "form": form,
-            "photos_form": photos_form,
-            "professional_form": professional_form,
-            "audio_form": audio_form,
-            "video_form": video_form,
-        },
-    )
 @login_required
 def create_review_view(request, pk):
     prof = get_object_or_404(User, pk=pk, account_type="professional", is_active=True)
 
     if prof.pk == request.user.pk:
-        messages.error(request, "You cannot review your own profile.")
+        messages.error(request, _("You cannot review your own profile."))
         return redirect("accounts:profile_detail", pk=prof.pk)
 
     # prevent duplicates (enforced by DB constraint too)
     if Review.objects.filter(professional=prof, reviewer=request.user).exists():
-        messages.error(request, "You already left a review for this profile.")
+        messages.error(request, _("You already left a review for this profile."))
         return redirect("accounts:profile_detail", pk=prof.pk)
 
     if request.method != "POST":
@@ -336,9 +307,9 @@ def create_review_view(request, pk):
         review.professional = prof
         review.reviewer = request.user
         review.save()
-        messages.success(request, "Review submitted successfully.")
+        messages.success(request, _("Review submitted successfully."))
     else:
-        messages.error(request, "Please correct the errors in your review.")
+        messages.error(request, _("Please correct the errors in your review."))
 
     return redirect("accounts:profile_detail", pk=prof.pk)
 
@@ -352,28 +323,30 @@ def register_view(request):
             authed = authenticate(request, email=user.email, password=form.cleaned_data["password1"])
             if authed is not None:
                 login(request, authed)
-                messages.success(request, "Account created successfully. Welcome!")
+                messages.success(request, _("Account created successfully. Welcome!"))
                 return redirect("accounts:dashboard")
 
             # fallback (shouldn't usually happen)
-            messages.success(request, "Account created. Please log in.")
+            messages.success(request, _("Account created. Please log in."))
             return redirect("accounts:login")
 
-        messages.error(request, "Please correct the errors below.")
+        messages.error(request, _("Please correct the errors below."))
     else:
         form = AccountsRegistrationForm()
 
     return render(request, "accounts/register.html", {"form": form})
 
+
+
 class AccountLoginView(LoginView):
     template_name = "accounts/login.html"
 
     def form_valid(self, form):
-        messages.success(self.request, "You are now logged in.")
+        messages.success(self.request, _("You are now logged in."))
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, "Invalid credentials. Please try again.")
+        messages.error(self.request, _("Invalid credentials. Please try again."))
         return super().form_invalid(form)
 
 
@@ -390,11 +363,8 @@ def profile_view(request):
     return render(request, "accounts/profile.html")
 
 
-
-
 def can_create_professions(user):
     return user.is_authenticated and (user.is_staff or user.account_type == "professional")
-
 
 @user_passes_test(can_create_professions)
 def profession_create_view(request):
@@ -402,35 +372,17 @@ def profession_create_view(request):
         form = ProfessionForm(request.POST)
         if form.is_valid():
             prof = form.save()
-            messages.success(request, f"Profession '{prof.name}' created successfully.")
+            messages.success(
+                request,
+                format_lazy(_("Profession “{name}” created successfully."), name=prof.name),
+            )
             return redirect("accounts:profession_create")
-        messages.error(request, "Please correct the errors below.")
+        messages.error(request, _("Please correct the errors below."))
     else:
         form = ProfessionForm()
 
     return render(request, "accounts/profession_create.html", {"form": form})
 
 
-@login_required
-def profession_tree_view(request):
-    professions = list(
-        Profession.objects.all()
-        .select_related("parent")
-        .order_by("name")
-    )
 
-    children_map = {}
-    for p in professions:
-        children_map.setdefault(p.parent_id, []).append(p)
-
-    def attach(node):
-        node.tree_children = children_map.get(node.id, [])  # ✅ not "children"
-        for c in node.tree_children:
-            attach(c)
-
-    roots = children_map.get(None, [])
-    for r in roots:
-        attach(r)
-
-    return render(request, "accounts/profession_tree.html", {"roots": roots})
 

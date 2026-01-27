@@ -1,19 +1,20 @@
+{% load i18n %}
 <div>
   <h3 class="text-white mb-2">{{ title }}</h3>
-  <div class="text-white-50 small mb-3">Admin only</div>
+  <div class="text-white-50 small mb-3">{% translate "Admin only" %}</div>
 
   <div class="alert alert-danger">
-    Are you sure you want to delete: <strong>{{ obj }}</strong> ?
+    {% translate "Are you sure you want to delete" %}: <strong>{{ obj }}</strong> ?
   </div>
 
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger">Yes, delete</button>
+    <button class="btn btn-danger">{% translate "Yes, delete" %}</button>
     <a class="btn btn-outline-light ms-2"
        href="{% url 'accounts:dash_crud_home' %}"
        hx-get="{% url 'accounts:dash_crud_home' %}"
        hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-      Cancel
+      {% translate "Cancel" %}
     </a>
   </form>
 </div>

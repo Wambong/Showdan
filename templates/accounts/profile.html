@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}Profile | Showdan{% endblock %}
 
 {% block content %}
@@ -30,7 +30,7 @@
 
     {% if request.user.account_type == "professional" %}
       <div class="mt-2">
-        <span class="badge bg-primary me-2">Professional</span>
+        <span class="badge bg-primary me-2">{% translate "Professional" %}</span>
       </div>
     {% endif %}
   </div>
@@ -39,7 +39,7 @@
 <!-- ================= PROFESSIONAL DETAILS ================= -->
 {% if request.user.account_type == "professional" %}
   <div class="mb-4">
-    <h6 class="text-uppercase text-white-50 mb-2">Professions</h6>
+    <h6 class="text-uppercase text-white-50 mb-2">{% translate "Professions" %}</h6>
 
     {% if request.user.professions.exists %}
       <ul class="list-inline mb-0">
@@ -52,17 +52,17 @@
         {% endfor %}
       </ul>
     {% else %}
-      <p class="text-white-50 mb-0">No professions selected</p>
+      <p class="text-white-50 mb-0">{% translate "No professions selected" %}</p>
     {% endif %}
   </div>
 {% endif %}
 
 <!-- ================= EXPERIENCE ================= -->
 <div class="mb-4">
-  <h6 class="text-uppercase text-white-50 mb-2">Experience</h6>
+  <h6 class="text-uppercase text-white-50 mb-2">{% translate "Experience" %}</h6>
   <p class="mb-0">
     <strong>{{ request.user.years_of_experience }}</strong>
-    year{{ request.user.years_of_experience|pluralize }} of experience
+    {% translate "year" %}{{ request.user.years_of_experience|pluralize }} {% translate "of experience" %}
   </p>
 </div>
 
@@ -70,14 +70,14 @@
 
 <!-- ================= ABOUT ME ================= -->
 <div class="mb-4">
-  <h5 class="mb-2">About me</h5>
+  <h5 class="mb-2">{% translate "About me" %}</h5>
 
   {% if request.user.about_me %}
     <p class="text-white-50 mb-0" style="white-space: pre-line;">
       {{ request.user.about_me }}
     </p>
   {% else %}
-    <p class="text-muted mb-0">No description provided yet.</p>
+    <p class="text-muted mb-0">{% translate "No description provided yet" %}.</p>
   {% endif %}
 </div>
 
@@ -85,10 +85,10 @@
 
 <!-- ================= LANGUAGES ================= -->
 <div class="mb-4">
-  <h5 class="mb-3">Languages</h5>
+  <h5 class="mb-3">{% translate "Languages" %}</h5>
 
   <div class="mb-2">
-    <div class="text-white-50 small mb-1">Communication languages</div>
+    <div class="text-white-50 small mb-1">{% translate "Communication languages" %}</div>
     {% if request.user.communication_languages.exists %}
       {% for l in request.user.communication_languages.all %}
         <span class="badge bg-light text-dark border me-1 mb-1">
@@ -96,12 +96,12 @@
         </span>
       {% endfor %}
     {% else %}
-      <span class="text-white-50">None selected</span>
+      <span class="text-white-50">{% translate "None selected" %}</span>
     {% endif %}
   </div>
 
   <div>
-    <div class="text-white-50 small mb-1">Event languages</div>
+    <div class="text-white-50 small mb-1">{% translate "Event languages" %}</div>
     {% if request.user.event_languages.exists %}
       {% for l in request.user.event_languages.all %}
         <span class="badge bg-light text-dark border me-1 mb-1">
@@ -109,7 +109,7 @@
         </span>
       {% endfor %}
     {% else %}
-      <span class="text-white-50">None selected</span>
+      <span class="text-white-50">{% translate "None selected" %}</span>
     {% endif %}
   </div>
 </div>
@@ -118,47 +118,47 @@
 
 <!-- ================= PRICING ================= -->
 <div class="mb-0">
-  <h5 class="mb-3">Pricing</h5>
+  <h5 class="mb-3">{% translate "Pricing" %}</h5>
 
   {% if request.user.currency %}
     <div class="row">
       <div class="col-sm-6 mb-2">
-        <div class="text-white-50 small">Cost per hour</div>
+        <div class="text-white-50 small">{% translate "Cost per hour" %}</div>
         <div class="fs-5 fw-semibold">
           {{ request.user.currency.sign }}{{ request.user.cost_per_hour|default:"—" }}
         </div>
       </div>
 
       <div class="col-sm-6 mb-2">
-        <div class="text-white-50 small">Cost per 5 hours</div>
+        <div class="text-white-50 small">{% translate "Cost per 5 hours" %}</div>
         <div class="fs-5 fw-semibold">
           {{ request.user.currency.sign }}{{ request.user.cost_per_5_hours|default:"—" }}
         </div>
       </div>
     </div>
   {% else %}
-    <p class="text-muted mb-0">Pricing has not been set.</p>
+    <p class="text-muted mb-0">{% translate "Pricing has not been set" %}.</p>
   {% endif %}
 </div>
 
 
     <br>
     <div class="mb-3">
-      <a class="btn btn-primary" href="{% url 'accounts:profile_edit' %}">Edit Profile</a>
+      <a class="btn btn-primary" href="{% url 'accounts:profile_edit' %}">{% translate "Edit Profile" %}</a>
     </div>
 
     <hr class="my-4">
-    <h5 class="mb-2">Accepted event categories</h5>
+    <h5 class="mb-2">{% translate "Accepted event categories" %}</h5>
 
     {% if request.user.accepted_event_categories.exists %}
       {% for c in request.user.accepted_event_categories.all %}
         <span class="badge bg-light text-dark border me-1 mb-1">{{ c }}</span>
       {% endfor %}
     {% else %}
-      <p class="text-muted mb-0">No accepted event categories selected.</p>
+      <p class="text-muted mb-0">{% translate "No accepted event categories selected" %}.</p>
     {% endif %}
    <hr class="my-4">
-<h5 class="mb-3">Professional picture</h5>
+<h5 class="mb-3">{% translate "Professional picture</h5>
 {% if request.user.professional_photos.exists %}
   <div class="row g-3">
     {% for photo in request.user.professional_photos.all %}
@@ -170,17 +170,17 @@
 {% else %}
   <div class="alert alert-light border d-flex align-items-center justify-content-between">
     <span class="text-muted mb-0">
-      No professional photos uploaded yet.
+      {% translate "No professional photos uploaded yet" %}.
     </span>
     <a href="{% url 'accounts:profile_edit' %}" class="btn btn-sm btn-primary">
-      Add professional photo
+      {% translate "Add professional photo" %}
     </a>
   </div>
 {% endif %}
 
     <hr class="my-4">
 
-    <h5 class="mb-3">Normal pictures</h5>
+    <h5 class="mb-3">{% translate "Normal pictures" %}</h5>
     {% if request.user.normal_photos.exists %}
     <div class="row g-3">
       {% for photo in request.user.normal_photos.all %}
@@ -192,16 +192,16 @@
       {% else %}
         <div class="alert alert-light border d-flex align-items-center justify-content-between">
           <span class="text-muted mb-0">
-            No Normal photos uploaded yet.
+            {% translate "No Normal photos uploaded yet" %}.
           </span>
           <a href="{% url 'accounts:profile_edit' %}" class="btn btn-sm btn-primary">
-            Add Normal photo
+            {% translate "Add Normal photo" %}
           </a>
         </div>
       {% endif %}
 
   <hr class="my-4">
-<h5 class="mb-3">Audio Acapella Covers</h5>
+<h5 class="mb-3">{% translate "Audio Acapella Covers" %}</h5>
 
 {% if request.user.audio_acapella_covers.exists %}
   <div class="list-group">
@@ -213,22 +213,22 @@
         </div>
         <audio controls class="w-100 mt-2">
           <source src="{{ a.audio_file.url }}">
-          Your browser does not support the audio element.
+          {% translate "Your browser does not support the audio element" %}.
         </audio>
       </div>
     {% endfor %}
   </div>
 {% else %}
   <div class="alert alert-light border d-flex align-items-center justify-content-between">
-    <span class="text-muted mb-0">No audio covers uploaded yet.</span>
-    <a href="{% url 'accounts:profile_edit' %}" class="btn btn-sm btn-primary">Add audio cover</a>
+    <span class="text-muted mb-0">{% translate "No audio covers uploaded yet" %}.</span>
+    <a href="{% url 'accounts:profile_edit' %}" class="btn btn-sm btn-primary">{% translate "Add audio cover" %}</a>
   </div>
 {% endif %}
 
 
 
     <hr class="my-4">
-<h5 class="mb-3">Video Acapella Covers</h5>
+<h5 class="mb-3">{% translate "Video Acapella Covers" %}</h5>
 {% if request.user.video_acapella_covers.exists %}
   <div class="row g-3">
     {% for v in request.user.video_acapella_covers.all %}
@@ -241,7 +241,7 @@
             </div>
             <video controls class="w-100 mt-2" style="max-height: 360px;">
               <source src="{{ v.video_file.url }}">
-              Your browser does not support the video tag.
+              {% translate "Your browser does not support the video tag" %}.
             </video>
           </div>
         </div>
@@ -250,8 +250,8 @@
   </div>
 {% else %}
   <div class="alert alert-light border d-flex align-items-center justify-content-between">
-    <span class="text-muted mb-0">No video covers uploaded yet.</span>
-    <a href="{% url 'accounts:profile_edit' %}" class="btn btn-sm btn-primary">Add video cover</a>
+    <span class="text-muted mb-0">{% translate "No video covers uploaded yet" %}.</span>
+    <a href="{% url 'accounts:profile_edit' %}" class="btn btn-sm btn-primary">{% translate "Add video cover" %}</a>
   </div>
 {% endif %}
 

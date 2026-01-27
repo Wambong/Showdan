@@ -1,14 +1,15 @@
+{% load i18n %}
 <div>
   <div class="d-flex align-items-center justify-content-between mb-3">
     <div>
       <h3 class="text-white mb-0">{{ title }}</h3>
-      <div class="text-white-50 small">Admin only</div>
+      <div class="text-white-50 small">{% translate "Admin only" %}</div>
     </div>
     <a class="btn btn-outline-light btn-sm"
        href="{% url 'accounts:dash_crud_home' %}"
        hx-get="{% url 'accounts:dash_crud_home' %}"
        hx-target="#dashMainCard" hx-swap="innerHTML" hx-push-url="true">
-      Back
+      {% translate "Back" %}
     </a>
   </div>
 
@@ -33,6 +34,6 @@
       </div>
     {% endfor %}
 
-    <button class="btn btn-primary w-100">Save</button>
+    <button class="btn btn-primary w-100">{% translate "Save" %}</button>
   </form>
 </div>

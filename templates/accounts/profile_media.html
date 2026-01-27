@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}Media | {{ prof.first_name }} {{ prof.last_name }}{% endblock %}
 
 {% block content %}
 <div class="profile-detail-wrap mx-auto">
 
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <a class="btn btn-sm btn-outline-light" href="{% url 'accounts:profile_detail' prof.id %}">← Back</a>
-    <h5 class="mb-0">Media</h5>
+    <a class="btn btn-sm btn-outline-light" href="{% url 'accounts:profile_detail' prof.id %}">← {% translate "Back" %}</a>
+    <h5 class="mb-0">{% translate "Media" %}</h5>
     <span></span>
   </div>
 
@@ -35,7 +35,7 @@
             <img src="{{ ph.image.url }}" alt="Photo">
           </div>
         {% empty %}
-          <div class="section-muted">No photos uploaded yet.</div>
+          <div class="section-muted">{% translate "No photos uploaded yet" %}.</div>
         {% endfor %}
       </div>
 
@@ -45,15 +45,15 @@
           <div class="audio-row">
             <div class="audio-dot">♪</div>
             <div class="audio-meta">
-              <div class="audio-name">Audio cover {{ forloop.counter }}</div>
-              <div class="audio-sub">Tap to play</div>
+              <div class="audio-name">{% translate "Audio cover" %} {{ forloop.counter }}</div>
+              <div class="audio-sub">{% translate "Tap to play" %}</div>
             </div>
             <audio controls preload="none" class="audio-player">
               <source src="{{ a.audio_file.url }}">
             </audio>
           </div>
         {% empty %}
-          <div class="section-muted">No audio uploaded yet.</div>
+          <div class="section-muted">{% translate "No audio uploaded yet" %}.</div>
         {% endfor %}
       </div>
 
@@ -66,7 +66,7 @@
             </video>
           </div>
         {% empty %}
-          <div class="section-muted">No videos uploaded yet.</div>
+          <div class="section-muted">{% translate "No videos uploaded yet" %}.</div>
         {% endfor %}
       </div>
     {% endif %}

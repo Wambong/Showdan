@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profession, Language, Currency, ExchangeRate
+from .models import Profession, Language, Currency, ExchangeRate, NewsPost
 from django.contrib.auth import get_user_model
 
 from events.models import EventCategory
@@ -80,4 +80,16 @@ class ExchangeRateForm(forms.ModelForm):
             "from_currency": forms.Select(attrs={"class": "form-select"}),
             "to_currency": forms.Select(attrs={"class": "form-select"}),
             "rate": forms.NumberInput(attrs={"class": "form-control", "step": "0.000001"}),
+        }
+
+
+class NewsPostForm(forms.ModelForm):
+    class Meta:
+        model = NewsPost
+        fields = ["title", "excerpt", "body", "image", "is_published"]
+        widgets = {
+            "title": forms.TextInput(attrs={"class": "form-control"}),
+            "excerpt": forms.Textarea(attrs={"class": "form-control", "rows": 2}),
+            "body": forms.Textarea(attrs={"class": "form-control", "rows": 8}),
+            "is_published": forms.CheckboxInput(attrs={"class": "form-check-input"}),
         }

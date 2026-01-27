@@ -30,7 +30,7 @@ body{
   position: fixed;
   left: 0; right: 0; bottom: 0;
   z-index: 1030;
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
   background: linear-gradient(90deg, rgba(8,10,18,0.92), rgba(22,8,28,0.92), rgba(8,10,18,0.92));
   border-top: 1px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(10px);
@@ -615,10 +615,49 @@ select:-moz-focusring{
 }
 
 
-/* ===== Profile detail (mobile style) ===== */
+/* ===== Profile detail (responsive) ===== */
 .profile-detail-wrap{
-  max-width: 420px;
+  /* mobile-first: full width with padding */
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
 }
+
+/* small tablets */
+@media (min-width: 576px){
+  .profile-detail-wrap{
+    max-width: 540px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* tablets / small desktop */
+@media (min-width: 768px){
+  .profile-detail-wrap{
+    max-width: 720px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* desktop */
+@media (min-width: 992px){
+  .profile-detail-wrap{
+    max-width: 900px; /* adjust if you want */
+  }
+}
+
+/* large desktop */
+@media (min-width: 1200px){
+  .profile-detail-wrap{
+    max-width: 1000px; /* adjust if you want */
+  }
+}
+
 
 .profile-top-title{
   color: rgba(255,255,255,.85);
@@ -1603,7 +1642,7 @@ select:-moz-focusring{
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
-    padding:16px;
+    padding:8px;
   }
 
   .dash-profile-card{
@@ -1671,3 +1710,106 @@ select:-moz-focusring{
     background: rgba(255,0,160,0.18);
     border-color: rgba(255,0,160,1);
   }
+
+/* Card button like the screenshot */
+.media-tile-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 140px;            /* adjust as you like */
+  height: 120px;           /* adjust as you like */
+  border-radius: 18px;
+  text-decoration:none;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.20) inset;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.media-tile-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.30);
+  background: rgba(255,255,255,0.06);
+}
+
+.media-tile-btn:active{
+  transform: translateY(0px);
+}
+
+/* center gradient circle */
+.media-tile-ico{
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position: relative;
+
+  background: linear-gradient(135deg, #ff4fd8, #ff6b6b, #ff9d3b);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+/* main icon (image) */
+.media-tile-ico .bi-image{
+  font-size: 24px;
+  color: rgba(255,255,255,0.95);
+}
+
+/* small plus overlay */
+.media-tile-plus{
+  position:absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.95);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+
+.lang-float{
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1100;
+}
+
+.lang-float-btn{
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(15,18,24,0.9);
+  backdrop-filter: blur(8px);
+}
+
+/* remove the default bootstrap caret spacing weirdness if needed */
+.lang-float-btn.dropdown-toggle::after{
+  margin-left: 8px;
+  opacity: .7;
+}
+
+.lang-code{
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.lang-float-menu{
+  min-width: 140px;
+  background: #0f1218;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+}
+
+.lang-float-menu .form-select{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+}
+
+.lang-float-menu .form-select option{
+  color: white;
+}
